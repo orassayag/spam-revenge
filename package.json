@@ -1,0 +1,46 @@
+{
+  "name": "spam-revenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Node.js + Puppeteer.js application to test some NPM packages to get, validate, and implement different proxis in puppeteer crawling process.",
+  "keywords": [
+    "ip",
+    "proxy"
+  ],
+  "license": "UNLICENSED",
+  "author": "Or Assayag <orassayag@gmail.com>",
+  "contributors": [
+    {
+      "name": "Or Assayag",
+      "email": "orassayag@gmail.com",
+      "url": "https://github.com/orassayag"
+    }
+  ],
+  "main": "src/index.js",
+  "files": [
+    "src",
+    ".eslintignore",
+    ".eslintrc",
+    ".gitignore",
+    ".jsbeautifyrc",
+    ".npmignore",
+    "package-lock.json",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node src/index.js",
+    "stop": "taskkill -f -im node.exe"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "proxy-lists": "^1.23.1",
+    "proxy-verifier": "^0.4.1",
+    "puppeteer": "^8.0.0"
+  }
+}
