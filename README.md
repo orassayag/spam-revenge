@@ -1,6 +1,6 @@
-# Spam Revenge
+# Udemy Courses
 
-Built in February 2021. A Node.js + Puppeteer.js application to test some NPM packages to get, validate, and implement different proxis in puppeteer crawling process.
+Built in December 2020. A Node.js + Puppeteer.js application to get Udemy courses links from a coupon site, and purchase the FREE ONLY courses (by the coupon) on Udemy site.
 
 ## Getting Started
 

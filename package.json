@@ -2,10 +2,12 @@
   "name": "spam-revenge",
   "version": "1.0.0",
   "private": true,
-  "description": "A Node.js + Puppeteer.js application to test some NPM packages to get, validate, and implement different proxis in puppeteer crawling process.",
+  "description": "A Node.js + Puppeteer.js application to get Udemy courses links from a coupon site, and purchase the FREE ONLY courses (by the coupon) on Udemy site.",
   "keywords": [
-    "ip",
-    "proxy"
+    "links",
+    "udemy",
+    "coupons",
+    "courses"
   ],
   "license": "UNLICENSED",
   "author": "Or Assayag <orassayag@gmail.com>",
@@ -16,7 +18,7 @@
       "url": "https://github.com/orassayag"
     }
   ],
-  "main": "src/index.js",
+  "main": "src/scripts/purchase.script.js",
   "files": [
     "src",
     ".eslintignore",
@@ -29,7 +31,10 @@
     "README.md"
   ],
   "scripts": {
-    "start": "node src/index.js",
+    "backup": "node src/scripts/backup.script.js",
+    "start": "node src/scripts/purchase.script.js",
+    "sand": "node src/tests/sandBox.test.js",
+    "session": "node src/tests/udemySession.test.js",
     "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [
@@ -39,8 +44,19 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "proxy-lists": "^1.23.1",
-    "proxy-verifier": "^0.4.1",
-    "puppeteer": "^8.0.0"
+    "ansi-escapes": "^4.3.1",
+    "babel-eslint": "^10.1.0",
+    "cli-cursor": "^3.1.0",
+    "eslint": "^7.20.0",
+    "fs-extra": "^9.1.0",
+    "is-reachable": "^5.0.0",
+    "lorem-ipsum": "^2.0.3",
+    "puppeteer": "^8.0.0",
+    "puppeteer-extra": "^3.1.17",
+    "puppeteer-extra-plugin-stealth": "^2.7.5",
+    "random-useragent": "^0.5.0",
+    "slice-ansi": "^4.0.0",
+    "tree-kill": "^1.2.2",
+    "wrap-ansi": "^7.0.0"
   }
 }

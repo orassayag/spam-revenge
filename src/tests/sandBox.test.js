@@ -1,13 +1,8 @@
-const testPuppeteerWithProxy = async () => {
-    const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--proxy-server=socks4://177.154.55.114:51815']
-    });
-    const page = await browser.newPage();
-    const cdpRequestDataRaw = await setupLoggingOfAllNetworkData(page);
-    // Make requests.
-    await page.goto('https://api.ipify.org');
+require('../services/files/initiate.service').initiate('test');
+
+(() => {
+})();
+
 
     /*     const response = await page.goto('https://api.ipify.org');
         const headers = response.headers();
@@ -17,6 +12,44 @@ const testPuppeteerWithProxy = async () => {
             browser.close();
         }, 3000); */
     /* }); */
+
+        /*     {
+            ipAddress: '96.82.74.129',
+            port: 34032,
+            anonymityLevel: 'elite',
+            protocols: [ 'socks4' ],
+            country: 'us',
+            source: 'proxyscrape-com'
+          },
+          {
+            ipAddress: '192.111.129.145',
+            port: 16894,
+            anonymityLevel: 'elite',
+            protocols: [ 'socks4' ],
+            country: 'us',
+            source: 'proxyscrape-com'
+          },
+          {
+            ipAddress: '24.172.34.114',
+            port: 60133,
+            anonymityLevel: 'elite',
+            protocols: [ 'socks4' ],
+            country: 'us',
+            source: 'proxyscrape-com'
+          },
+          ... 5 more items
+        ] */
+
+/* const testPuppeteerWithProxy = async () => {
+    const puppeteer = require('puppeteer');
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--proxy-server=socks4://177.154.55.114:51815']
+    });
+    const page = await browser.newPage();
+    const cdpRequestDataRaw = await setupLoggingOfAllNetworkData(page);
+    // Make requests.
+    await page.goto('https://api.ipify.org');
 
     // Log captured request data.
     console.log(JSON.stringify(cdpRequestDataRaw, null, 2));
@@ -68,32 +101,7 @@ const getYourPublicIPAddress2 = () => {
 }
 
 const verifyProxy = () => {
-    /*     {
-            ipAddress: '96.82.74.129',
-            port: 34032,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          {
-            ipAddress: '192.111.129.145',
-            port: 16894,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          {
-            ipAddress: '24.172.34.114',
-            port: 60133,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          ... 5 more items
-        ] */
+
 
     const ProxyVerifier = require('proxy-verifier');
     const proxy = {
@@ -141,4 +149,4 @@ const getProxiesList = () => {
     getYourPublicIPAddress2();
     verifyProxy();
     getProxiesList();
-})();
+})(); */

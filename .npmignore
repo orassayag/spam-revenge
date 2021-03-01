@@ -27,6 +27,11 @@ misc/backup/
 /misc/backup/
 misc/backup
 
+# Sources.
+sources/
+/sources
+sources
+
 # Logs.
 /logs
 
