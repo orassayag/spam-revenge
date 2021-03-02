@@ -1,4 +1,10 @@
-const { CourseStatus, CourseType } = require('../../enums');
+class SubscribeData {
+    constructor() {}
+}
+
+module.exports = SubscribeData;
+
+/* const { CourseStatus, CourseType } = require('../../enums');
 
 class CourseData {
 
@@ -29,4 +35,4 @@ class CourseData {
     }
 }
 
-module.exports = CourseData;
+module.exports = CourseData; */

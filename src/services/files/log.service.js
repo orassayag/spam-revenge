@@ -1,4 +1,84 @@
 const { LogData } = require('../../core/models');
+const { Mode, Placeholder } = require('../../core/enums');
+const applicationService = require('./application.service');
+const pathService = require('./path.service');
+const { fileUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
+
+class LogService {
+
+	constructor() {
+		this.isLogProgress = null;
+		this.logData = null;
+		this.logInterval = null;
+		// ===PATH=== //
+		this.baseSessionPath = null;
+		this.sessionDirectoryPath = null;
+		this.subscribeValidPath = null;
+		this.subscribeInvalidPath = null;
+		this.i = 0;
+		this.frames = ['-', '\\', '|', '/'];
+		this.emptyValue = '##';
+		this.logSeperator = '==========';
+		this.isLogs = true;
+	}
+
+	initiate(settings) {
+		this.logData = new LogData(settings);
+		// Check if any logs active.
+		this.isLogs = applicationService.applicationData.mode === Mode.STANDARD &&
+			(this.logData.isLogSubscribeValidPath || this.logData.isLogSubscribeInvalidPath);
+		this.initiateDirectories();
+		this.isLogProgress = applicationService.applicationData.mode === Mode.STANDARD;
+	}
+
+	initiateDirectories() {
+		if (!this.isLogs) {
+			return;
+		}
+		// ===PATH=== //
+		this.baseSessionPath = pathService.pathData.distPath;
+		this.createSessionDirectory();
+		if (this.logData.isLogSubscribeValidPath) {
+			this.subscribeValidPath = this.createFilePath(`subscribe_valid_${Placeholder.DATE}`);
+		}
+		if (this.logData.isLogSubscribeInvalidPath) {
+			this.subscribeInvalidPath = this.createFilePath(`subscribe_invalid_${Placeholder.DATE}`);
+		}
+	}
+
+	getNextDirectoryIndex() {
+		const directories = fileUtils.getAllDirectories(this.baseSessionPath);
+		if (!validationUtils.isExists(directories)) {
+			return 1;
+		}
+		return Math.max(...directories.map(name => textUtils.getSplitNumber(name))) + 1;
+	}
+
+	createSessionDirectory() {
+		this.sessionDirectoryPath = pathUtils.getJoinPath({
+			targetPath: this.baseSessionPath,
+			targetName: `${this.getNextDirectoryIndex()}_${applicationService.applicationData.logDateTime}`
+		});
+		fileUtils.createDirectory(this.sessionDirectoryPath);
+	}
+
+	createFilePath(fileName) {
+		return pathUtils.getJoinPath({
+			targetPath: this.sessionDirectoryPath ? this.sessionDirectoryPath : pathService.pathData.distPath,
+			targetName: `${fileName.replace(Placeholder.DATE, applicationService.applicationData.logDateTime)}.txt`
+		});
+	}
+
+	close() {
+		if (this.logInterval) {
+			clearInterval(this.logInterval);
+		}
+	}
+}
+
+module.exports = new LogService();
+
+/* const { LogData } = require('../../core/models');
 const { CourseStatusLog, CourseStatus, Color, Method, Mode, Placeholder, StatusIcon } = require('../../core/enums');
 const accountService = require('./account.service');
 const applicationService = require('./application.service');
@@ -398,4 +478,4 @@ OK to run? (y = yes)`;
 	}
 }
 
-module.exports = new LogService();
+module.exports = new LogService(); */

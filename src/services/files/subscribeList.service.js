@@ -1,4 +1,11 @@
-const { AccountData } = require('../../core/models');
+class SubscribeListService {
+
+    constructor() { }
+}
+
+module.exports = new SubscribeListService();
+
+/* const { AccountData } = require('../../core/models');
 const fileService = require('./file.service');
 const { applicationUtils, textUtils, validationUtils } = require('../../utils');
 
@@ -46,4 +53,4 @@ class AccountService {
     }
 }
 
-module.exports = new AccountService();
+module.exports = new AccountService(); */

@@ -2,13 +2,8 @@
   "name": "spam-revenge",
   "version": "1.0.0",
   "private": true,
-  "description": "A Node.js + Puppeteer.js application to get Udemy courses links from a coupon site, and purchase the FREE ONLY courses (by the coupon) on Udemy site.",
-  "keywords": [
-    "links",
-    "udemy",
-    "coupons",
-    "courses"
-  ],
+  "description": "",
+  "keywords": [],
   "license": "UNLICENSED",
   "author": "Or Assayag <orassayag@gmail.com>",
   "contributors": [
@@ -18,7 +13,7 @@
       "url": "https://github.com/orassayag"
     }
   ],
-  "main": "src/scripts/purchase.script.js",
+  "main": "src/scripts/subscribe.script.js",
   "files": [
     "src",
     ".eslintignore",
@@ -26,15 +21,15 @@
     ".gitignore",
     ".jsbeautifyrc",
     ".npmignore",
+    "INSTRUCTIONS.md",
     "package-lock.json",
     "package.json",
     "README.md"
   ],
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
-    "start": "node src/scripts/purchase.script.js",
+    "start": "node src/scripts/subscribe.script.js",
     "sand": "node src/tests/sandBox.test.js",
-    "session": "node src/tests/udemySession.test.js",
     "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [

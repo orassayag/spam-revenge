@@ -4,6 +4,21 @@ class ApplicationData {
 
 	constructor(data) {
 		// Set the parameters from the settings file.
+		const { settings, status } = data;
+		const { MODE, IS_PRODUCTION_ENVIRONMENT, VALIDATION_CONNECTION_LINK } = settings;
+		this.isProductionEnvironment = IS_PRODUCTION_ENVIRONMENT;
+		this.environment = applicationUtils.getApplicationEnvironment(this.isProductionEnvironment);
+		this.mode = MODE;
+		this.status = status;
+		this.startDateTime = null;
+		this.logDateTime = timeUtils.getFullDateNoSpaces();
+		this.validationConnectionLink = VALIDATION_CONNECTION_LINK;
+	}
+}
+
+module.exports = ApplicationData;
+
+/* 		// Set the parameters from the settings file.
 		const { settings, coursesDatesResult, status } = data;
 		const { MODE, IS_PRODUCTION_ENVIRONMENT, COURSES_BASE_URL, UDEMY_BASE_URL, SINGLE_COURSE_INIT,
 			SPECIFIC_COURSES_PAGE_NUMBER, IS_CREATE_COURSES_METHOD_ACTIVE, IS_UPDATE_COURSES_METHOD_ACTIVE,
@@ -33,8 +48,4 @@ class ApplicationData {
 		this.coursesDatesDisplayValue = coursesDatesDisplayValue;
 		this.coursesCurrentDate = null;
 		this.startDateTime = null;
-		this.logDateTime = `${timeUtils.getFullDateNoSpaces()}_${coursesDatesLogName}`;
-	}
-}
-
-module.exports = ApplicationData;
+		this.logDateTime = `${timeUtils.getFullDateNoSpaces()}_${coursesDatesLogName}`; */

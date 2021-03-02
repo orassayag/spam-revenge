@@ -12,6 +12,11 @@ class SystemUtils {
         });
         process.exit(code);
     }
+}
+
+module.exports = new SystemUtils();
+
+/*
 
     getErrorDetails(error) {
         let errorText = '';
@@ -31,7 +36,4 @@ class SystemUtils {
         if (pid) {
             kill(pid);
         }
-    }
-}
-
-module.exports = new SystemUtils();
+    } */

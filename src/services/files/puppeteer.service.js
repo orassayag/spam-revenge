@@ -1,5 +1,27 @@
 const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
+
+class PuppeteerService {
+
+    constructor() {
+        this.pageOptions = null;
+        this.waitForFunction = null;
+    }
+
+    initiate() {
+        puppeteerExtra.use(pluginStealth());
+        this.pageOptions = {
+            waitUntil: 'networkidle2',
+            timeout: this.timeout
+        };
+        this.waitForFunction = 'document.querySelector("body")';
+    }
+}
+
+module.exports = new PuppeteerService();
+
+/* const puppeteerExtra = require('puppeteer-extra');
+const pluginStealth = require('puppeteer-extra-plugin-stealth');
 const { Color, CourseStatus, Mode, Status } = require('../../core/enums');
 const accountService = require('./account.service');
 const applicationService = require('./application.service');
@@ -604,4 +626,4 @@ class PuppeteerService {
     }
 }
 
-module.exports = new PuppeteerService();
+module.exports = new PuppeteerService(); */

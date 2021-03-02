@@ -5,8 +5,26 @@ class FileUtils {
 
     constructor() { }
 
-/*     async read(targetPath) {
-        return await fs.readFile(targetPath, 'utf-8');
+    async removeDirectoryIfExists(targetPath) {
+        if (!await this.isPathExists(targetPath)) {
+            await fs.remove(targetPath);
+        }
+    }
+
+    async createDirectoryIfNotExists(targetPath) {
+        if (!await this.isPathExists(targetPath)) {
+            await fs.mkdir(targetPath);
+        }
+    }
+
+    async copyDirectory(sourcePath, targetPath, filterFunction) {
+        await fs.copy(sourcePath, targetPath, { filter: filterFunction });
+    }
+
+    getAllDirectories(targetPath) {
+        return fs.readdirSync(targetPath, { withFileTypes: true })
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
     }
 
     async isPathExists(targetPath) {
@@ -23,29 +41,6 @@ class FileUtils {
         }
     }
 
-    async removeDirectoryIfExists(targetPath) {
-        if (!await this.isPathExists(targetPath)) {
-            await fs.remove(targetPath);
-        }
-    }
-
-    async createDirectoryIfNotExists(targetPath) {
-        if (!await this.isPathExists(targetPath)) {
-            await fs.mkdir(targetPath);
-        }
-    }
-
-    async copyDirectory(sourcePath, targetPath, filterFunction) {
-        await fs.
-            copy(sourcePath, targetPath, { filter: filterFunction });
-    }
-
-    getAllDirectories(targetPath) {
-        return fs.readdirSync(targetPath, { withFileTypes: true })
-            .filter(dirent => dirent.isDirectory())
-            .map(dirent => dirent.name);
-    }
-
     createDirectory(targetPath) {
         if (!targetPath) {
             return;
@@ -53,6 +48,15 @@ class FileUtils {
         if (!fs.existsSync(targetPath)) {
             fs.mkdirSync(targetPath, { recursive: true });
         }
+    }
+
+    isDirectoryPath(path) {
+        const stats = fs.statSync(path);
+        return stats.isDirectory();
+    }
+
+/*     async read(targetPath) {
+        return await fs.readFile(targetPath, 'utf-8');
     }
 
     async appendFile(data) {
@@ -73,12 +77,7 @@ class FileUtils {
     isFilePath(path) {
         const stats = fs.statSync(path);
         return stats.isFile();
-    }
-
-    isDirectoryPath(path) {
-        const stats = fs.statSync(path);
-        return stats.isDirectory();
-    } */
+    }*/
 }
 
 module.exports = new FileUtils();

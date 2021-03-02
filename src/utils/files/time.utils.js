@@ -3,53 +3,16 @@ const validationUtils = require('./validation.utils');
 
 class TimeUtils {
 
-    constructor() {
-        this.shortMonths = {
-            'jan': '1', 'feb': '2', 'mar': '3', 'apr': '4', 'may': '5', 'jun': '6',
-            'jul': '7', 'aug': '8', 'sep': '9', 'oct': '10', 'nov': '11', 'dec': '12'
-        };
-    }
-
-    getFullTime() {
-        const date = new Date();
-        return `${this.getHours(date)}:${this.getMinutes(date)}:${this.getSeconds(date)}`;
-    }
+    constructor() {}
 
     getDateNoSpaces() {
         const date = new Date();
         return [this.getDay(date), this.getMonth(date), this.getYear(date)].join('');
     }
 
-    getDateNoSpacesFromString(date) {
-        return date.split('/').join('');
-    }
-
     getFullDateNoSpaces() {
         const date = new Date();
         return `${[this.getYear(date), this.getMonth(date), this.getDay(date)].join('')}_${[this.getHours(date), this.getMinutes(date), this.getSeconds(date)].join('')}`;
-    }
-
-    getCommasDate(date) {
-        if (!date) {
-            date = new Date();
-        }
-        return `${[this.getYear(date), this.getMonth(date), this.getDay(date)].join('/')}`;
-    }
-
-    // Format yyyy-mm-dd. Example: 8 Dec , 2020.
-    getDateFromString(date) {
-        if (!date) {
-            return date;
-        }
-        const split = date.split(' ');
-        return `${split[3]}/${textUtils.addLeadingZero(this.shortMonths[textUtils.toLowerCase(split[1])])}/${textUtils.addLeadingZero(split[0])}`;
-    }
-
-    getFullDateTemplate(date) {
-        if (!date) {
-            date = new Date();
-        }
-        return `${[this.getDay(date), this.getMonth(date), this.getYear(date)].join('/')} ${[this.getHours(date), this.getMinutes(date), this.getSeconds(date)].join(':')}`;
     }
 
     getSeconds(date) {
@@ -74,6 +37,45 @@ class TimeUtils {
 
     getYear(date) {
         return date.getFullYear();
+    }
+
+/*     constructor() {
+        this.shortMonths = {
+            'jan': '1', 'feb': '2', 'mar': '3', 'apr': '4', 'may': '5', 'jun': '6',
+            'jul': '7', 'aug': '8', 'sep': '9', 'oct': '10', 'nov': '11', 'dec': '12'
+        };
+    }
+
+    getFullTime() {
+        const date = new Date();
+        return `${this.getHours(date)}:${this.getMinutes(date)}:${this.getSeconds(date)}`;
+    }
+
+    getDateNoSpacesFromString(date) {
+        return date.split('/').join('');
+    }
+
+    getCommasDate(date) {
+        if (!date) {
+            date = new Date();
+        }
+        return `${[this.getYear(date), this.getMonth(date), this.getDay(date)].join('/')}`;
+    }
+
+    // Format yyyy-mm-dd. Example: 8 Dec , 2020.
+    getDateFromString(date) {
+        if (!date) {
+            return date;
+        }
+        const split = date.split(' ');
+        return `${split[3]}/${textUtils.addLeadingZero(this.shortMonths[textUtils.toLowerCase(split[1])])}/${textUtils.addLeadingZero(split[0])}`;
+    }
+
+    getFullDateTemplate(date) {
+        if (!date) {
+            date = new Date();
+        }
+        return `${[this.getDay(date), this.getMonth(date), this.getYear(date)].join('/')} ${[this.getHours(date), this.getMinutes(date), this.getSeconds(date)].join(':')}`;
     }
 
     getDifferenceTimeBetweenDates(data) {
@@ -130,7 +132,7 @@ class TimeUtils {
             list.push(this.getCommasDate(new Date(dt)));
         }
         return list;
-    }
+    } */
 }
 
 module.exports = new TimeUtils();

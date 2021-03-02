@@ -4,7 +4,7 @@ class FileService {
 
     constructor() { }
 
-    async getFileData(data) {
+/*     async getFileData(data) {
         const { environment, path, parameterName, fileExtension } = data;
         const filePath = `${path}account-${textUtils.toLowerCase(environment)}.json`;
         if (!await fileUtils.isPathExists(filePath)) {
@@ -23,7 +23,7 @@ class FileService {
             throw new Error(`No data exists in the file: ${filePath} (1000013)`);
         }
         return jsonData;
-    }
+    } */
 }
 
 module.exports = new FileService();

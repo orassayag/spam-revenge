@@ -1,5 +1,5 @@
 const settings = require('../../settings/settings');
-const { Mode, ScriptType } = require('../../core/enums/files/system.enum');
+const { Mode, ScriptType } = require('../../core/enums');
 const { fileUtils, pathUtils, validationUtils } = require('../../utils');
 const globalUtils = require('../../utils/files/global.utils');
 
@@ -82,13 +82,7 @@ class InitiateService {
 	validatePositiveNumbers() {
 		[
 			// ===COUNT & LIMIT=== //
-			'MAXIMUM_COURSES_PURCHASE_COUNT', 'MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT', 'MAXIMUM_PAGES_NUMBER', 'MAXIMUM_SESSIONS_COUNT',
-			'MILLISECONDS_INTERVAL_COUNT', 'MILLISECONDS_TIMEOUT_BETWEEN_COURSES_CREATE', 'MILLISECONDS_TIMEOUT_BETWEEN_COURSES_MAIN_PAGES',
-			'MILLISECONDS_TIMEOUT_BETWEEN_COURSES_UPDATE', 'MAXIMUM_COURSE_NAME_CHARACTERS_DISPLAY_COUNT', 'MAXIMUM_URL_CHARACTERS_DISPLAY_COUNT',
-			'MAXIMUM_RESULT_CHARACTERS_DISPLAY_COUNT', 'MILLISECONDS_TIMEOUT_UDEMY_ACTIONS', 'MAXIMUM_UDEMY_LOGIN_ATTEMPTS_COUNT',
-			'MILLISECONDS_TIMEOUT_BETWEEN_COURSES_PURCHASE', 'MILLISECONDS_TIMEOUT_UDEMY_PAGE_LOAD', 'MAXIMUM_CREATE_UPDATE_ERROR_IN_A_ROW_COUNT',
-			'MAXIMUM_PURCHASE_ERROR_IN_A_ROW_COUNT', 'MILLISECONDS_TIMEOUT_EXIT_APPLICATION', 'MAXIMUM_URL_VALIDATION_COUNT',
-			'MILLISECONDS_TIMEOUT_URL_VALIDATION', 'MAXIMUM_COURSES_DATES_DISPLAY_COUNT',
+			'MILLISECONDS_TIMEOUT_EXIT_APPLICATION',
 			// ===BACKUP=== //
 			'MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT', 'BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT'
 		].map(key => {
@@ -104,12 +98,10 @@ class InitiateService {
 		[
 			...keys,
 			// ===GENERAL=== //
-			'MODE', 'COURSES_BASE_URL', 'UDEMY_BASE_URL', 'SINGLE_COURSE_INIT',
 			// ===ROOT PATH=== //
-			'APPLICATION_NAME', 'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH', 'ACCOUNT_FILE_PATH',
+			'APPLICATION_NAME', 'OUTER_APPLICATION_PATH', 'INNER_APPLICATION_PATH', 'SUBSCRIBE_LIST_FILE_PATH',
 			// ===DYNAMIC PATH=== //
-			'APPLICATION_PATH', 'DIST_PATH', 'NODE_MODULES_PATH', 'PACKAGE_JSON_PATH',
-			'PACKAGE_LOCK_JSON_PATH'
+			'APPLICATION_PATH', 'DIST_PATH', 'NODE_MODULES_PATH', 'PACKAGE_JSON_PATH', 'PACKAGE_LOCK_JSON_PATH'
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isExists(value)) {
@@ -121,11 +113,9 @@ class InitiateService {
 	validateBooleans() {
 		[
 			// ===FLAG=== //
-			'IS_PRODUCTION_ENVIRONMENT', 'IS_CREATE_COURSES_METHOD_ACTIVE', 'IS_UPDATE_COURSES_METHOD_ACTIVE',
-			'IS_PURCHASE_COURSES_METHOD_ACTIVE',
+			'IS_PRODUCTION_ENVIRONMENT', 'IS_PROXY_CONNECTION_ACTIVE',
 			// ===LOG=== //
-			'IS_LOG_CREATE_COURSES_METHOD_VALID', 'IS_LOG_CREATE_COURSES_METHOD_INVALID', 'IS_LOG_UPDATE_COURSES_METHOD_VALID',
-			'IS_LOG_UPDATE_COURSES_METHOD_INVALID', 'IS_LOG_PURCHASE_COURSES_METHOD_VALID', 'IS_LOG_PURCHASE_COURSES_METHOD_INVALID'
+			'IS_LOG_SUBSCRIBE_VALID', 'IS_LOG_SUBSCRIBE_INVALID'
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidBoolean(value)) {
@@ -137,7 +127,7 @@ class InitiateService {
 	validateArrays() {
 		[
 			// ===GENERAL=== //
-			'KEY_WORDS_FILTER_LIST',
+			'TARGET_EMAIL_ADDRESSES',
 			// ===BACKUP=== //
 			'IGNORE_DIRECTORIES', 'IGNORE_FILES', 'INCLUDE_FILES'
 		].map(key => {
@@ -160,18 +150,10 @@ class InitiateService {
 	}
 
 	validateSpecial() {
-		[
-			// ===GENERAL=== //
-			'COURSES_BASE_URL', 'UDEMY_BASE_URL'
-		].map(key => {
-			const value = settings[key];
-			if (!validationUtils.isValidURL(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a URL but received: ${value} (1000021)`);
-			}
-		});
-		const { COURSES_DATES_VALUE } = settings;
-		if (!COURSES_DATES_VALUE) {
-			throw new Error(`Missing COURSES_DATES_VALUE parameter: ${COURSES_DATES_VALUE} (1000022)`);
+		const { VALIDATION_CONNECTION_LINK } = settings;
+		// ===VALIDATION=== //
+		if (!validationUtils.isValidURL(VALIDATION_CONNECTION_LINK)) {
+			throw new Error('Invalid or no VALIDATION_CONNECTION_LINK parameter was found (1000030)');
 		}
 	}
 
@@ -216,3 +198,37 @@ class InitiateService {
 }
 
 module.exports = new InitiateService();
+		/* 		[
+					// ===GENERAL=== //
+				].map(key => {
+					const value = settings[key];
+					if (!validationUtils.isValidURL(value)) {
+						throw new Error(`Invalid or no ${key} parameter was found: Excpected a URL but received: ${value} (1000021)`);
+					}
+				}); */
+/**/
+/* 	    // ===GENERAL=== //
+// Determine the mode of the application. STANDARD/SILENT.
+MODE: Mode.STANDARD,
+// Determine the target email address(es) to subscribe to spam services.
+TARGET_EMAIL_ADDRESSES: [],
+
+// ===FLAG=== //
+// Determine if to simulate subscriptions and proxy connection (=DEVELOPMENT)
+// or to subscribe the target email addresses for REAL (PRODUCTION).
+IS_PRODUCTION_ENVIRONMENT: true,
+// Determine if to puppeeter should connect via local connection (=false) or random proxy connection (=true).
+IS_PROXY_CONNECTION_ACTIVE: true,
+
+// ===LOG=== //
+// Determine if to log the valid subscriptions.
+IS_LOG_SUBSCRIBE_VALID: true,
+// Determine if to log the invalid subscriptions.
+IS_LOG_SUBSCRIBE_INVALID: true, */
+
+/*
+
+/* 'DIST_PATH',  */
+/* 'DIST_PATH',  */
+/* DIST_PATH,  */
+/* 		settings.DIST_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: DIST_PATH }); */

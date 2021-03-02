@@ -5,22 +5,17 @@ Each time you change the logic / update NPM package version, do the following st
 1. Perform a backup before any change has been made, by running on termine 'npm run backup' or manually to the backups directory.
 2. After the change, check that everything works OK.
 3. Keep the maintenance - Every change you do - Make sure to update in this document if needed.
-4. Do commit on Git project repository.
+4. Do commit + push on Git project repository.
 5. Keep the backup update - Every change you do - Update in iOmega (each couple of days do backup there).
 =================================
 
 ToDo tasks:
 ===========
--Move the project back to udemy-courses project template. *
--Add the git init command - Start to work with git. *
--Manually backup. *
--Remove uneeded settings.
--Add the .git + sources to the ignore directories of the backup process.
--Remove all uneeded code.
--Make the backup script work.
 -First logic - Get local IP addresses + public IP address + port. Validate all IP addresses and ports.
 -Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of
  local or public IP address included in any header of the proxy.
+-Add validation on specific email addresses from settings.
+-Add validation on the target email addresses.
 -If the proxy not working - Random aother one and repeat the process of validation. Random the proxies from different sources.
 -If it works - Start the third part.
 -Third logic - Register new email address + Make a sample of subscribtion to spam. Await for textbox and button to load.
@@ -36,16 +31,49 @@ ToDo tasks:
 -No log wiriting operations need to be included.
 -Include maximum count of spam subscription, and if by order or random.
 -The console status logic should look like this:
-===[SETTINGS] Mode: PRODUCTION | Method: STANDARD/RANDOM | Maximum Limit: - | Emails: 1===
+===[SETTINGS] Mode: PRODUCTION | Method: STANDARD/RANDOM | Maximum Limit: ## | Emails: 1===
 ===[GENERAL] Time: 00.00:00:08 [-] | scam@wzdr.com (1/2) | Progress: 364/700 (64.24%) | Status: VALIDATION/SUBSCRIBE/PAUSE/EXIT/LIMIT_EXIDED===
 ===[LOCAL] IP Local: 172.45.323.12 | IP Public: 82.34.234.72 | Other IPs: | | | ===
 ===[PROXY] IP: 192.249.53.67 | Port: 64312 | Country: us | Protocol: socks4 | Anonymity Level: Elite | Source: proxyscrape-com===
 ===[SUBSCRIPTION] Subscribe: ✅  364 | Fail: ❌  0===
 ===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
--In all maintainance projects - Update the 'REMEMBER' section of this document.
 -Edit the 'INSTRUCTIONS.md' and the 'README.md' files.
 -Edit the package.json file and Re-crate the package-lock.json.
+-Sort imports and delete duplicates.
+-Make sure spaces in all files between bottom, need to fix cases like this:
+}
+module.exports
+}
+export default
+-Replace all 'let' to 'const' and where no bugs - change it.
+-Check spellings in files with 'files-spell-checking' project.
+-Re-format all error numbers + last_index.txt file.
+-Clear all comments.
+-Remove all debugger.
+-Fix all misspells in all TXT files.
+-Format all documents.
+-Move all complete tasks to complete_tasks.txt.
+-Verify all works good.
+-Update packages + verify all works as expected.
+-Upload to GitHub.
+-Backup iOmega.
+-In all the maintainance projects:
+1. Update the 'REMEMBER' section of this document.
+2. ' all the outcome of the crawling will be created' comment should be updated.
+3. Add to package.json file the 'INSTRUCTIONS.md' key in the files section (if it exists in the project).
+4. In the initate.service - const { Mode, ScriptType } = require('../../core/enums/files/system.enum'); - Need to change to ../../core/enums.
+5. Check if async copyDirectory( is not with line break.
+6. Fix createDirectory - No need for await in createSessionDirectory method.
+7. "Validate internet connection works." => "Validate that the internet connection works."
+8. "sending emails processes." in udemy-courses project.
 
 Completed + canceled tasks:
 ===========================
+-Make the backup script work. *
+-Move the project back to udemy-courses project template. *
+-Add the git init command - Start to work with git. *
+-Manually backup. *
+-Remove uneeded settings. *
+-Add the .git + sources to the ignore directories of the backup process. *
+-Remove all uneeded code. *

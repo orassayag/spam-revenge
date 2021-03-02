@@ -4,9 +4,9 @@ class ApplicationUtils {
 
     constructor() { }
 
-/*     getApplicationEnvironment(isProductionEnvironment) {
+    getApplicationEnvironment(isProductionEnvironment) {
         return isProductionEnvironment ? Environment.PRODUCTION : Environment.DEVELOPMENT;
-    } */
+    }
 }
 
 module.exports = new ApplicationUtils();

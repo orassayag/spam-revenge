@@ -1,7 +1,75 @@
 const settings = require('../settings/settings');
-const { accountService, applicationService, confirmationService, countLimitService,
-    courseService, createCourseService, logService, pathService, puppeteerService,
-    purchaseCourseService, updateCourseService, validationService } = require('../services');
+const { Color, Status } = require('../core/enums');
+const { applicationService, countLimitService, logService, pathService, puppeteerService,
+    validationService } = require('../services');
+const { logUtils, systemUtils } = require('../utils');
+const globalUtils = require('../utils/files/global.utils');
+
+class SubscribeLogic {
+
+    constructor() { }
+
+    async run() {
+        // Validate all settings are fit to the user needs.
+        await this.confirm();
+        // Initiate all the settings, configurations, services, etc...
+        this.initiate();
+        // Validate general settings.
+        await this.validateGeneralSettings();
+        // Start the subscription processes.
+        await this.startSubscription();
+    }
+
+    // Let the user confirm all the IMPORTANT settings before the process start.
+    async confirm() {
+        /*         if (!await confirmationService.confirm(settings)) {
+                    this.exit(Status.ABORT_BY_THE_USER, Color.RED);
+                } */
+    }
+
+    initiate() {
+        logUtils.logMagentaStatus('INITIATE THE SERVICES');
+        countLimitService.initiate(settings);
+        applicationService.initiate({
+            settings: settings,
+            status: Status.INITIATE
+        });
+        pathService.initiate(settings);
+        puppeteerService.initiate();
+        logService.initiate(settings);
+    }
+
+    async validateGeneralSettings() {
+        logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
+        // Validate that the internet connection works.
+        await validationService.validateInternetConnection();
+    }
+
+    async startSubscription() {
+        console.log('ok');
+
+        // Get local information.
+        await this.exit(Status.FINISH, Color.GREEN);
+    }
+
+    async exit(status, color) {
+        if (applicationService.applicationData) {
+            applicationService.applicationData.status = status;
+            if (countLimitService.countLimitData) {
+                await globalUtils.sleep(countLimitService.countLimitData.millisecondsTimeoutExitApplication);
+            }
+            logService.close();
+        }
+        systemUtils.exit(status, color);
+    }
+}
+
+module.exports = SubscribeLogic;
+        // Initiate the account service first.
+        //await accountService.initiate(settings);
+                //await this.startSession(urls);
+
+/* const settings = require('../settings/settings');
 const { Color, Method, Mode, Status } = require('../core/enums');
 const { logUtils, systemUtils, validationUtils } = require('../utils');
 const globalUtils = require('../utils/files/global.utils');
@@ -21,20 +89,6 @@ class PurchaseLogic {
         await this.validateGeneralSettings();
         // Start the sending emails processes.
         await this.startSession(urls);
-    }
-
-    async initiate() {
-        logUtils.logMagentaStatus('INITIATE THE SERVICES');
-        countLimitService.initiate(settings);
-        applicationService.initiate({
-            settings: settings,
-            coursesDatesResult: this.validateCoursesDatesValue(settings.COURSES_DATES_VALUE),
-            status: Status.INITIATE
-        });
-        pathService.initiate(settings);
-        puppeteerService.initiate();
-        await logService.initiate(settings);
-        courseService.initiate(logService.logCourse.bind(logService));
     }
 
     validateCoursesDatesValue(coursesDatesValue) {
@@ -101,13 +155,6 @@ class PurchaseLogic {
         courseService.coursesData.courseIndex = 0;
     }
 
-    // Let the user confirm all the IMPORTANT settings before the process start.
-    async confirm() {
-        if (!await confirmationService.confirm(settings)) {
-            this.exit(Status.ABORT_BY_THE_USER, Color.RED);
-        }
-    }
-
     async exit(status, color) {
         if (applicationService.applicationData) {
             applicationService.applicationData.status = status;
@@ -120,4 +167,4 @@ class PurchaseLogic {
     }
 }
 
-module.exports = PurchaseLogic;
+module.exports = PurchaseLogic; */

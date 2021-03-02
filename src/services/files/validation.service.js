@@ -1,13 +1,24 @@
 const isReachable = require('is-reachable');
 const applicationService = require('./application.service');
-const countLimitService = require('./countLimit.service');
-const globalUtils = require('../../utils/files/global.utils');
 
 class ValidationService {
 
     constructor() { }
 
-    async validateURLs() {
+    async validateInternetConnection() {
+        let isConnected = true;
+        try {
+            isConnected = await isReachable(applicationService.applicationData.validationConnectionLink);
+        } catch (error) { isConnected = false; }
+        if (!isConnected) {
+            throw new Error(`${applicationService.applicationData.validationConnectionLink} is not available (1000039)`);
+        }
+    }
+
+    /* const countLimitService = require('./countLimit.service');
+const globalUtils = require('../../utils/files/global.utils'); */
+
+/*     async validateURLs() {
         const urls = [applicationService.applicationData.coursesBaseURL, applicationService.applicationData.udemyBaseURL];
         for (let i = 0; i < urls.length; i++) {
             await this.validateURL(urls[i]);
@@ -32,7 +43,7 @@ class ValidationService {
         if (!isConnected) {
             throw new Error(`${url} is not available (1000024)`);
         }
-    }
+    } */
 }
 
 module.exports = new ValidationService();

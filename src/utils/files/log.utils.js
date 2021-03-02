@@ -12,13 +12,6 @@ class LogUtils {
         console.log(message);
     }
 
-    logColor(message, color) {
-        return colorUtils.createColorMessage({
-            message: message,
-            color: color
-        });
-    }
-
     logColorStatus(data) {
         const { status, color } = data;
         if (!status || !color) {
@@ -37,6 +30,15 @@ class LogUtils {
         return this.logColorStatus({
             status: text,
             color: Color.MAGENTA
+        });
+    }
+
+/*     
+
+    logColor(message, color) {
+        return colorUtils.createColorMessage({
+            message: message,
+            color: color
         });
     }
 
@@ -81,7 +83,7 @@ class LogUtils {
             }
         }
         logUpdate(results);
-    }
+    } */
 }
 
 module.exports = new LogUtils();
