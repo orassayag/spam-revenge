@@ -1,5 +1,7 @@
 const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
+const applicationService = require('./application.service');
+const { ResponseData } = require('../../core/models');
 
 class PuppeteerService {
 
@@ -16,10 +18,64 @@ class PuppeteerService {
         };
         this.waitForFunction = 'document.querySelector("body")';
     }
+
+    async getResponseData(proxyAddress) {
+        const responseData = new ResponseData();
+        try {
+            const browser = await puppeteerExtra.launch({
+                headless: true,
+                args: [this.createProxyAddress(proxyAddress)]
+            });
+            const page = await browser.newPage();
+            // Make request to get the public IP address.
+            await page.goto(applicationService.applicationData.publicIPAddressURL, this.pageOptions);
+            responseData.publicIPAddress = await page.$eval('pre', pre => pre.innerText);
+            if (proxyAddress) {
+                // Log captured request data.
+                responseData.fullHeadersResponses = await this.setupLoggingOfAllNetworkData(page);
+            }
+            browser.close();
+        }
+        catch (error) {
+            // ToDo: Remove this.
+            console.log(error);
+         }
+        return responseData;
+    }
+
+    // Returns map of request ID to raw CDP request data. This will be populated as requests are made.
+    async setupLoggingOfAllNetworkData(page1) {
+        const cdpSession = await page1.target().createCDPSession();
+        await cdpSession.send('Network.enable');
+        const cdpRequestDataRaw1 = {};
+        const addCDPRequestDataListener = (eventName) => {
+            cdpSession.on(eventName, request => {
+                cdpRequestDataRaw1[request.requestId] = cdpRequestDataRaw1[request.requestId] || {};
+                Object.assign(cdpRequestDataRaw1[request.requestId], { [eventName]: request });
+            });
+        };
+        addCDPRequestDataListener('Network.requestWillBeSent');
+        addCDPRequestDataListener('Network.requestWillBeSentExtraInfo');
+        addCDPRequestDataListener('Network.responseReceived');
+        addCDPRequestDataListener('Network.responseReceivedExtraInfo');
+        return cdpRequestDataRaw1;
+    }
+
+    createProxyAddress(proxyAddress) {
+        return proxyAddress ? `--proxy-server=socks4://${proxyAddress}` : '';
+    }
 }
 
 module.exports = new PuppeteerService();
-
+/*         const args = this.createProxyAddress(proxyAddress); */
+        //const args = proxyAddress ? `--proxy-server=socks4://${proxyAddress}` : '';
+            //await page.goto('https://api.ipify.org', this.pageOptions); // Move to settings.js + validation on this URL + validate that the URL available.
+/*             responseData.publicIPAddress = await page.evaluate(() => {
+                console.log(document);
+                return document.getElementsByTagName('body');
+            }); */
+                //console.log(JSON.stringify(cdpRequestDataRaw, null, 2));
+                                //const cdpRequestDataRaw = await this.setupLoggingOfAllNetworkData(page);
 /* const puppeteerExtra = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
 const { Color, CourseStatus, Mode, Status } = require('../../core/enums');

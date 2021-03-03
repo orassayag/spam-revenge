@@ -44,6 +44,7 @@
     "cli-cursor": "^3.1.0",
     "eslint": "^7.20.0",
     "fs-extra": "^9.1.0",
+    "ip-regex": "^4.3.0",
     "is-reachable": "^5.0.0",
     "lorem-ipsum": "^2.0.3",
     "puppeteer": "^8.0.0",

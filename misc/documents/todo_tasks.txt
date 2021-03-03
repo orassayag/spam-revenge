@@ -11,16 +11,15 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
--First logic - Get local IP addresses + public IP address + port. Validate all IP addresses and ports.
+-Validate subscription list.
 -Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of
  local or public IP address included in any header of the proxy.
--Add validation on specific email addresses from settings.
--Add validation on the target email addresses.
 -If the proxy not working - Random aother one and repeat the process of validation. Random the proxies from different sources.
 -If it works - Start the third part.
 -Third logic - Register new email address + Make a sample of subscribtion to spam. Await for textbox and button to load.
 -If the text box or the button don't exists, or the URL failed to be load, add to fail and contine to the next one.
--Add flag if to use proxy or not. Add validation that if PRODUCTION and this flag is false, exit.
+-Add flag if to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic.
+ Add validation that if PRODUCTION and this flag is false, exit.
 -Once button was clicked, wait at least 5 seconds before moving to the next spam URL.
 -Make a JSON file full with spam URLs - Validate all to have:
 -URL (valid URL), Text box field name, text box field value, button field name, button field value (id will be given automaticlly).
@@ -28,8 +27,9 @@ ToDo tasks:
 -Make a delay between each subscription.
 -Make a final test - Register a new email + Subscribe to all spam at once.
 -Try to find as many spam URLs as you can.
--No log wiriting operations need to be included.
 -Include maximum count of spam subscription, and if by order or random.
+-Add option to ignore target email addresses or/and ignore subscribe URLs.
+-Each subsribe / failed log the URL address to the relevant log file.
 -The console status logic should look like this:
 ===[SETTINGS] Mode: PRODUCTION | Method: STANDARD/RANDOM | Maximum Limit: ## | Emails: 1===
 ===[GENERAL] Time: 00.00:00:08 [-] | scam@wzdr.com (1/2) | Progress: 364/700 (64.24%) | Status: VALIDATION/SUBSCRIBE/PAUSE/EXIT/LIMIT_EXIDED===
@@ -38,9 +38,13 @@ ToDo tasks:
 ===[SUBSCRIPTION] Subscribe: ✅  364 | Fail: ❌  0===
 ===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
+-Create example in the examples directory to the JSON file.
 -Edit the 'INSTRUCTIONS.md' and the 'README.md' files.
+-On the README.md file write a note that the local data tested only on Windows 10 platform.
 -Edit the package.json file and Re-crate the package-lock.json.
 -Sort imports and delete duplicates.
+-Do all the ToDo points.
+-Clear the target email addresses in settings.js
 -Make sure spaces in all files between bottom, need to fix cases like this:
 }
 module.exports
@@ -70,6 +74,12 @@ export default
 
 Completed + canceled tasks:
 ===========================
+-No log wiriting operations need to be included. *
+-Validate target email addresses. *
+-Add validation on specific email addresses from settings. *
+-Add validation on the target email addresses. *
+-Validate URLs. *
+-First logic - Get local private IP addresses + Get local public IP address. Validate all IP addresses. *
 -Make the backup script work. *
 -Move the project back to udemy-courses project template. *
 -Add the git init command - Start to work with git. *

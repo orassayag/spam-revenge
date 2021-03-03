@@ -6,7 +6,9 @@ const settings = {
     // Determine the mode of the application. STANDARD/SILENT.
     MODE: Mode.STANDARD,
     // Determine the target email address(es) to subscribe to spam services.
-    TARGET_EMAIL_ADDRESSES: [],
+    EMAIL_ADDRESSES: ['test@walla.com'],
+    // Determine the URL to check the local PC public IP address.
+    PUBLIC_IP_ADDRESS_URL: 'https://api.ipify.org',
 
     // ===FLAG=== //
     // Determine if to simulate subscriptions (with delay) and proxy connection (=DEVELOPMENT)
@@ -43,7 +45,7 @@ const settings = {
     // Determine the path of the JSON file from which the subscribe list URLs will be fetched. Must be a JSON file.
     SUBSCRIBE_LIST_FILE_PATH: pathUtils.getJoinPath({
         targetPath: __dirname,
-        targetName: '../../../../../../Accounts/Spam-Revenge/spam-list.json'
+        targetName: '../../../../../../Accounts/SpamRevenge/subscribe-list.json'
     }),
 
     // ===DYNAMIC PATH=== //

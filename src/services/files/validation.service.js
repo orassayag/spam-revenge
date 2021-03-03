@@ -1,11 +1,21 @@
 const isReachable = require('is-reachable');
-const applicationService = require('./application.service');
 
 class ValidationService {
 
     constructor() { }
 
-    async validateInternetConnection() {
+    async validateURL(url) {
+        let isConnected = true;
+        try {
+            isConnected = await isReachable(url);
+        } catch (error) { isConnected = false; }
+        if (!isConnected) {
+            throw new Error(`${url} is not available (1000039)`);
+        }
+    }
+    
+/* const applicationService = require('./application.service'); */
+/*     async validateInternetConnection() {
         let isConnected = true;
         try {
             isConnected = await isReachable(applicationService.applicationData.validationConnectionLink);
@@ -13,7 +23,7 @@ class ValidationService {
         if (!isConnected) {
             throw new Error(`${applicationService.applicationData.validationConnectionLink} is not available (1000039)`);
         }
-    }
+    } */
 
     /* const countLimitService = require('./countLimit.service');
 const globalUtils = require('../../utils/files/global.utils'); */

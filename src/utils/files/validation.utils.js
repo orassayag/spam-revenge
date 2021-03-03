@@ -1,3 +1,4 @@
+const ipRegex = require('ip-regex');
 const regexUtils = require('./regex.utils');
 
 class ValidationUtils {
@@ -44,6 +45,17 @@ class ValidationUtils {
         return regexUtils.validateURLRegex.test(url);
     }
 
+    isValidIPAddress(ipAddress) {
+        if (!ipAddress) {
+            return false;
+        }
+        return ipRegex({ exact: true }).test(ipAddress);
+    }
+
+    isValidEmailAddress(emailAddress) {
+        return regexUtils.validateEmailAddressRegex.test(emailAddress);
+    }
+
     /*
 
         isValidDate(dateTime) {
@@ -71,10 +83,6 @@ class ValidationUtils {
             catch {
                 return false;
             }
-        }
-
-        validateEmailAddress(emailAddress) {
-            return regexUtils.validateEmailAddressRegex.test(emailAddress);
         } */
 }
 

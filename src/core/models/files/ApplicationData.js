@@ -5,10 +5,11 @@ class ApplicationData {
 	constructor(data) {
 		// Set the parameters from the settings file.
 		const { settings, status } = data;
-		const { MODE, IS_PRODUCTION_ENVIRONMENT, VALIDATION_CONNECTION_LINK } = settings;
+		const { MODE, PUBLIC_IP_ADDRESS_URL, IS_PRODUCTION_ENVIRONMENT, VALIDATION_CONNECTION_LINK } = settings;
 		this.isProductionEnvironment = IS_PRODUCTION_ENVIRONMENT;
 		this.environment = applicationUtils.getApplicationEnvironment(this.isProductionEnvironment);
 		this.mode = MODE;
+		this.publicIPAddressURL = PUBLIC_IP_ADDRESS_URL;
 		this.status = status;
 		this.startDateTime = null;
 		this.logDateTime = timeUtils.getFullDateNoSpaces();
@@ -17,7 +18,7 @@ class ApplicationData {
 }
 
 module.exports = ApplicationData;
-
+/* 		debugger; */
 /* 		// Set the parameters from the settings file.
 		const { settings, coursesDatesResult, status } = data;
 		const { MODE, IS_PRODUCTION_ENVIRONMENT, COURSES_BASE_URL, UDEMY_BASE_URL, SINGLE_COURSE_INIT,

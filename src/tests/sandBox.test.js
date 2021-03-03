@@ -4,41 +4,57 @@ require('../services/files/initiate.service').initiate('test');
 })();
 
 
-    /*     const response = await page.goto('https://api.ipify.org');
-        const headers = response.headers();
-        setTimeout(() => {
-            console.log(response);
-            //console.log(headers);
-            browser.close();
-        }, 3000); */
-    /* }); */
+    /* const { validationUtils } = require('../utils'); */
+/*     const os = require('os');
+    const networkInterfaces = os.networkInterfaces();
+    if (!networkInterfaces) {
+        return null;
+    }
+    const vEthernet = networkInterfaces['vEthernet (Default Switch)'];
+    if (!validationUtils.isExists(vEthernet) || vEthernet.length !== 2) {
+        return null;
+    }
+    const { address, netmask } = vEthernet[1];
+    const t = {
+        ipv4Address: address,
+        subnetMask: netmask
+    };
+    console.log(t); */
+/*     const response = await page.goto('https://api.ipify.org');
+    const headers = response.headers();
+    setTimeout(() => {
+        console.log(response);
+        //console.log(headers);
+        browser.close();
+    }, 3000); */
+/* }); */
 
-        /*     {
-            ipAddress: '96.82.74.129',
-            port: 34032,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          {
-            ipAddress: '192.111.129.145',
-            port: 16894,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          {
-            ipAddress: '24.172.34.114',
-            port: 60133,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'us',
-            source: 'proxyscrape-com'
-          },
-          ... 5 more items
-        ] */
+/*     {
+    ipAddress: '96.82.74.129',
+    port: 34032,
+    anonymityLevel: 'elite',
+    protocols: [ 'socks4' ],
+    country: 'us',
+    source: 'proxyscrape-com'
+  },
+  {
+    ipAddress: '192.111.129.145',
+    port: 16894,
+    anonymityLevel: 'elite',
+    protocols: [ 'socks4' ],
+    country: 'us',
+    source: 'proxyscrape-com'
+  },
+  {
+    ipAddress: '24.172.34.114',
+    port: 60133,
+    anonymityLevel: 'elite',
+    protocols: [ 'socks4' ],
+    country: 'us',
+    source: 'proxyscrape-com'
+  },
+  ... 5 more items
+] */
 
 /* const testPuppeteerWithProxy = async () => {
     const puppeteer = require('puppeteer');

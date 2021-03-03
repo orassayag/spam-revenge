@@ -1,7 +1,7 @@
 const settings = require('../settings/settings');
 const { Color, Status } = require('../core/enums');
-const { applicationService, countLimitService, logService, pathService, puppeteerService,
-    validationService } = require('../services');
+const { applicationService, countLimitService, emailAddressService, localService, logService,
+    pathService, puppeteerService, validationService } = require('../services');
 const { logUtils, systemUtils } = require('../utils');
 const globalUtils = require('../utils/files/global.utils');
 
@@ -16,7 +16,9 @@ class SubscribeLogic {
         this.initiate();
         // Validate general settings.
         await this.validateGeneralSettings();
-        // Start the subscription processes.
+        // Validate subscription process
+        await this.validateSubscription();
+        // Start the subscription process.
         await this.startSubscription();
     }
 
@@ -42,13 +44,19 @@ class SubscribeLogic {
     async validateGeneralSettings() {
         logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
         // Validate that the internet connection works.
-        await validationService.validateInternetConnection();
+        await validationService.validateURL(applicationService.applicationData.validationConnectionLink);
+    }
+
+    async validateSubscription() {
+        // Validate the public IP address URL.
+        await validationService.validateURL(applicationService.applicationData.publicIPAddressURL);
+        // Get the local data.
+        await localService.setLocalData();
+        // Set the email addresses to subscribe.
+        emailAddressService.setEmailAddressesList();
     }
 
     async startSubscription() {
-        console.log('ok');
-
-        // Get local information.
         await this.exit(Status.FINISH, Color.GREEN);
     }
 
@@ -65,6 +73,7 @@ class SubscribeLogic {
 }
 
 module.exports = SubscribeLogic;
+/*         console.log(localService.localData); */
         // Initiate the account service first.
         //await accountService.initiate(settings);
                 //await this.startSession(urls);

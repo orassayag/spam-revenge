@@ -127,7 +127,7 @@ class InitiateService {
 	validateArrays() {
 		[
 			// ===GENERAL=== //
-			'TARGET_EMAIL_ADDRESSES',
+			'EMAIL_ADDRESSES',
 			// ===BACKUP=== //
 			'IGNORE_DIRECTORIES', 'IGNORE_FILES', 'INCLUDE_FILES'
 		].map(key => {
@@ -150,11 +150,17 @@ class InitiateService {
 	}
 
 	validateSpecial() {
-		const { VALIDATION_CONNECTION_LINK } = settings;
-		// ===VALIDATION=== //
-		if (!validationUtils.isValidURL(VALIDATION_CONNECTION_LINK)) {
-			throw new Error('Invalid or no VALIDATION_CONNECTION_LINK parameter was found (1000030)');
-		}
+		[
+			// ===GENERAL=== //
+			'PUBLIC_IP_ADDRESS_URL',
+			// ===VALIDATION=== //
+			'VALIDATION_CONNECTION_LINK'
+		].map(key => {
+			const value = settings[key];
+			if (!validationUtils.isValidURL(value)) {
+				throw new Error(`Invalid or no ${key} parameter was found: Excpected a URL but received: ${value} (1000019)`);
+			}
+		});
 	}
 
 	validateDirectories() {
@@ -198,6 +204,11 @@ class InitiateService {
 }
 
 module.exports = new InitiateService();
+/* 		const { PUBLIC_IP_URL, ALIDATION_CONNECTION_LINK } = settings;
+		// ===VALIDATION=== //
+		if (!validationUtils.isValidURL(VALIDATION_CONNECTION_LINK)) {
+			throw new Error('Invalid or no VALIDATION_CONNECTION_LINK parameter was found (1000030)');
+		} */
 		/* 		[
 					// ===GENERAL=== //
 				].map(key => {
