@@ -5,6 +5,10 @@ class FileUtils {
 
     constructor() { }
 
+    async read(targetPath) {
+        return await fs.readFile(targetPath, 'utf-8');
+    }
+
     async removeDirectoryIfExists(targetPath) {
         if (!await this.isPathExists(targetPath)) {
             await fs.remove(targetPath);
@@ -50,14 +54,17 @@ class FileUtils {
         }
     }
 
+    isFilePath(path) {
+        const stats = fs.statSync(path);
+        return stats.isFile();
+    }
+
     isDirectoryPath(path) {
         const stats = fs.statSync(path);
         return stats.isDirectory();
     }
 
-/*     async read(targetPath) {
-        return await fs.readFile(targetPath, 'utf-8');
-    }
+/*
 
     async appendFile(data) {
         const { targetPath, message } = data;
@@ -73,11 +80,7 @@ class FileUtils {
         // Append the message to the file.
         await fs.appendFile(targetPath, message);
     }
-
-    isFilePath(path) {
-        const stats = fs.statSync(path);
-        return stats.isFile();
-    }*/
+*/
 }
 
 module.exports = new FileUtils();

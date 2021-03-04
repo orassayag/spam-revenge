@@ -1,13 +1,23 @@
+const pathService = require('./path.service');
+const { fileUtils, pathUtils } = require('../../utils');
+
 class SubscribeListService {
 
     constructor() { }
-}
 
-module.exports = new SubscribeListService();
+    async setSubscribeList() {
+        const jsonData = await this.getJsonFileData({
+            filePath: pathService.pathData.subscribeListFilePath,
+            parameterName: 'subscribeListFilePath'
+        });
+        for(let i = 0; i < jsonData.length; i++)
+        {
 
-/*     async getFileData(data) {
-        const { environment, path, parameterName, fileExtension } = data;
-        const filePath = `${path}account-${textUtils.toLowerCase(environment)}.json`;
+        }
+    }
+
+    async getJsonFileData(data) {
+        const { filePath, parameterName } = data;
         if (!await fileUtils.isPathExists(filePath)) {
             throw new Error(`Invalid or no ${parameterName} parameter was found: Excpected a number but received: ${filePath} (1000010)`);
         }
@@ -15,8 +25,8 @@ module.exports = new SubscribeListService();
             throw new Error(`The parameter path ${parameterName} marked as file but it's a path of a directory: ${filePath} (1000011)`);
         }
         const extension = pathUtils.getExtension(filePath);
-        if (extension !== fileExtension) {
-            throw new Error(`The parameter path ${parameterName} must be a ${fileExtension} file but it's: ${extension} file (1000012)`);
+        if (extension !== '.json') {
+            throw new Error(`The parameter path ${parameterName} must be a .json file but it's: ${extension} file (1000012)`);
         }
         const fileData = await fileUtils.read(filePath);
         const jsonData = JSON.parse(fileData);
@@ -24,8 +34,14 @@ module.exports = new SubscribeListService();
             throw new Error(`No data exists in the file: ${filePath} (1000013)`);
         }
         return jsonData;
-    } */
+    }
+}
 
+module.exports = new SubscribeListService();
+/*         if (!js
+        ) */
+/*         console.log(jsonData); */
+/*         const filePath = pathService.pathData.subscribeListFilePath; */
 /* const { AccountData } = require('../../core/models');
 const fileService = require('./file.service');
 const { applicationUtils, textUtils, validationUtils } = require('../../utils');

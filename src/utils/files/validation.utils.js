@@ -1,4 +1,3 @@
-const ipRegex = require('ip-regex');
 const regexUtils = require('./regex.utils');
 
 class ValidationUtils {
@@ -49,12 +48,15 @@ class ValidationUtils {
         if (!ipAddress) {
             return false;
         }
-        return ipRegex({ exact: true }).test(ipAddress);
+        return regexUtils.validateIPAddressRegex.test(ipAddress);
     }
 
     isValidEmailAddress(emailAddress) {
         return regexUtils.validateEmailAddressRegex.test(emailAddress);
     }
+}
+
+module.exports = new ValidationUtils();
 
     /*
 
@@ -84,6 +86,5 @@ class ValidationUtils {
                 return false;
             }
         } */
-}
-
-module.exports = new ValidationUtils();
+        //const ipRegex = require('ip-regex');
+        //return ipRegex({ exact: true }).test(ipAddress);

@@ -1,0 +1,9 @@
+[
+    {
+        "url": "https://www.test.com",
+        "textBoxFieldName": "name",
+        "textBoxFieldValue": "email",
+        "buttonFieldName": "name",
+        "buttonFieldValue": "submit"
+    }
+]

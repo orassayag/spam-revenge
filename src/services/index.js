@@ -2,7 +2,6 @@ const applicationService = require('./files/application.service');
 const confirmationService = require('./files/confirmation.service');
 const countLimitService = require('./files/countLimit.service');
 const emailAddressService = require('./files/emailAddress.service');
-const fileService = require('./files/file.service');
 const localService = require('./files/local.service');
 const logService = require('./files/log.service');
 const pathService = require('./files/path.service');
@@ -11,11 +10,12 @@ const subscribeListService = require('./files/subscribeList.service');
 const validationService = require('./files/validation.service');
 
 module.exports = {
-    applicationService, confirmationService, countLimitService, emailAddressService, fileService,
+    applicationService, confirmationService, countLimitService, emailAddressService,
     logService, localService, pathService, puppeteerService, subscribeListService,
     validationService
 };
-
+ /* , fileService, */
+/* const fileService = require('./files/file.service'); */
 /* const accountService = require('./files/account.service');
 const applicationService = require('./files/application.service');
 const confirmationService = require('./files/confirmation.service');

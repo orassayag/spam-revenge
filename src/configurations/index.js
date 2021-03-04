@@ -1,4 +1,4 @@
-const ignoreSubscribeURLsList = require('./files/ignoreSubscribeURLs');
+const ignoreSubscribeURLsList = require('./files/ignoreSubscribeURL');
 const ignoreTargetEmailAddressesList = require('./files/ignoreTargetEmailAddress');
 
 module.exports = {

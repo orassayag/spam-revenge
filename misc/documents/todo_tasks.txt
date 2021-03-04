@@ -11,6 +11,7 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
+-Replace 'ip-regex' package with regex + remove this package from package.json. *
 -Validate subscription list.
 -Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of
  local or public IP address included in any header of the proxy.
@@ -39,6 +40,8 @@ ToDo tasks:
 ===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
 -Create example in the examples directory to the JSON file.
+-Clear all configurations, and keep only my email address in ignoreTargetEmailAddress.js file.
+-Write on READEME.md file that the sources of subscribe-list.json not attached in order no to spam attack myself.
 -Edit the 'INSTRUCTIONS.md' and the 'README.md' files.
 -On the README.md file write a note that the local data tested only on Windows 10 platform.
 -Edit the package.json file and Re-crate the package-lock.json.
@@ -71,6 +74,7 @@ export default
 6. Fix createDirectory - No need for await in createSessionDirectory method.
 7. "Validate internet connection works." => "Validate that the internet connection works."
 8. "sending emails processes." in udemy-courses project.
+9. Rename the function 'getFileData' to 'getJsonFileData'.
 
 Completed + canceled tasks:
 ===========================

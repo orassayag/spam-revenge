@@ -1,7 +1,7 @@
 const settings = require('../settings/settings');
 const { Color, Status } = require('../core/enums');
 const { applicationService, countLimitService, emailAddressService, localService, logService,
-    pathService, puppeteerService, validationService } = require('../services');
+    pathService, puppeteerService, subscribeListService, validationService } = require('../services');
 const { logUtils, systemUtils } = require('../utils');
 const globalUtils = require('../utils/files/global.utils');
 
@@ -39,6 +39,7 @@ class SubscribeLogic {
         pathService.initiate(settings);
         puppeteerService.initiate();
         logService.initiate(settings);
+        emailAddressService.initiate(settings);
     }
 
     async validateGeneralSettings() {
@@ -50,10 +51,12 @@ class SubscribeLogic {
     async validateSubscription() {
         // Validate the public IP address URL.
         await validationService.validateURL(applicationService.applicationData.publicIPAddressURL);
-        // Get the local data.
+        // Set the local data.
         await localService.setLocalData();
         // Set the email addresses to subscribe.
         emailAddressService.setEmailAddressesList();
+        // Set the subscribe list.
+        await subscribeListService.setSubscribeList();
     }
 
     async startSubscription() {

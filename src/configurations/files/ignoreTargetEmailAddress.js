@@ -1,5 +1,5 @@
 const ignoreTargetEmailAddressesList = [
-    'test@walla.com'
+    'test1@walla.com'
 ];
 
 module.exports = ignoreTargetEmailAddressesList;

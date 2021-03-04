@@ -21,14 +21,14 @@ class PathUtils {
         return path.basename(source);
     }
 
+    getExtension(targetPath) {
+        return path.extname(targetPath);
+    }
+
     /*
 
         getDirName(targetPath) {
             return path.dirname(targetPath);
-        }
-
-        getExtension(targetPath) {
-            return path.extname(targetPath);
         } */
 }
 
