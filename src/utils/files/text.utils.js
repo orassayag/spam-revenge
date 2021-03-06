@@ -35,6 +35,13 @@ class TextUtils {
         return number < 10 ? `0${number}` : number;
     }
 
+    toLowerCaseTrim(text) {
+        if (!text) {
+            return '';
+        }
+        return text.toLowerCase().trim();
+    }
+
     /*
 
         cutText(data) {
@@ -79,13 +86,6 @@ class TextUtils {
                 return '';
             }
             return text.toLowerCase();
-        }
-
-        toLowerCaseTrim(text) {
-            if (!text) {
-                return '';
-            }
-            return text.toLowerCase().trim();
         }
 
         removeAllNoneNumbers(text) {

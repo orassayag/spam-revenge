@@ -1,6 +1,22 @@
+const { SubscribeStatus } = require('../../enums');
+
 class SubscribeData {
-    
-    constructor() {}
+
+    constructor(subscribe) {
+        const { id, indexId } = subscribe;
+        this.id = id;
+        this.indexId = indexId;
+        this.creationDateTime = new Date();
+        this.urlAddress = null;
+        this.urlAddressCompare = null;
+        this.textBoxFieldName = null;
+        this.textBoxFieldValue = null;
+        this.buttonFieldName = null;
+        this.buttonFieldValue = null;
+        this.status = SubscribeStatus.CREATE;
+        this.resultDateTime = null;
+        this.resultDetails = [];
+    }
 }
 
 module.exports = SubscribeData;

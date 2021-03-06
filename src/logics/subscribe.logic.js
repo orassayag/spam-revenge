@@ -30,7 +30,7 @@ class SubscribeLogic {
     }
 
     initiate() {
-        logUtils.logMagentaStatus('INITIATE THE SERVICES');
+        this.updateStatus('INITIATE THE SERVICES', Status.INITIATE);
         countLimitService.initiate(settings);
         applicationService.initiate({
             settings: settings,
@@ -43,24 +43,32 @@ class SubscribeLogic {
     }
 
     async validateGeneralSettings() {
-        logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
+        this.updateStatus('VALIDATE GENERAL SETTINGS', Status.VALIDATE);
         // Validate that the internet connection works.
         await validationService.validateURL(applicationService.applicationData.validationConnectionLink);
     }
 
     async validateSubscription() {
+        this.updateStatus('INITIATE LOCAL DATA', Status.INITIATE_LOCAL_DATA);
         // Validate the public IP address URL.
         await validationService.validateURL(applicationService.applicationData.publicIPAddressURL);
         // Set the local data.
         await localService.setLocalData();
         // Set the email addresses to subscribe.
+        this.updateStatus('INITIATE EMAIL ADDRESSES', Status.INITIATE_EMAIL_ADDRESSES);
         emailAddressService.setEmailAddressesList();
         // Set the subscribe list.
+        this.updateStatus('INITIATE SUBSCRIBE LIST', Status.INITIATE_SUBSCRIBE_LIST);
         await subscribeListService.setSubscribeList();
     }
 
     async startSubscription() {
         await this.exit(Status.FINISH, Color.GREEN);
+    }
+
+    updateStatus(text, status) {
+        logUtils.logMagentaStatus(text);
+        applicationService.applicationData.status = status;
     }
 
     async exit(status, color) {
@@ -76,6 +84,8 @@ class SubscribeLogic {
 }
 
 module.exports = SubscribeLogic;
+        /* logUtils.logMagentaStatus('INITIATE THE SERVICES'); */
+        //logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
 /*         console.log(localService.localData); */
         // Initiate the account service first.
         //await accountService.initiate(settings);
