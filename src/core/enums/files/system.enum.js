@@ -5,6 +5,11 @@ const Environment = enumUtils.createEnum([
     ['DEVELOPMENT', 'DEVELOPMENT']
 ]);
 
+const Method = enumUtils.createEnum([
+    ['STANDARD', 'STANDARD'],
+    ['RANDOM', 'RANDOM']
+]);
+
 const Mode = enumUtils.createEnum([
     ['STANDARD', 'STANDARD'],
     ['SILENT', 'SILENT']
@@ -30,4 +35,4 @@ const Status = enumUtils.createEnum([
     ['FINISH', 'FINISH']
 ]);
 
-module.exports = { Environment, Mode, ScriptType, Status };
+module.exports = { Environment, Method, Mode, ScriptType, Status };

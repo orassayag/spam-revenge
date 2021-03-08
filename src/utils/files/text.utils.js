@@ -42,6 +42,57 @@ class TextUtils {
         return text.toLowerCase().trim();
     }
 
+    removeDuplicates(list) {
+        if (!validationUtils.isExists(list)) {
+            return list;
+        }
+        return [...new Set(list)];
+    }
+
+    getElements(data) {
+        const { list, count, isRandomIfExceeded } = data;
+        if (!validationUtils.isExists(list)) {
+            return list;
+        }
+        if (list.length > count) {
+            return isRandomIfExceeded ? list.sort(() => .5 - Math.random()).slice(0, count) : list.slice(0, count);
+        }
+        return list;
+    }
+
+        /*     getElements(list, count, isRandomIfExceeded) {
+            if (!validationUtils.isExists(list)) {
+                return {
+                    list: list,
+                    isRandom: false
+                };
+            }
+            if (list.length > count) {
+                return {
+                    list: isRandomIfExceeded ? list.sort(() => .5 - Math.random()).slice(0, count) : list.slice(0, count),
+                    isRandom: isRandomIfExceeded
+                };
+            }
+            return {
+                list: list,
+                isRandom: false
+            };
+        } */
+
+    /*     getFirstElements(list, count) {
+            if (!validationUtils.isExists(list)) {
+                return list;
+            }
+            return list.slice(0, count);
+        } */
+
+    /*     getRandomElements(list, count) {
+            if (!validationUtils.isExists(list)) {
+                return list;
+            }
+            return list.sort(() => .5 - Math.random()).slice(0, count);
+        } */
+
     /*
 
         cutText(data) {

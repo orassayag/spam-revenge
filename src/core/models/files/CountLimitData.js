@@ -2,13 +2,19 @@ class CountLimitData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
-		const { MILLISECONDS_TIMEOUT_EXIT_APPLICATION } = settings;
+		const { MAXIMUM_EMAIL_ADDRESSSES_COUNT, MAXIMUM_SUBSRIBES_COUNT, MILLISECONDS_TIMEOUT_EXIT_APPLICATION } = settings;
+		this.maximumEmailAddressesCount = MAXIMUM_EMAIL_ADDRESSSES_COUNT;
+		this.maximumSubscribesCount = MAXIMUM_SUBSRIBES_COUNT;
 		this.millisecondsTimeoutExitApplication = MILLISECONDS_TIMEOUT_EXIT_APPLICATION;
 	}
 }
 
 module.exports = CountLimitData;
 
+/* 		    // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
+			MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
+			// Determine how many subscribes to subscribe each email address. Will take the first if exceeded.
+			MAXIMUM_SUBSRIBES_COUNT: 2000, */
 /* 		// Set the parameters from the settings file.
 		const { MAXIMUM_COURSES_PURCHASE_COUNT, MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT, MAXIMUM_PAGES_NUMBER, MAXIMUM_SESSIONS_COUNT,
 			MILLISECONDS_INTERVAL_COUNT, MILLISECONDS_TIMEOUT_BETWEEN_COURSES_CREATE, MILLISECONDS_TIMEOUT_BETWEEN_COURSES_MAIN_PAGES,

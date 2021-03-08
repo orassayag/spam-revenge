@@ -54,6 +54,10 @@ class ValidationUtils {
     isValidEmailAddress(emailAddress) {
         return regexUtils.validateEmailAddressRegex.test(emailAddress);
     }
+
+    isValidLink(link) {
+        return regexUtils.validateLinkRegex.test(link);
+    }
 }
 
 module.exports = new ValidationUtils();

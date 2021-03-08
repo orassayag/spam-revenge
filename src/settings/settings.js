@@ -6,7 +6,7 @@ const settings = {
     // Determine the mode of the application. STANDARD/SILENT.
     MODE: Mode.STANDARD,
     // Determine the target email address(es) to subscribe to spam services.
-    EMAIL_ADDRESSES: ['test@walla.com'],
+    EMAIL_ADDRESSES: ['test@test.com', 'test@test.com', 'test2@test.com'],
     // Determine the URL to check the local PC public IP address.
     PUBLIC_IP_ADDRESS_URL: 'https://api.ipify.org',
 
@@ -16,6 +16,8 @@ const settings = {
     IS_PRODUCTION_ENVIRONMENT: true,
     // Determine if to puppeeter should connect via local connection (=false) or random proxy connection (=true).
     IS_PROXY_CONNECTION_ACTIVE: true,
+    // Determine if to take random subscribes if exceeded (=true), or take them by the original order (=false).
+    IS_RANDOM_SUBSCRIBES_EXCEEDED: false,
 
     // ===LOG=== //
     // Determine if to log the valid subscriptions.
@@ -24,6 +26,10 @@ const settings = {
     IS_LOG_SUBSCRIBE_INVALID: true,
 
     // ===COUNT & LIMIT=== //
+    // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
+    MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
+    // Determine how many subscribes to subscribe each email address. Will take the first if exceeded.
+    MAXIMUM_SUBSRIBES_COUNT: 2000,
     // Determine the milliseconds count timeout to wait before exit the application.
     MILLISECONDS_TIMEOUT_EXIT_APPLICATION: 1000,
 
@@ -45,7 +51,7 @@ const settings = {
     // Determine the path of the JSON file from which the subscribe list URLs will be fetched. Must be a JSON file.
     SUBSCRIBE_LIST_FILE_PATH: pathUtils.getJoinPath({
         targetPath: __dirname,
-        targetName: '../../../../../../Accounts/SpamRevenge/subscribe-list.json'
+        targetName: '../../sources/subscribe-list.json'
     }),
 
     // ===DYNAMIC PATH=== //

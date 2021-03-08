@@ -40,6 +40,7 @@ class SubscribeLogic {
         puppeteerService.initiate();
         logService.initiate(settings);
         emailAddressService.initiate(settings);
+        subscribeListService.initiate(settings);
     }
 
     async validateGeneralSettings() {
@@ -68,7 +69,9 @@ class SubscribeLogic {
 
     updateStatus(text, status) {
         logUtils.logMagentaStatus(text);
-        applicationService.applicationData.status = status;
+        if (applicationService.applicationData) {
+            applicationService.applicationData.status = status;
+        }
     }
 
     async exit(status, color) {

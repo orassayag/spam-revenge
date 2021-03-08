@@ -1,6 +1,7 @@
 const { EmailAddressesData } = require('../../core/models');
 const { ignoreTargetEmailAddressesList } = require('../../configurations');
-const { validationUtils } = require('../../utils');
+const countLimitService = require('./countLimit.service');
+const { textUtils, validationUtils } = require('../../utils');
 
 class EmailAddressService {
 
@@ -14,7 +15,7 @@ class EmailAddressService {
         const { EMAIL_ADDRESSES } = settings;
         this.emailAddressesArray = EMAIL_ADDRESSES;
         if (!validationUtils.isExists(this.emailAddressesArray)) {
-            throw new Error('No email addresses to subscribe were found (1000045)');
+            throw new Error('No valid email addresses to subscribe were found (1000045)');
         }
     }
 
@@ -27,9 +28,17 @@ class EmailAddressService {
                 this.emailAddressesData.emailAddressesList.push(emailAddress);
             }
         }
-        // Validate the existence of at least 1 email address.
+        // Clear duplicates.
+        this.emailAddressesData.emailAddressesList = textUtils.removeDuplicates(this.emailAddressesData.emailAddressesList);
+        // Check if exceeded, take first X elements.
+        this.emailAddressesData.emailAddressesList = textUtils.getElements({
+            list: this.emailAddressesData.emailAddressesList,
+            count: countLimitService.countLimitData.maximumEmailAddressesCount,
+            isRandomIfExceeded: false
+        });
+        // Validate the existence of at least one valid email address.
         if (!validationUtils.isExists(this.emailAddressesData.emailAddressesList)) {
-            throw new Error('No email addresses to subscribe were found (1000045)');
+            throw new Error('No valid email addresses to subscribe were found (1000045)');
         }
     }
 
@@ -48,6 +57,11 @@ class EmailAddressService {
 }
 
 module.exports = new EmailAddressService();
+        /*         this.emailAddressesData.emailAddressesList = textUtils.getElements(this.emailAddressesData.emailAddressesList,
+                    countLimitService.countLimitData.maximumEmailAddressesCount, false); */
+/*         console.log(this.emailAddressesData.emailAddressesList); */
+        //this.emailAddressesData.emailAddressesList.slice(0, countLimitService.countLimitData.maximumEmailAddressesCount);
+/*         console.log(this.emailAddressesData.emailAddressesList); */
 /*     setEmailAddressesList(settings) {
         // ===GENERAL=== //
         const { TARGET_EMAIL_ADDRESSES } = settings;
@@ -61,6 +75,6 @@ module.exports = new EmailAddressService();
         }
         // Validate the existence of at least 1 email address.
         if (!validationUtils.isExists(this.emailAddressesData.emailAddressesList)) {
-            throw new Error('No email addresses to subscribe were found (1000045)');
+            throw new Error('No valid email addresses to subscribe were found (1000045)');
         }
     } */

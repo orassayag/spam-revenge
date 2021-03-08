@@ -1,13 +1,22 @@
 const { SubscribeData, SubscribesData } = require('../../core/models');
-const { SubscribeStatus } = require('../../core/enums');
+const { SubscribeStatus, Method } = require('../../core/enums');
+const applicationService = require('./application.service');
+const countLimitService = require('./countLimit.service');
 const pathService = require('./path.service');
 const { fileUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
 
 class SubscribeListService {
 
     constructor() {
+        this.isRandomSubscribesExceeded = false;
         this.subscribesData = new SubscribesData();
         this.lastSubscribeId = 1;
+    }
+
+    initiate(settings) {
+        // ===FLAG=== //
+        const { IS_RANDOM_SUBSCRIBES_EXCEEDED } = settings;
+        this.isRandomSubscribesExceeded = IS_RANDOM_SUBSCRIBES_EXCEEDED;
     }
 
     async setSubscribeList() {
@@ -15,16 +24,22 @@ class SubscribeListService {
             filePath: pathService.pathData.subscribeListFilePath,
             parameterName: 'subscribeListFilePath'
         });
-        for (let i = 0; i < jsonData.length; i++) {
-            createSubscribe(jsonData[i], i);
+        if (!jsonData) {
+            throw new Error('No valid subscribes found to subscribe (1000034)');
         }
-        // Validate the subscribes.
+        for (let i = 0; i < jsonData.length; i++) {
+            this.createSubscribe(jsonData[i], i);
+        }
+        // Validate all the subscribes.
         this.finalizeCreateSubscribes();
     }
 
     createSubscribe(subscribeData, index) {
-        let subscribe = new SubscribeData(this.lastCourseId, index);
-        this.lastCourseId++;
+        let subscribe = new SubscribeData({
+            id: this.lastSubscribeId,
+            indexId: index
+        });
+        this.lastSubscribeId++;
         subscribe = this.validateSubscribe({
             subscribe: subscribe,
             subscribeData: subscribeData
@@ -32,48 +47,6 @@ class SubscribeListService {
         this.subscribesData.subscribeList.push(subscribe);
         this.subscribesData.subscribe = subscribe;
     }
-
-    /*     this.id = id;
-    this.indexId = indexId;
-    this.creationDateTime = new Date();
-    this.urlAddress = null;
-    this.urlAddressCompare = null;
-    this.textBoxFieldName = null;
-    this.textBoxFieldValue = null;
-    this.buttonFieldName = null;
-    this.buttonFieldValue = null;
-    this.status = SubscribeStatus.CREATE;
-    this.resultDateTime = null;
-    this.resultDetails = []; */
-
-    /*     [
-            {
-                "urlAddress": "https://www.test.com",
-                "textBoxFieldName": "name",
-                "textBoxFieldValue": "email",
-                "buttonFieldName": "name",
-                "buttonFieldValue": "submit"
-            }
-        ] */
-
-    /*     const SubscribeStatus = enumUtils.createEnum([
-            ['CREATE', 'create'],
-            ['SUBSCRIBE', 'subscribe'],
-            ['FAIL', 'fail'],
-            ['NO_DATA', 'noData'],
-            ['MISSING_URL', 'missingURL'],
-            ['INVALID_URL', 'invalidURL'],
-            ['MISSING_TEXTBOX_FIELD', 'missingTextBoxField'],
-            ['MISSING_TEXTBOX_VALUE', 'missingTextBoxValue'],
-            ['MISSING_BUTTON_FIELD', 'missingButtonField'],
-            ['MISSING_BUTTON_VALUE', 'missingButtonValue'],
-            ['MISSING_FIELD', 'missingField'],
-            ['UNEXPECTED_FIELD', 'unexpectedField'],
-            ['URL_NOT_FOUND', 'urlNotFound'],
-            ['TEXTBOX_NOT_FOUND', 'textBoxNotFound'],
-            ['BUTTON_NOT_FOUND', 'buttonNotFound'],
-            ['DUPLICATE', 'duplicate']
-        ]); */
 
     validateSubscribe(data) {
         const { subscribe, subscribeData } = data;
@@ -85,32 +58,63 @@ class SubscribeListService {
             });
         }
         // Validate URL field.
-        if (!subscribe.urlAddress) {
+        if (!subscribeData.urlAddress) {
             return this.updateSubscribeStatus({
                 subscribe: subscribe,
                 status: SubscribeStatus.MISSING_URL,
                 details: 'Empty or no urlAddress field was found.'
             });
         }
-        if (!validationUtils.isValidEmailAddress(subscribe.urlAddress)) {
+        if (!validationUtils.isValidLink(subscribeData.urlAddress)) {
             return this.updateSubscribeStatus({
                 subscribe: subscribe,
                 status: SubscribeStatus.INVALID_URL,
                 details: 'Invalid urlAddress field was found.'
             });
         }
-        subscribe.urlAddress = subscribe.urlAddress.trim();
-        subscribe.urlAddressCompare = textUtils.toLowerCaseTrim(subscribe.urlAddress);
-        // Validate TextBox fields.
-        if ()
-
-            return subscribe;
+        subscribe.urlAddress = subscribeData.urlAddress.trim();
+        subscribe.urlAddressCompare = textUtils.toLowerCaseTrim(subscribeData.urlAddress);
+        // Validate text box fields.
+        if (!subscribeData.textBoxFieldName) {
+            return this.updateSubscribeStatus({
+                subscribe: subscribe,
+                status: SubscribeStatus.MISSING_TEXTBOX_FIELD,
+                details: 'Empty or no textBoxFieldName field was found.'
+            });
+        }
+        if (!subscribeData.textBoxFieldValue) {
+            return this.updateSubscribeStatus({
+                subscribe: subscribe,
+                status: SubscribeStatus.MISSING_TEXTBOX_VALUE,
+                details: 'Empty or no textBoxFieldValue field was found.'
+            });
+        }
+        subscribe.textBoxFieldName = subscribeData.textBoxFieldName.trim();
+        subscribe.textBoxFieldValue = subscribeData.textBoxFieldValue.trim();
+        // Validate button fields.
+        if (!subscribeData.buttonFieldName) {
+            return this.updateSubscribeStatus({
+                subscribe: subscribe,
+                status: SubscribeStatus.MISSING_BUTTON_FIELD,
+                details: 'Empty or no buttonFieldName field was found.'
+            });
+        }
+        if (!subscribeData.buttonFieldValue) {
+            return this.updateSubscribeStatus({
+                subscribe: subscribe,
+                status: SubscribeStatus.MISSING_BUTTON_VALUE,
+                details: 'Empty or no buttonFieldValue field was found.'
+            });
+        }
+        subscribe.buttonFieldName = subscribeData.buttonFieldName.trim();
+        subscribe.buttonFieldValue = subscribeData.buttonFieldValue.trim();
+        return subscribe;
     }
 
     finalizeCreateSubscribes() {
         // Validate any subscribes exists to subscribe.
-        if (this.subscribesData.subscribeList.length <= 0) {
-            throw new Error('No subscribes exists to subscribe (1000034)');
+        if (!validationUtils.isExists(this.subscribesData.subscribeList)) {
+            throw new Error('No valid subscribes found to subscribe (1000034)');
         }
         for (let i = 0; i < this.subscribesData.subscribeList.length; i++) {
             const subscribe = this.subscribesData.subscribeList[i];
@@ -126,10 +130,18 @@ class SubscribeListService {
             // Compare subscribes and detect duplicates.
             this.compareSubscribers(subscribe);
         }
+        // Check if exceeded and if to take random or not.
+        this.subscribesData.subscribeList = textUtils.getElements({
+            list: this.subscribesData.subscribeList,
+            count: countLimitService.countLimitData.maximumSubscribesCount,
+            isRandomIfExceeded: this.isRandomSubscribesExceeded
+        });
         // Validate that there are any subscribes to subscribe.
-        if (this.subscribesData.subscribeList.map(s => s.status === SubscribeStatus.CREATE).length <= 0) {
+        if (!validationUtils.isExists(this.subscribesData.subscribeList.filter(s => s.status === SubscribeStatus.CREATE))) {
             throw new Error('No valid subscribes found to subscribe (1000034)');
         }
+        applicationService.applicationData.method = this.subscribesData.subscribeList.length > countLimitService.countLimitData.maximumSubscribesCount &&
+            this.isRandomSubscribesExceeded ? Method.RANDOM : Method.STANDARD;
     }
 
     validateFields(subscribe) {
@@ -190,14 +202,14 @@ class SubscribeListService {
         }
         for (let i = 0; i < this.subscribesData.subscribeList.length; i++) {
             const currentSubscribe = this.subscribesData.subscribeList[i];
-            if (subscribe.id === currentSubscribe.id || currentSubscribe.status !== CourseStatus.CREATE) {
+            if (subscribe.id === currentSubscribe.id || currentSubscribe.status !== SubscribeStatus.CREATE) {
                 continue;
             }
             if (subscribe.urlAddressCompare === currentSubscribe.urlAddressCompare) {
                 this.subscribesData.subscribeList[i] = this.updateSubscribeStatus({
                     course: currentSubscribe,
-                    status: CourseStatus.DUPLICATE,
-                    details: 'This course repeats multiple times in this session and should be purchased.'
+                    status: SubscribeStatus.DUPLICATE,
+                    details: 'This subscribe repeats multiple times in this session and should be subscribed.'
                 });
             }
         }
@@ -209,7 +221,7 @@ class SubscribeListService {
         subscribe.status = status;
         subscribe.resultDateTime = new Date();
         subscribe.resultDetails.push(details);
-        if (originalStatus !== CourseStatus.CREATE) {
+        if (originalStatus !== SubscribeStatus.CREATE) {
             this.subscribesData.updateCount(false, originalStatus, 1);
         }
         this.subscribesData.updateCount(true, status, 1);
@@ -238,8 +250,78 @@ class SubscribeListService {
 }
 
 module.exports = new SubscribeListService();
+/*         // Check if exceeded and if to take random or not.
+        this.subscribesData.subscribeList = textUtils.getElements(this.subscribesData.subscribeList,
+            countLimitService.countLimitData.maximumSubscribesCount, this.isRandomSubscribesExceeded); */
+/*             console.log(this.subscribesData.subscribeList); */
+            //this.filterSubscribes();
+/*     filterSubscribes() {
+        if (this.subscribesData.subscribeList.length > countLimitService.countLimitData.maximumSubscribesCount) {
+            // Check if exceeded, take random or first X elements.
+            this.subscribesData.subscribeList = this.isRandomSubscribesExceeded ? textUtils.getRandomElements(this.subscribesData.subscribeList,
+                countLimitService.countLimitData.maximumSubscribesCount) : textUtils.getFirstElements(this.subscribesData.subscribeList,
+                    countLimitService.countLimitData.maximumSubscribesCount);
+        }
+    } */
+/*             if (this.isRandomSubscribesExceeded) {
+                this.subscribesData.subscribeList = textUtils.getRandomElements(this.subscribesData.subscribeList,
+                    countLimitService.countLimitData.maximumSubscribesCount);
+            }
+            else {
+                // Check if exceeded, take first X.
+                this.subscribesData.subscribeList = textUtils.getFirstElements(this.subscribesData.subscribeList,
+                    countLimitService.countLimitData.maximumSubscribesCount);
+            } */
+                //this.subscribesData.subscribeList.slice(0, countLimitService.countLimitData.maximumSubscribesCount);
+                //let random = array.sort(() => .5 - Math.random()).slice(0,n);
+/*         if (this.subscribesData.subscribeList.filter(s => s.status === SubscribeStatus.CREATE).length <= 0) {
+throw new Error('No valid subscribes found to subscribe (1000034)');
+} */
+/*         console.log(this.subscribesData.subscribeList); */
+/*     this.id = id;
+this.indexId = indexId;
+this.creationDateTime = new Date();
+this.urlAddress = null;
+this.urlAddressCompare = null;
+this.textBoxFieldName = null;
+this.textBoxFieldValue = null;
+this.buttonFieldName = null;
+this.buttonFieldValue = null;
+this.status = SubscribeStatus.CREATE;
+this.resultDateTime = null;
+this.resultDetails = []; */
+
+/*     [
+        {
+            "urlAddress": "https://www.test.com",
+            "textBoxFieldName": "name",
+            "textBoxFieldValue": "email",
+            "buttonFieldName": "name",
+            "buttonFieldValue": "submit"
+        }
+    ] */
+
+/*     const SubscribeStatus = enumUtils.createEnum([
+        ['CREATE', 'create'],
+        ['SUBSCRIBE', 'subscribe'],
+        ['FAIL', 'fail'],
+        ['NO_DATA', 'noData'],
+        ['MISSING_URL', 'missingURL'],
+        ['INVALID_URL', 'invalidURL'],
+        ['MISSING_TEXTBOX_FIELD', 'missingTextBoxField'],
+        ['MISSING_TEXTBOX_VALUE', 'missingTextBoxValue'],
+        ['MISSING_BUTTON_FIELD', 'missingButtonField'],
+        ['MISSING_BUTTON_VALUE', 'missingButtonValue'],
+        ['MISSING_FIELD', 'missingField'],
+        ['UNEXPECTED_FIELD', 'unexpectedField'],
+        ['URL_NOT_FOUND', 'urlNotFound'],
+        ['TEXTBOX_NOT_FOUND', 'textBoxNotFound'],
+        ['BUTTON_NOT_FOUND', 'buttonNotFound'],
+        ['DUPLICATE', 'duplicate']
+    ]); */
+
             // Compare subscribes and detect duplicates.
-            /*             //this.compare(subscribe) */
+/*             //this.compare(subscribe) */
                     //textUtils.toLowerCaseTrim(result.udemyURL)
 /*             const updatedSubscribe = this.compare(subscribe);
         if (updatedSubscribe) {

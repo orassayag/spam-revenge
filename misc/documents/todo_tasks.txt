@@ -11,11 +11,6 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
--Validate subscription list.
--Add relevant status for each subscribe:
-NO_DATA/MISSING_URL/EMPTY_URL/INVALID_URL/MISSING_TEXTBOX_FIELD/EMPTY_TEXTBOX_FIELD/MISSING_TEXTBOX_VALUE/
-EMPTY_TEXTBOX_VALUE/MISSING_BUTTON_FIELD/EMPTY_BUTTON_FIELD/MISSING_BUTTON_VALUE/EMPTY_BUTTON_VALUE/
-URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD
 -Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of
  local or public IP address included in any header of the proxy.
 -If the proxy not working - Random aother one and repeat the process of validation. Random the proxies from different sources.
@@ -24,15 +19,10 @@ URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD
 -If the text box or the button don't exists, or the URL failed to be load, add to fail and contine to the next one.
 -Add flag if to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic.
  Add validation that if PRODUCTION and this flag is false, exit.
--Once button was clicked, wait at least 5 seconds before moving to the next spam URL.
--Make a JSON file full with spam URLs - Validate all to have:
--URL (valid URL), Text box field name, text box field value, button field name, button field value (id will be given automaticlly).
--The JSON file needs to be external - a path in the settings to validate (validate it's a file path).
--Place the JSON file inside 'sources' directory, and reffer the path in settings.js to there.
+-Once button was clicked, wait at least 5 seconds before moving to the next spam URL (from settings.js).
 -Make a delay between each subscription.
 -Make a final test - Register a new email + Subscribe to all spam at once.
 -Try to find as many spam URLs as you can.
--Include maximum count of spam subscription, and if by order or random.
 -Add option to ignore target email addresses or/and ignore subscribe URLs.
 -Each subsribe / failed log the URL address to the relevant log file.
 -The console status logic should look like this:
@@ -41,10 +31,10 @@ URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD
 ===[LOCAL] Local IP: 172.45.323.12 | Public IP: 82.34.234.72 | Other IPs: | | | ===
 ===[PROXY] IP: 192.249.53.67 | Port: 64312 | Country: us | Protocol: socks4 | Anonymity Level: Elite | Source: proxyscrape-com===
 (The following data list in not updated, check again the list of statuses)
-===[DATA1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
-===[DATA2] Missing TextBox Field: 0 | Empty TextBox Field: 0 | Missing TextBox Value: 0 | Empty TextBox Value: 0===
-===[DATA3] Missing Button Field: 0 | Empty Button Field: 0 | Missing Button Value: 0 | Empty Button Value: 0===
-===[DATA4] URL Not Found: 2 | TextBox Not Found: 1 | Button Not Found: 2===
+===[PROCESS1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
+===[PROCESS2] Missing TextBox Field: 0 | Empty TextBox Field: 0 | Missing TextBox Value: 0 | Empty TextBox Value: 0===
+===[PROCESS3] Missing Button Field: 0 | Empty Button Field: 0 | Missing Button Value: 0 | Empty Button Value: 0===
+===[PROCESS4] URL Not Found: 2 | TextBox Not Found: 1 | Button Not Found: 2===
 ===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
 ===[RESULT] Successfully subscribed===
@@ -52,7 +42,6 @@ URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD
 1. Duplicate email addresses - Remove.
 2. Duplicate subscribes - Mark with status DUPLICATE (take the duplicate detect logic from udemy-courses project).
 -Add error in a row logic + retries logic.
--Add maximum limit of email addresses and subscribes - If exceeded - take first X. Add it to settings.js.
 -Each log file will be with the email address of the subscription, for example: test1@gmail.com-subscribe_valid_03042021.txt
 -Each log structure will be as the following:
 Time: 23:17:22 | Id: 1 | Index Id: 0 | Creation Date Time: 27/02/2021 22:43:23
@@ -60,6 +49,9 @@ URL Address: http://www.test.com
 Status: SUBSCRIBE
 Result Details: Subscribed successfully.
 ==========
+-In all places change to use isExists instead of .length > 0 or .length <= 0.
+-After click on submit button in each subscription, wait for 5 seconds (from settings.js).
+-Add maximum limit of trying to find proxy, after that exit the program.
 -Create example in the examples directory to the JSON file.
 -Add retry on validate internet connection + IP address URL + number of times from settings.js (check if previous project have the logic to copy from).
 -Set maximum retries for searching proxy.
@@ -77,7 +69,7 @@ module.exports
 }
 export default
 -Replace all 'let' to 'const' and where no bugs - change it.
--Check spellings in files with 'files-spell-checking' project.
+-Check spellings in files with 'files-spell-checking' project (both files and content).
 -Re-format all error numbers + last_index.txt file.
 -Clear all comments.
 -Remove all debugger.
@@ -87,6 +79,7 @@ export default
 -Verify all works good.
 -Update packages + verify all works as expected.
 -Upload to GitHub.
+-In the end, delete the .git directory.
 -Backup iOmega.
 -In all the maintainance projects:
 01. Update the 'REMEMBER' section of this document.
@@ -102,13 +95,27 @@ export default
 11. On udemy-courses project, change the "validate" and "compare" functions to "validateFields" and "compareCourses".
 12. On udemy-courses project, change 'isExpectedFilled' to 'isFilledExpected'.
 13. Change all functions names that return true/false to 'isValidXXX' in validationUtils.
-14. Accounts re-organization:
+14. -In all places change to use isExists instead of .length > 0 or .length <= 0.
+15. Accounts re-organization:
 a. Place the "Accounts" directory inside 'C:\Users\Or\Dropbox'.
 b. Reffer all the projects to this location.
 c. Make sure that after each path change the project still works.
 
 Completed + canceled tasks:
 ===========================
+-Make a JSON file full with spam URLs - Validate all to have: *
+-URL (valid URL), Text box field name, text box field value, button field name, button field value (id will be given automaticlly). *
+-The JSON file needs to be external - A path in the settings to validate (validate it's a file path). *
+-Place the JSON file inside 'sources' directory, and refer the path in settings.js to there. *
+-Update packages. *
+-Validate subscription list. *
+-Add maximum limit of email addresses and subscribes - If exceeded - take first X. Add it to settings.js. *
+-Include maximum count of spam subscription, and if by order or random. *
+-Clear duplicate email addresses. *
+-Add relevant status for each subscribe: *
+NO_DATA/MISSING_URL/EMPTY_URL/INVALID_URL/MISSING_TEXTBOX_FIELD/EMPTY_TEXTBOX_FIELD/MISSING_TEXTBOX_VALUE/ *
+EMPTY_TEXTBOX_VALUE/MISSING_BUTTON_FIELD/EMPTY_BUTTON_FIELD/MISSING_BUTTON_VALUE/EMPTY_BUTTON_VALUE/ *
+URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD *
 -Update console status log structure. *
 -Update statuses in each step on the main JavaScript script. *
 -Replace 'ip-regex' package with regex + remove this package from package.json. *
