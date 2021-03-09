@@ -17,7 +17,8 @@ const SubscribeStatus = enumUtils.createEnum([
     ['URL_NOT_FOUND', 'urlNotFound'],
     ['TEXTBOX_NOT_FOUND', 'textBoxNotFound'],
     ['BUTTON_NOT_FOUND', 'buttonNotFound'],
-    ['DUPLICATE', 'duplicate']
+    ['DUPLICATE', 'duplicate'],
+    ['IGNORE', 'ignore']
 ]);
 
 const SubscribeStatusLog = enumUtils.createEnum(Object.keys(SubscribeStatus).map(k => {

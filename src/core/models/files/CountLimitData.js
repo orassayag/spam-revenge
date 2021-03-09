@@ -2,10 +2,13 @@ class CountLimitData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
-		const { MAXIMUM_EMAIL_ADDRESSSES_COUNT, MAXIMUM_SUBSRIBES_COUNT, MILLISECONDS_TIMEOUT_EXIT_APPLICATION } = settings;
+		const { MAXIMUM_EMAIL_ADDRESSSES_COUNT, MAXIMUM_SUBSRIBES_COUNT, MILLISECONDS_TIMEOUT_EXIT_APPLICATION,
+			MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT, MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT } = settings;
 		this.maximumEmailAddressesCount = MAXIMUM_EMAIL_ADDRESSSES_COUNT;
 		this.maximumSubscribesCount = MAXIMUM_SUBSRIBES_COUNT;
 		this.millisecondsTimeoutExitApplication = MILLISECONDS_TIMEOUT_EXIT_APPLICATION;
+		this.maximumValidateInternetConnectionRetriesCount = MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT;
+		this.maximumProxyValidationsRetriesCount = MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT;
 	}
 }
 

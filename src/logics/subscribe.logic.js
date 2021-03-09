@@ -1,7 +1,7 @@
 const settings = require('../settings/settings');
 const { Color, Status } = require('../core/enums');
 const { applicationService, countLimitService, emailAddressService, localService, logService,
-    pathService, puppeteerService, subscribeListService, validationService } = require('../services');
+    pathService, proxyService, puppeteerService, subscribeListService, validationService } = require('../services');
 const { logUtils, systemUtils } = require('../utils');
 const globalUtils = require('../utils/files/global.utils');
 
@@ -46,13 +46,19 @@ class SubscribeLogic {
     async validateGeneralSettings() {
         this.updateStatus('VALIDATE GENERAL SETTINGS', Status.VALIDATE);
         // Validate that the internet connection works.
-        await validationService.validateURL(applicationService.applicationData.validationConnectionLink);
+        await validationService.validateURL({
+            url: applicationService.applicationData.validationConnectionLink,
+            maximumRetries: countLimitService.countLimitData.maximumValidateInternetConnectionRetriesCount
+        });
     }
 
     async validateSubscription() {
         this.updateStatus('INITIATE LOCAL DATA', Status.INITIATE_LOCAL_DATA);
         // Validate the public IP address URL.
-        await validationService.validateURL(applicationService.applicationData.publicIPAddressURL);
+        await validationService.validateURL({
+            url: applicationService.applicationData.publicIPAddressURL,
+            maximumRetries: countLimitService.countLimitData.maximumValidateInternetConnectionRetriesCount
+        });
         // Set the local data.
         await localService.setLocalData();
         // Set the email addresses to subscribe.
@@ -64,6 +70,9 @@ class SubscribeLogic {
     }
 
     async startSubscription() {
+        // Set up the log console status.
+        // Set up the proxy.
+        await proxyService.setProxy();
         await this.exit(Status.FINISH, Color.GREEN);
     }
 
@@ -87,6 +96,11 @@ class SubscribeLogic {
 }
 
 module.exports = SubscribeLogic;
+        // Search for a proxy.
+/*         const proxies = await proxyService.getProxies();
+        for (let i = 0; i < proxies.length; i++) {
+            console.log(proxies[i].source);
+        } */
         /* logUtils.logMagentaStatus('INITIATE THE SERVICES'); */
         //logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
 /*         console.log(localService.localData); */

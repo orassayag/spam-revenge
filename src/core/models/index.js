@@ -6,13 +6,15 @@ const EmailAddressesData = require('./files/EmailAddressesData');
 const LocalData = require('./files/LocalData');
 const LogData = require('./files/LogData');
 const PathData = require('./files/PathData');
+const ProxyData = require('./files/ProxyData');
 const ResponseData = require('./files/ResponseData');
 const SubscribeData = require('./files/SubscribeData');
 const SubscribesData = require('./files/SubscribesData');
 
 module.exports = {
     ApplicationData, BackupData, BackupDirectory, CountLimitData, EmailAddressesData,
-    LogData, LocalData, PathData, ResponseData, SubscribeData, SubscribesData
+    LogData, LocalData, PathData, ProxyData, ResponseData, SubscribeData,
+    SubscribesData
 };
 
 /* const AccountData = require('./files/AccountData');

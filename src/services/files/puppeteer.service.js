@@ -19,39 +19,76 @@ class PuppeteerService {
         this.waitForFunction = 'document.querySelector("body")';
     }
 
-    async getResponseData(proxyAddress) {
+    async getResponseData(data) {
         const responseData = new ResponseData();
+        let browser = null;
         try {
-            const browser = await puppeteerExtra.launch({
-                headless: true,
-                args: [this.createProxyAddress(proxyAddress)]
+            browser = await puppeteerExtra.launch({
+                headless: false,
+                args: [this.createProxyArgument(data)]
             });
             const page = await browser.newPage();
+            const pages = await browser.pages();
+            if (pages.length > 1) {
+                await pages[0].close();
+            }
             // Make request to get the public IP address.
             await page.goto(applicationService.applicationData.publicIPAddressURL, this.pageOptions);
             responseData.publicIPAddress = await page.$eval('pre', pre => pre.innerText);
-            if (proxyAddress) {
+/*             const response = await page.$eval('pre', pre => pre.innerText);
+            responseData.publicIPAddress = JSON.parse(response).ip; */
+            //responseData.publicIPAddress = await page.$eval('pre', pre => pre.innerText);
+/*             const response = await page.$eval('pre', pre => pre.innerText);
+            responseData.publicIPAddress = JSON.parse(response).ip; */
+            //responseData.publicIPAddress = content;
+            //responseData.publicIPAddress = response.ip;
+            //const content = await page.content();
+            //responseData.publicIPAddress = await page.$eval('pre', pre => pre.innerText);
+                            //const headers = response.headers();
+                //console.log(headers);
+                //responseData.fullHeadersResponses = await this.setupLoggingOfAllNetworkData(page);
+            if (data) {
+                await page.setRequestInterception(true);
+                await page.setDefaultNavigationTimeout(0);
+                page.on('request', (request) => {
+                    if (['image', 'stylesheet', 'font', 'script'].indexOf(request.resourceType()) !== -1) {
+                        request.abort();
+                    } else {
+                        request.continue();
+                    }
+                });
+                await page.goto('https://www.touristisrael.com/newsletter/', this.pageOptions);
+                const html = await page.content();
+                console.log(html);
                 // Log captured request data.
-                responseData.fullHeadersResponses = await this.setupLoggingOfAllNetworkData(page);
+                //responseData.fullHeadersResponses = await this.setupLoggingOfAllNetworkData(page);
             }
-            browser.close();
+            await browser.close();
         }
         catch (error) {
             // ToDo: Remove this.
             console.log(error);
-         }
+            await browser.close();
+        }
+        /*         finally {
+                    if (browser) {
+                        await browser.close();
+                    }
+                } */
         return responseData;
     }
 
     // Returns map of request ID to raw CDP request data. This will be populated as requests are made.
     async setupLoggingOfAllNetworkData(page1) {
+        await page1.setRequestInterception(true);
         const cdpSession = await page1.target().createCDPSession();
         await cdpSession.send('Network.enable');
         const cdpRequestDataRaw1 = {};
         const addCDPRequestDataListener = (eventName) => {
             cdpSession.on(eventName, request => {
-                cdpRequestDataRaw1[request.requestId] = cdpRequestDataRaw1[request.requestId] || {};
-                Object.assign(cdpRequestDataRaw1[request.requestId], { [eventName]: request });
+                //console.log(request);
+/*                 cdpRequestDataRaw1[request.requestId] = cdpRequestDataRaw1[request.requestId] || {};
+                Object.assign(cdpRequestDataRaw1[request.requestId], { [eventName]: request }); */
             });
         };
         addCDPRequestDataListener('Network.requestWillBeSent');
@@ -61,12 +98,23 @@ class PuppeteerService {
         return cdpRequestDataRaw1;
     }
 
-    createProxyAddress(proxyAddress) {
-        return proxyAddress ? `--proxy-server=socks4://${proxyAddress}` : '';
+    createProxyArgument(data) {
+        if (!data) {
+            return '';
+        }
+        const { ipAddress, port } = data;
+        console.log(`--proxy-server=socks4://183.87.39.174:40252`);
+return `--proxy-server=socks4://183.87.39.174:40252`;
+/*         console.log(`--proxy-server=socks4://${ipAddress}:${port}`);
+        return `--proxy-server=socks4://${ipAddress}:${port}`; */
     }
 }
 
 module.exports = new PuppeteerService();
+/* console.log(`--proxy-server=socks4://183.87.39.174:40252`);
+return `--proxy-server=socks4://183.87.39.174:40252`; */
+
+            //await page.setRequestInterception(true);
 /*         const args = this.createProxyAddress(proxyAddress); */
         //const args = proxyAddress ? `--proxy-server=socks4://${proxyAddress}` : '';
             //await page.goto('https://api.ipify.org', this.pageOptions); // Move to settings.js + validation on this URL + validate that the URL available.

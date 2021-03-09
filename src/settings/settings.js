@@ -9,6 +9,7 @@ const settings = {
     EMAIL_ADDRESSES: ['test@test.com', 'test@test.com', 'test2@test.com'],
     // Determine the URL to check the local PC public IP address.
     PUBLIC_IP_ADDRESS_URL: 'https://api.ipify.org',
+    //PUBLIC_IP_ADDRESS_URL: 'https://ipinfo.io/json',
 
     // ===FLAG=== //
     // Determine if to simulate subscriptions (with delay) and proxy connection (=DEVELOPMENT)
@@ -32,6 +33,10 @@ const settings = {
     MAXIMUM_SUBSRIBES_COUNT: 2000,
     // Determine the milliseconds count timeout to wait before exit the application.
     MILLISECONDS_TIMEOUT_EXIT_APPLICATION: 1000,
+    // Determine the retries count to validate the internet connection.
+    MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT: 5,
+    // Determine the retries count to search for valid proxy.
+    MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT: 10,
 
     // ===ROOT PATH=== //
     // Determine the application name used for some of the calculated paths.

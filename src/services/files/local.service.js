@@ -17,8 +17,8 @@ class LocalService {
         this.localData.publicIPAddress = responseData.publicIPAddress;
 		['localIPAddress', 'subnetIPAddress', 'publicIPAddress'].map(key => {
 			const ipAddress = this.localData[key];
-			if (!validationUtils.isValidIPAddress(ipAddress)) {
-                throw new Error(`Local ${key} data field contains invalid IP address: ${ipAddress} (1000034)`);
+			if (!ipAddress || !validationUtils.isValidIPAddress(ipAddress)) {
+                throw new Error(`Local ${key} data field contains empty or invalid IP address: ${ipAddress} (1000034)`);
 			}
 		});
     }

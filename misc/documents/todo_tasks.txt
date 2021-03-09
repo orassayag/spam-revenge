@@ -11,26 +11,18 @@ Each time you change the logic / update NPM package version, do the following st
 
 ToDo tasks:
 ===========
--Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of
- local or public IP address included in any header of the proxy.
--If the proxy not working - Random aother one and repeat the process of validation. Random the proxies from different sources.
--If it works - Start the third part.
+-Remove all unueeded proxy logics, settings, and packages + local ip data and all of that.
+-Add option to use a proxy IP address and port (socks4). If flag proxy enabled, validate the settings and add the proxy to the connection.
 -Third logic - Register new email address + Make a sample of subscribtion to spam. Await for textbox and button to load.
 -If the text box or the button don't exists, or the URL failed to be load, add to fail and contine to the next one.
--Add flag if to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic.
- Add validation that if PRODUCTION and this flag is false, exit.
 -Once button was clicked, wait at least 5 seconds before moving to the next spam URL (from settings.js).
 -Make a delay between each subscription.
--Make a final test - Register a new email + Subscribe to all spam at once.
--Try to find as many spam URLs as you can.
--Add option to ignore target email addresses or/and ignore subscribe URLs.
--Each subsribe / failed log the URL address to the relevant log file.
+-Each subscribe / failed log the URL address to the relevant log file.
 -The console status logic should look like this:
 ===[SETTINGS] Mode: PRODUCTION | Method: STANDARD/RANDOM | Maximum Limit: ## | Emails: 1===
 ===[GENERAL] Time: 00.00:00:08 [-] | scam@wzdr.com (1/2) | Progress: 364/700 (64.24%) | Status: VALIDATION/SUBSCRIBE/PAUSE/EXIT/LIMIT_EXIDED===
-===[LOCAL] Local IP: 172.45.323.12 | Public IP: 82.34.234.72 | Other IPs: | | | ===
-===[PROXY] IP: 192.249.53.67 | Port: 64312 | Country: us | Protocol: socks4 | Anonymity Level: Elite | Source: proxyscrape-com===
-(The following data list in not updated, check again the list of statuses)
+===[PROXY] IP: 192.249.53.67 | Port: 64312===
+(The following data list in not updated, check again the list of statuses):
 ===[PROCESS1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
 ===[PROCESS2] Missing TextBox Field: 0 | Empty TextBox Field: 0 | Missing TextBox Value: 0 | Empty TextBox Value: 0===
 ===[PROCESS3] Missing Button Field: 0 | Empty Button Field: 0 | Missing Button Value: 0 | Empty Button Value: 0===
@@ -38,12 +30,10 @@ ToDo tasks:
 ===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
 ===[RESULT] Successfully subscribed===
--Check for duplicates:
-1. Duplicate email addresses - Remove.
-2. Duplicate subscribes - Mark with status DUPLICATE (take the duplicate detect logic from udemy-courses project).
 -Add error in a row logic + retries logic.
 -Each log file will be with the email address of the subscription, for example: test1@gmail.com-subscribe_valid_03042021.txt
 -Each log structure will be as the following:
+==========
 Time: 23:17:22 | Id: 1 | Index Id: 0 | Creation Date Time: 27/02/2021 22:43:23
 URL Address: http://www.test.com
 Status: SUBSCRIBE
@@ -51,15 +41,11 @@ Result Details: Subscribed successfully.
 ==========
 -In all places change to use isExists instead of .length > 0 or .length <= 0.
 -After click on submit button in each subscription, wait for 5 seconds (from settings.js).
--Add maximum limit of trying to find proxy, after that exit the program.
 -Create example in the examples directory to the JSON file.
--Add retry on validate internet connection + IP address URL + number of times from settings.js (check if previous project have the logic to copy from).
--Set maximum retries for searching proxy.
--Clear all configurations, and keep only my email address in ignoreTargetEmailAddress.js file.
 -Write on READEME.md file that the sources of subscribe-list.json not attached in order no to spam attack myself.
 -Edit the 'INSTRUCTIONS.md' and the 'README.md' files.
 -On the README.md file write a note that the local data tested only on Windows 10 platform.
--Edit the package.json file and Re-crate the package-lock.json.
+-Edit the package.json file and re-create the package-lock.json.
 -Sort imports and delete duplicates.
 -Do all the ToDo points.
 -Clear the email addresses in settings.js
@@ -78,6 +64,9 @@ export default
 -Move all complete tasks to complete_tasks.txt.
 -Verify all works good.
 -Update packages + verify all works as expected.
+-Try to find as many spam URLs as you can.
+-Clear all configurations, and keep only my email address in ignoreEmailAddress.js file.
+-Make a final test - Register a new email + Subscribe to all spam at once.
 -Upload to GitHub.
 -In the end, delete the .git directory.
 -Backup iOmega.
@@ -96,13 +85,28 @@ export default
 12. On udemy-courses project, change 'isExpectedFilled' to 'isFilledExpected'.
 13. Change all functions names that return true/false to 'isValidXXX' in validationUtils.
 14. -In all places change to use isExists instead of .length > 0 or .length <= 0.
-15. Accounts re-organization:
+15. Copy the logic of retry on check internet connection in all relevant projects.
+16. Accounts re-organization:
 a. Place the "Accounts" directory inside 'C:\Users\Or\Dropbox'.
 b. Reffer all the projects to this location.
 c. Make sure that after each path change the project still works.
 
 Completed + canceled tasks:
 ===========================
+===[LOCAL] Local IP: 172.45.323.12 | Public IP: 82.34.234.72 | Other IPs: | | | === *
+-Set maximum retries for searching proxy. *
+-Add maximum limit of trying to find proxy, after that exit the program. *
+-Add flag if to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic. *
+-Add validation that if PRODUCTION and this flag is false, exit. *
+-Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of *
+ local or public IP address included in any header of the proxy. *
+-If the proxy not working - Random aother one and repeat the process of validation. Random the proxies from different sources. *
+-If it works - Start the third part. *
+-Check for duplicates: *
+1. Duplicate email addresses - Remove. *
+2. Duplicate subscribes - Mark with status DUPLICATE (take the duplicate detect logic from udemy-courses project). *
+-Add option to ignore email addresses or/and ignore subscribe URLs. *
+-Add retry on validate internet connection + number of times from settings.js (check if previous project have the logic to copy from). *
 -Make a JSON file full with spam URLs - Validate all to have: *
 -URL (valid URL), Text box field name, text box field value, button field name, button field value (id will be given automaticlly). *
 -The JSON file needs to be external - A path in the settings to validate (validate it's a file path). *

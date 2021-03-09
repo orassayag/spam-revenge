@@ -1,5 +1,5 @@
 const { EmailAddressesData } = require('../../core/models');
-const { ignoreTargetEmailAddressesList } = require('../../configurations');
+const { ignoreEmailAddressesList } = require('../../configurations');
 const countLimitService = require('./countLimit.service');
 const { textUtils, validationUtils } = require('../../utils');
 
@@ -49,7 +49,7 @@ class EmailAddressService {
         if (!validationUtils.isValidEmailAddress(emailAddress)) {
             return false;
         }
-        if (ignoreTargetEmailAddressesList.indexOf(emailAddress) > -1) {
+        if (ignoreEmailAddressesList.indexOf(emailAddress) > -1) {
             return false;
         }
         return true;

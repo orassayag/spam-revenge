@@ -1,5 +1,6 @@
 const { SubscribeData, SubscribesData } = require('../../core/models');
 const { SubscribeStatus, Method } = require('../../core/enums');
+const { ignoreSubscribeURLsList } = require('../../configurations');
 const applicationService = require('./application.service');
 const countLimitService = require('./countLimit.service');
 const pathService = require('./path.service');
@@ -45,7 +46,6 @@ class SubscribeListService {
             subscribeData: subscribeData
         });
         this.subscribesData.subscribeList.push(subscribe);
-        this.subscribesData.subscribe = subscribe;
     }
 
     validateSubscribe(data) {
@@ -74,6 +74,14 @@ class SubscribeListService {
         }
         subscribe.urlAddress = subscribeData.urlAddress.trim();
         subscribe.urlAddressCompare = textUtils.toLowerCaseTrim(subscribeData.urlAddress);
+        // Check if needs to be ignored.
+        if (ignoreSubscribeURLsList.indexOf(subscribe.urlAddress) > -1) {
+            return this.updateSubscribeStatus({
+                subscribe: subscribe,
+                status: SubscribeStatus.IGNORE,
+                details: 'The URL was found in the ignoreSubscribeURLsList and will be ignored.'
+            });
+        }
         // Validate text box fields.
         if (!subscribeData.textBoxFieldName) {
             return this.updateSubscribeStatus({
@@ -250,6 +258,8 @@ class SubscribeListService {
 }
 
 module.exports = new SubscribeListService();
+/*         console.log(this.subscribesData.subscribeList); */
+/*         this.subscribesData.subscribe = subscribe; */
 /*         // Check if exceeded and if to take random or not.
         this.subscribesData.subscribeList = textUtils.getElements(this.subscribesData.subscribeList,
             countLimitService.countLimitData.maximumSubscribesCount, this.isRandomSubscribesExceeded); */
