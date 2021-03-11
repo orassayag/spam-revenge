@@ -1,6 +1,6 @@
-# Udemy Courses
+# Spam Revenge
 
-Built in December 2020. A Node.js + Puppeteer.js application to get Udemy courses links from a coupon site, and purchase the FREE ONLY courses (by the coupon) on Udemy site.
+Built in Match 2021. A Node.js + Puppeteer.js application to connect to a random proxy server and to subscribe email addresses to spam newsletters.
 
 ## Getting Started
 

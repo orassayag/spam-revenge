@@ -15,12 +15,12 @@ class ProxyService {
     }
 
     async setProxy() {
-        // Get the proxis list.
+        // Get the proxies list.
         let proxies = await this.getProxies();
         if (!validationUtils.isExists(proxies)) {
             return { exitReason: Status.NO_PROXY_FOUND };
         }
-        // Get random X proxies and try to find valid one.
+        // Get random X proxies and try to find a valid one.
         proxies = textUtils.getElements({
             list: proxies,
             count: countLimitService.countLimitData.maximumProxyValidationsRetriesCount,

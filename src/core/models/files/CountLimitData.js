@@ -16,7 +16,7 @@ module.exports = CountLimitData;
 
 /* 		    // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
 			MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
-			// Determine how many subscribes to subscribe each email address. Will take the first if exceeded.
+			// Determine how many subscribes to subscribe to each email address. Will take the first if exceeded.
 			MAXIMUM_SUBSRIBES_COUNT: 2000, */
 /* 		// Set the parameters from the settings file.
 		const { MAXIMUM_COURSES_PURCHASE_COUNT, MILLISECONDS_TIMEOUT_SOURCE_REQUEST_COUNT, MAXIMUM_PAGES_NUMBER, MAXIMUM_SESSIONS_COUNT,

@@ -2,9 +2,9 @@ class TextUtils {
 
     constructor() { }
 
-    replaceCharacter(text, targetCharacter, replaceCharecter) {
+    replaceCharacter(text, targetCharacter, replaceCharacter) {
         const regex = new RegExp(targetCharacter, 'g');
-        return text.replace(regex, replaceCharecter);
+        return text.replace(regex, replaceCharacter);
     }
 }
 

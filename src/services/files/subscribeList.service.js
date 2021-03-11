@@ -74,7 +74,7 @@ class SubscribeListService {
         }
         subscribe.urlAddress = subscribeData.urlAddress.trim();
         subscribe.urlAddressCompare = textUtils.toLowerCaseTrim(subscribeData.urlAddress);
-        // Check if needs to be ignored.
+        // Check if it needs to be ignored.
         if (ignoreSubscribeURLsList.indexOf(subscribe.urlAddress) > -1) {
             return this.updateSubscribeStatus({
                 subscribe: subscribe,
@@ -204,7 +204,7 @@ class SubscribeListService {
     }
 
     compareSubscribers(subscribe) {
-        // Check if duplicate subscribes exists, not to enter subscribe URL several times.
+        // Check if duplicate subscribes exist, not to enter the subscribe URL several times.
         if (subscribe.status !== SubscribeStatus.CREATE) {
             return;
         }
@@ -239,7 +239,7 @@ class SubscribeListService {
     async getJsonFileData(data) {
         const { filePath, parameterName } = data;
         if (!await fileUtils.isPathExists(filePath)) {
-            throw new Error(`Invalid or no ${parameterName} parameter was found: Excpected a number but received: ${filePath} (1000010)`);
+            throw new Error(`Invalid or no ${parameterName} parameter was found: Expected a number but received: ${filePath} (1000010)`);
         }
         if (!fileUtils.isFilePath(filePath)) {
             throw new Error(`The parameter path ${parameterName} marked as file but it's a path of a directory: ${filePath} (1000011)`);
@@ -371,7 +371,7 @@ class AccountService {
         });
         this.accountData.email = validationResult.email;
         this.accountData.password = validationResult.password;
-        this.accountData.asterixsPassword = textUtils.getAsteriskCharactersString(validationResult.password.length);
+        this.accountData.asterixPassword = textUtils.getAsteriskCharactersString(validationResult.password.length);
     }
 
     validateAccount(data) {

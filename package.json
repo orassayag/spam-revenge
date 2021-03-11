@@ -2,7 +2,7 @@
   "name": "spam-revenge",
   "version": "1.0.0",
   "private": true,
-  "description": "",
+  "description": "A Node.js + Puppeteer.js application to connect to a random proxy server and to subscribe email addresses to spam newsletters.",
   "keywords": [],
   "license": "UNLICENSED",
   "author": "Or Assayag <orassayag@gmail.com>",

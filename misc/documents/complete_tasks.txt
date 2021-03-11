@@ -1,2 +1,48 @@
 Completed + canceled tasks:
 ===========================
+-Fix all spell mistakes via Gmail. *
+-Upload to GitHub. *
+-Update iOmega. *
+===[LOCAL] Local IP: 172.45.323.12 | Public IP: 82.34.234.72 | Other IPs: | | | === *
+-Set maximum retries for searching proxy. *
+-Add maximum limit of trying to find a proxy, after that exit the program. *
+-Add flag to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic. *
+-Add validation that if PRODUCTION and this flag is false, exit. *
+-Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of *
+ local or public IP addresses are included in any header of the proxy. *
+-If the proxy is not working - Random another one and repeat the process of validation. Random the proxies from different sources. *
+-If it works - Start the third part. *
+-Check for duplicates: *
+1. Duplicate email addresses - Remove. *
+2. Duplicate subscribes - Mark with status DUPLICATE (take the duplicate detect logic from udemy-courses project). *
+-Add option to ignore email addresses or/and ignore subscribe URLs. *
+-Add retry on validate internet connection + number of times from settings.js (check if previous project has the logic to copy from). *
+-Make a JSON file full with spam URLs - Validate all to have: *
+-URL (valid URL), Text box field name, text box field value, button field name, button field value (id will be given automatically). *
+-The JSON file needs to be external - A path in the settings to validate (validate it's a file path). *
+-Place the JSON file inside 'sources' directory, and refer to the path in settings.js there. *
+-Update packages. *
+-Validate subscription list. *
+-Add maximum limit of email addresses and subscribes - If exceeded - take first X. Add it to settings.js. *
+-Include maximum count of spam subscription, and if by order or random. *
+-Clear duplicate email addresses. *
+-Add relevant status for each subscribe: *
+NO_DATA/MISSING_URL/EMPTY_URL/INVALID_URL/MISSING_TEXTBOX_FIELD/EMPTY_TEXTBOX_FIELD/MISSING_TEXTBOX_VALUE/ *
+EMPTY_TEXTBOX_VALUE/MISSING_BUTTON_FIELD/EMPTY_BUTTON_FIELD/MISSING_BUTTON_VALUE/EMPTY_BUTTON_VALUE/ *
+URL_NOT_FOUND/TEXTBOX_NOT_FOUND/BUTTON_NOT_FOUND/MISSING_FIELD/UNEXPECTED_FIELD *
+-Update console status log structure. *
+-Update statuses in each step on the main JavaScript script. *
+-Replace 'ip-regex' package with regex + remove this package from package.json. *
+-No log writing operations need to be included. *
+-Validate target email addresses. *
+-Add validation on specific email addresses from settings. *
+-Add validation on the target email addresses. *
+-Validate URLs. *
+-First logic - Get local private IP addresses + Get local public IP address. Validate all IP addresses. *
+-Make the backup script work. *
+-Move the project back to udemy-courses project template. *
+-Add the git init command - Start to work with git. *
+-Manually backup. *
+-Remove unneeded settings. *
+-Add the .git + sources to the ignore directories of the backup process. *
+-Remove all unneeded code. *

@@ -27,7 +27,7 @@ class TextUtils {
         return `${text}/`;
     }
 
-    // This method add leading 0 if needed.
+    // This method adds leading 0 if needed.
     addLeadingZero(number) {
         if (!validationUtils.isValidNumber(number)) {
             return '';
@@ -117,7 +117,7 @@ class TextUtils {
             return `${delimiter}${status}${delimiter}`;
         }
 
-        // This method convert a given number to display comma number.
+        // This method converts a given number to display comma number.
         getNumberWithCommas(number) {
             if (number <= -1 || !validationUtils.isValidNumber(number)) {
                 return '';

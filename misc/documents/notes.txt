@@ -1,4 +1,4 @@
 -Spam-Re
--Make a varification that it's not local ip.
+-Make a verification that it's not a local ip.
 -Show ip: https://api.ipify.org/
 White@yv7p.com

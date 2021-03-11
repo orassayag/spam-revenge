@@ -22,7 +22,7 @@ class SubscribeLogic {
         await this.startSubscription();
     }
 
-    // Let the user confirm all the IMPORTANT settings before the process start.
+    // Let the user confirm all the IMPORTANT settings before the process starts.
     async confirm() {
         /*         if (!await confirmationService.confirm(settings)) {
                     this.exit(Status.ABORT_BY_THE_USER, Color.RED);
@@ -101,7 +101,7 @@ module.exports = SubscribeLogic;
         for (let i = 0; i < proxies.length; i++) {
             console.log(proxies[i].source);
         } */
-        /* logUtils.logMagentaStatus('INITIATE THE SERVICES'); */
+/* logUtils.logMagentaStatus('INITIATE THE SERVICES'); */
         //logUtils.logMagentaStatus('VALIDATE GENERAL SETTINGS');
 /*         console.log(localService.localData); */
         // Initiate the account service first.
@@ -120,7 +120,7 @@ class PurchaseLogic {
     async run(urls) {
         // Initiate the account service first.
         await accountService.initiate(settings);
-        // Validate all settings are fit to the user needs.
+        // Validate all settings that fit the user needs.
         await this.confirm();
         // Initiate all the settings, configurations, services, etc...
         await this.initiate();

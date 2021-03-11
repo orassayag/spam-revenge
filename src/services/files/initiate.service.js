@@ -10,18 +10,18 @@ class InitiateService {
 	}
 
 	initiate(scriptType) {
-		// First, setup handle errors and promises.
+		// First, setup handles errors and promises.
 		this.setup();
 		// Validate the script type.
 		this.scriptType = scriptType;
 		this.validateScriptType();
-		// The second important thing to to it to validate all the parameters of the settings.js file.
+		// The second important thing to do is to validate all the parameters of the settings.js file.
 		this.validateSettings();
 		// The next thing is to calculate paths and inject back to the settings.js file.
 		this.calculateSettings();
 		// Make sure that the dist directory exists. If not, create it.
 		this.validateDirectories();
-		// Validate that certain directories exists, and if not, create them.
+		// Validate that certain directories exist, and if not, create them.
 		this.createDirectories();
 	}
 
@@ -89,7 +89,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isPositiveNumber(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a number but received: ${value} (1000016)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000016)`);
 			}
 		});
 	}
@@ -106,7 +106,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isExists(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a string but received: ${value} (1000017)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a string but received: ${value} (1000017)`);
 			}
 		});
 	}
@@ -120,7 +120,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidBoolean(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a boolean but received: ${value} (1000018)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a boolean but received: ${value} (1000018)`);
 			}
 		});
 	}
@@ -134,7 +134,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidArray(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a array but received: ${value} (1000019)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a array but received: ${value} (1000019)`);
 			}
 		});
 	}
@@ -159,7 +159,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidURL(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Excpected a URL but received: ${value} (1000019)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a URL but received: ${value} (1000019)`);
 			}
 		});
 	}
@@ -176,7 +176,7 @@ class InitiateService {
 			const value = settings[key];
 			// Verify that the dist and the sources paths exists.
 			globalUtils.isPathExistsError(value);
-			// Verify that the dist and the sources paths accessible.
+			// Verify that the dist and the source paths are accessible.
 			globalUtils.isPathAccessible(value);
 		});
 		[
@@ -210,14 +210,14 @@ module.exports = new InitiateService();
 		if (!validationUtils.isValidURL(VALIDATION_CONNECTION_LINK)) {
 			throw new Error('Invalid or no VALIDATION_CONNECTION_LINK parameter was found (1000030)');
 		} */
-		/* 		[
-					// ===GENERAL=== //
-				].map(key => {
-					const value = settings[key];
-					if (!validationUtils.isValidURL(value)) {
-						throw new Error(`Invalid or no ${key} parameter was found: Excpected a URL but received: ${value} (1000021)`);
-					}
-				}); */
+/* 		[
+			// ===GENERAL=== //
+		].map(key => {
+			const value = settings[key];
+			if (!validationUtils.isValidURL(value)) {
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a URL but received: ${value} (1000021)`);
+			}
+		}); */
 /**/
 /* 	    // ===GENERAL=== //
 // Determine the mode of the application. STANDARD/SILENT.
@@ -227,7 +227,7 @@ TARGET_EMAIL_ADDRESSES: [],
 
 // ===FLAG=== //
 // Determine if to simulate subscriptions and proxy connection (=DEVELOPMENT)
-// or to subscribe the target email addresses for REAL (PRODUCTION).
+// or to subscribe to the target email addresses for REAL (PRODUCTION).
 IS_PRODUCTION_ENVIRONMENT: true,
 // Determine if to puppeeter should connect via local connection (=false) or random proxy connection (=true).
 IS_PROXY_CONNECTION_ACTIVE: true,

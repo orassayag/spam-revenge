@@ -29,7 +29,7 @@ const settings = {
     // ===COUNT & LIMIT=== //
     // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
     MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
-    // Determine how many subscribes to subscribe each email address. Will take the first if exceeded.
+    // Determine how many subscribes to subscribe to each email address. Will take the first if exceeded.
     MAXIMUM_SUBSRIBES_COUNT: 2000,
     // Determine the milliseconds count timeout to wait before exit the application.
     MILLISECONDS_TIMEOUT_EXIT_APPLICATION: 1000,
@@ -60,7 +60,7 @@ const settings = {
     }),
 
     // ===DYNAMIC PATH=== //
-    // All the these paths will be calculated during runtime in the initiate service.
+    // All these paths will be calculated during runtime in the initiate service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
     // (Working example: 'C:\\Or\\Web\\spam-revenge\\spam-revenge').
@@ -82,7 +82,7 @@ const settings = {
     PACKAGE_LOCK_JSON_PATH: 'package-lock.json',
 
     // ===BACKUP=== //
-    // Determine the directories to ignore when an backup copy is taking place.
+    // Determine the directories to ignore when a backup copy is taking place.
     // For example: 'dist'.
     IGNORE_DIRECTORIES: ['.git', 'dist', 'node_modules', 'sources'],
     // Determine the files to ignore when the back copy is taking place.
@@ -94,7 +94,7 @@ const settings = {
     // Determine the period of time in milliseconds to
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
-    // Determine the number of time in loop to check for version of a backup.
+    // Determine the number of times in loop to check for version of a backup.
     // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50,

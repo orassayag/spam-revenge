@@ -18,7 +18,7 @@ class LogService {
 		this.i = 0;
 		this.frames = ['-', '\\', '|', '/'];
 		this.emptyValue = '##';
-		this.logSeperator = '==========';
+		this.logSeparator = '==========';
 		this.isLogs = true;
 	}
 
@@ -107,7 +107,7 @@ class LogService {
 		this.i = 0;
 		this.frames = ['-', '\\', '|', '/'];
 		this.emptyValue = '##';
-		this.logSeperator = '==========';
+		this.logSeparator = '==========';
 		this.isLogs = true;
 	}
 
@@ -246,7 +246,7 @@ class LogService {
 		lines.push(`Course URL: ${displayCourseURL}`);
 		lines.push(`Udemy URL: ${displayUdemyURL}`);
 		lines.push(`Result Details: ${displayResultDetails}`);
-		lines.push(`${this.logSeperator}${isLog ? '\n' : ''}`);
+		lines.push(`${this.logSeparator}${isLog ? '\n' : ''}`);
 		return lines.join('\n');
 	}
 
@@ -373,7 +373,7 @@ class LogService {
 				'Current Date': coursesCurrentDate
 			}, {
 				'Email': accountService.accountData.email,
-				'Password': accountService.accountData.asterixsPassword
+				'Password': accountService.accountData.asterixPassword
 			}, {
 				'Purchase': purchaseCount,
 				'Fail': failCount,
