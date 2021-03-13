@@ -42,7 +42,7 @@
     "ansi-escapes": "^4.3.1",
     "babel-eslint": "^10.1.0",
     "cli-cursor": "^3.1.0",
-    "eslint": "^7.21.0",
+    "eslint": "^7.22.0",
     "fs-extra": "^9.1.0",
     "ip-regex": "^4.3.0",
     "is-reachable": "^5.0.0",
