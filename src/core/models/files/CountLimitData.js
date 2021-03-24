@@ -2,9 +2,9 @@ class CountLimitData {
 
 	constructor(settings) {
 		// Set the parameters from the settings file.
-		const { MAXIMUM_EMAIL_ADDRESSSES_COUNT, MAXIMUM_SUBSRIBES_COUNT, MILLISECONDS_TIMEOUT_EXIT_APPLICATION,
+		const { MAXIMUM_EMAIL_ADDRESSES_COUNT, MAXIMUM_SUBSRIBES_COUNT, MILLISECONDS_TIMEOUT_EXIT_APPLICATION,
 			MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT, MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT } = settings;
-		this.maximumEmailAddressesCount = MAXIMUM_EMAIL_ADDRESSSES_COUNT;
+		this.maximumEmailAddressesCount = MAXIMUM_EMAIL_ADDRESSES_COUNT;
 		this.maximumSubscribesCount = MAXIMUM_SUBSRIBES_COUNT;
 		this.millisecondsTimeoutExitApplication = MILLISECONDS_TIMEOUT_EXIT_APPLICATION;
 		this.maximumValidateInternetConnectionRetriesCount = MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT;
@@ -15,7 +15,7 @@ class CountLimitData {
 module.exports = CountLimitData;
 
 /* 		    // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
-			MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
+			MAXIMUM_EMAIL_ADDRESSES_COUNT: 10,
 			// Determine how many subscribes to subscribe to each email address. Will take the first if exceeded.
 			MAXIMUM_SUBSRIBES_COUNT: 2000, */
 /* 		// Set the parameters from the settings file.

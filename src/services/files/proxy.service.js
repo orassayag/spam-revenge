@@ -189,8 +189,6 @@ source: 'proxyscrape-com'
             return null;
         }
 
-
-
         return new ProxyData(proxy);
     } */
 /*     initiate(settings) {

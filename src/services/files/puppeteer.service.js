@@ -309,7 +309,7 @@ class PuppeteerService {
             let isPasswordRequiredOnly = false;
             for (let i = 0; i < countLimitService.countLimitData.maximumUdemyLoginAttemptsCount; i++) {
                 // If no match for the email or password inputs, the page usually go to
-                // "Prove you are human" or "Your browser is too old" pages. Changing the user agent
+                // 'Prove you are human' or 'Your browser is too old' pages. Changing the user agent
                 // and reloading the page should solve this issue.
                 if (!await page.$(domService.loginEmailDOM) && !await page.$(domService.loginPasswordDOM)) {
                     await page.goto(applicationService.applicationData.udemyLoginURL, this.pageOptions);

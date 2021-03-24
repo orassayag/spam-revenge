@@ -11,7 +11,7 @@ class ValidationUtils {
         return Number(number) > 0;
     }
 
-    // This method checks if a given value is a valid number and returns the result.
+    // This method validates if a given value is a valid number and returns the result.
     isValidNumber(number) {
         number = Number(number);
         return !isNaN(number) && typeof number == 'number';
@@ -21,7 +21,7 @@ class ValidationUtils {
         return list && list.length > 0;
     }
 
-    // This method checks if a given variable is a valid boolean and returns the result.
+    // This method validates if a given variable is a valid boolean and returns the result.
     isValidBoolean(boolean) {
         return typeof boolean == typeof true;
     }

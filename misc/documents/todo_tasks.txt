@@ -23,11 +23,11 @@ ToDo tasks:
 ===[GENERAL] Time: 00.00:00:08 [-] | scam@wzdr.com (1/2) | Progress: 364/700 (64.24%) | Status: VALIDATION/SUBSCRIBE/PAUSE/EXIT/LIMIT_EXIDED===
 ===[PROXY] IP: 192.249.53.67 | Port: 64312===
 (The following data list in not updated, check again the list of statuses):
-===[PROCESS1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
+===[PROCESS1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
 ===[PROCESS2] Missing TextBox Field: 0 | Empty TextBox Field: 0 | Missing TextBox Value: 0 | Empty TextBox Value: 0===
 ===[PROCESS3] Missing Button Field: 0 | Empty Button Field: 0 | Missing Button Value: 0 | Empty Button Value: 0===
 ===[PROCESS4] URL Not Found: 2 | TextBox Not Found: 1 | Button Not Found: 2===
-===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
+===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
 ===[URL] https://www.netted.net/=== (cut maximum characters)
 ===[RESULT] Successfully subscribed===
 -Add error in a row logic + retries logic.
@@ -58,11 +58,11 @@ export default
 -Check spellings in files with 'files-spell-checking' project (both files and content).
 -Re-format all error numbers + last_index.txt file.
 -Clear all comments.
--Remove all debugger.
+-Remove all 'debugger' keywords.
 -Fix all misspells in all TXT files.
 -Format all documents.
 -Move all complete tasks to complete_tasks.txt.
--Verify all works good.
+-Verify all works well.
 -Update packages + verify all works as expected.
 -Try to find as many spam URLs as you can.
 -Clear all configurations, and keep only my email address in ignoreEmailAddress.js file.
@@ -74,7 +74,7 @@ export default
 01. Update the 'REMEMBER' section of this document.
 02. ' all the outcome of the crawling will be created' comment should be updated.
 03. Add to package.json file the 'INSTRUCTIONS.md' key in the files section (if it exists in the project).
-04. In the initate.service - const { Mode, ScriptType } = require('../../core/enums/files/system.enum'); - Need to change to ../../core/enums.
+04. In the 'initate.service - const { Mode, ScriptType } = require('../../core/enums/files/system.enum');' - Need to change to ../../core/enums.
 05. Check if async copyDirectory( is not with line break.
 06. Fix createDirectory - No need for await in createSessionDirectory method.
 07. "Validate internet connection works." => "Validate that the internet connection works."
@@ -88,7 +88,7 @@ export default
 15. Copy the logic of retry on check internet connection in all relevant projects.
 16. Accounts re-organization:
 a. Place the "Accounts" directory inside 'C:\Users\Or\Dropbox'.
-b. Reffer all the projects to this location.
+b. Refer all the projects to this location.
 c. Make sure that after each path change the project still works.
 
 Completed + canceled tasks:

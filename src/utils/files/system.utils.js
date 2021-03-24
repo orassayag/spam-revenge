@@ -17,7 +17,6 @@ class SystemUtils {
 module.exports = new SystemUtils();
 
 /*
-
     getErrorDetails(error) {
         let errorText = '';
         if (!error) {

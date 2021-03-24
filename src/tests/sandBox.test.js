@@ -3,7 +3,6 @@ require('../services/files/initiate.service').initiate('test');
 (async () => {
 })();
 
-
 /* const publicIp = require('public-ip');
 
 console.log(await publicIp.v6()); */
@@ -123,7 +122,6 @@ console.log(validateProxyFields(proxy)); */
 ['MISSING_SOURCE', 'MISSING SOURCE']
 ]); */
 
-
 /* const { validationUtils } = require('../utils'); */
 /*     const os = require('os');
     const networkInterfaces = os.networkInterfaces();
@@ -229,7 +227,6 @@ const getYourPublicIPAddress1 = () => {
     });
 };
 
-
 const getYourPublicIPAddress2 = () => {
     var os = require('os');
     var networkInterfaces = os.networkInterfaces();
@@ -237,7 +234,6 @@ const getYourPublicIPAddress2 = () => {
 }
 
 const verifyProxy = () => {
-
 
     const ProxyVerifier = require('proxy-verifier');
     const proxy = {

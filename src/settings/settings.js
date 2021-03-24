@@ -13,9 +13,9 @@ const settings = {
 
     // ===FLAG=== //
     // Determine if to simulate subscriptions (with delay) and proxy connection (=DEVELOPMENT)
-    // or to subscribe the target email addresses for REAL (PRODUCTION).
+    // or to subscribe the target email addresses for REAL (=PRODUCTION).
     IS_PRODUCTION_ENVIRONMENT: true,
-    // Determine if to puppeeter should connect via local connection (=false) or random proxy connection (=true).
+    // Determine if the puppeteer should connect via local connection (=false) or random proxy connection (=true).
     IS_PROXY_CONNECTION_ACTIVE: true,
     // Determine if to take random subscribes if exceeded (=true), or take them by the original order (=false).
     IS_RANDOM_SUBSCRIBES_EXCEEDED: false,
@@ -28,10 +28,10 @@ const settings = {
 
     // ===COUNT & LIMIT=== //
     // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
-    MAXIMUM_EMAIL_ADDRESSSES_COUNT: 10,
+    MAXIMUM_EMAIL_ADDRESSES_COUNT: 10,
     // Determine how many subscribes to subscribe to each email address. Will take the first if exceeded.
     MAXIMUM_SUBSRIBES_COUNT: 2000,
-    // Determine the milliseconds count timeout to wait before exit the application.
+    // Determine the milliseconds count timeout to wait before exiting the application.
     MILLISECONDS_TIMEOUT_EXIT_APPLICATION: 1000,
     // Determine the retries count to validate the internet connection.
     MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT: 5,
@@ -60,7 +60,7 @@ const settings = {
     }),
 
     // ===DYNAMIC PATH=== //
-    // All these paths will be calculated during runtime in the initiate service.
+    // All these paths will be calculated during runtime in the initial service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
     // (Working example: 'C:\\Or\\Web\\spam-revenge\\spam-revenge').
@@ -95,7 +95,7 @@ const settings = {
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
     // Determine the number of times in loop to check for version of a backup.
-    // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
+    // For example, if a backup name 'test-test-test-1' exists, it will check for 'test-test-test-2',
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50,
 
