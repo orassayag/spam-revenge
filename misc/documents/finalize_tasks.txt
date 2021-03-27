@@ -17,6 +17,8 @@ export default
 -File extensions should be upper case: JSON, TXT, etc.
 -Remove duplicate empty lines: \n\s*\n\s*\n
 -Remove last empty line: \n\s*$(?!\n)
+-Detect all comments without a dot at the end: ^// .*(?<!\.)$
+-Do all the 'ToDo' tasks.
 -Format all documents.
 -Verify all works well.
 -Fix TXT files spell mistakes via Gmail.
