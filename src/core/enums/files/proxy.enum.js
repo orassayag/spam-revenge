@@ -1,19 +1,19 @@
 const enumUtils = require('../enum.utils');
 
-const ProxyAnonymityLevel = enumUtils.createEnum([
+const ProxyAnonymityLevelEnum = enumUtils.createEnum([
     ['transparent', 'transparent'],
     ['anonymous', 'anonymous'],
     ['elite', 'elite']
 ]);
 
-const ProxyProtocol = enumUtils.createEnum([
+const ProxyProtocolEnum = enumUtils.createEnum([
     ['HTTP', 'http'],
     ['HTTPS', 'https'],
     ['SOCKS4', 'socks4'],
     ['SOCKS5', 'socks5']
 ]);
 
-const ProxyStatus = enumUtils.createEnum([
+const ProxyStatusEnum = enumUtils.createEnum([
     ['CREATE', 'CREATE'],
     ['VALID', 'VALID'],
     ['NO_DATA', 'NO DATA'],
@@ -30,12 +30,4 @@ const ProxyStatus = enumUtils.createEnum([
     ['MISSING_SOURCE', 'MISSING SOURCE']
 ]);
 
-module.exports = { ProxyAnonymityLevel, ProxyProtocol, ProxyStatus };
-/*         {
-            ipAddress: '1.221.173.148',
-            port: 4145,
-            anonymityLevel: 'elite',
-            protocols: [ 'socks4' ],
-            country: 'kr',
-            source: 'proxyscrape-com'
-          }, */
+module.exports = { ProxyAnonymityLevelEnum, ProxyProtocolEnum, ProxyStatusEnum };

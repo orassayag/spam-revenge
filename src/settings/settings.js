@@ -1,15 +1,14 @@
-const { Mode } = require('../core/enums');
+const { ModeEnum } = require('../core/enums');
 const { pathUtils } = require('../utils');
 
 const settings = {
     // ===GENERAL=== //
     // Determine the mode of the application. STANDARD/SILENT.
-    MODE: Mode.STANDARD,
+    MODE: ModeEnum.STANDARD,
     // Determine the target email address(es) to subscribe to spam services.
     EMAIL_ADDRESSES: ['test@test.com', 'test@test.com', 'test2@test.com'],
     // Determine the URL to check the local PC public IP address.
     PUBLIC_IP_ADDRESS_URL: 'https://api.ipify.org',
-    //PUBLIC_IP_ADDRESS_URL: 'https://ipinfo.io/json',
 
     // ===FLAG=== //
     // Determine if to simulate subscriptions (with delay) and proxy connection (=DEVELOPMENT)
@@ -30,7 +29,7 @@ const settings = {
     // Determine how many email addresses to subscribe to all the subscribes. Will take the first if exceeded.
     MAXIMUM_EMAIL_ADDRESSES_COUNT: 10,
     // Determine how many subscribes to subscribe to each email address. Will take the first if exceeded.
-    MAXIMUM_SUBSRIBES_COUNT: 2000,
+    MAXIMUM_SUBSCRIBES_COUNT: 2000,
     // Determine the milliseconds count timeout to wait before exiting the application.
     MILLISECONDS_TIMEOUT_EXIT_APPLICATION: 1000,
     // Determine the retries count to validate the internet connection.

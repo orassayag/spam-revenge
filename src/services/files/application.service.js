@@ -1,13 +1,13 @@
-const { ApplicationData } = require('../../core/models');
+const { ApplicationDataModel } = require('../../core/models');
 
 class ApplicationService {
 
     constructor() {
-        this.applicationData = null;
+        this.applicationDataModel = null;
     }
 
     initiate(data) {
-        this.applicationData = new ApplicationData(data);
+        this.applicationDataModel = new ApplicationDataModel(data);
     }
 }
 

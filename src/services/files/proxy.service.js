@@ -1,16 +1,16 @@
 const ProxyLists = require('proxy-lists');
-const { ProxyData } = require('../../core/models');
-const { ProxyAnonymityLevel, ProxyProtocol, ProxyStatus, Status } = require('../../core/enums');
+const { ProxyDataModel } = require('../../core/models');
+const { ProxyAnonymityLevelEnum, ProxyProtocolEnum, ProxyStatusEnum, StatusEnum } = require('../../core/enums');
 const { countriesCodesList } = require('../../configurations');
 const countLimitService = require('./countLimit.service');
 const puppeteerService = require('./puppeteer.service');
-const { textUtils, validationUtils } = require('../../utils');
 const globalUtils = require('../../utils/files/global.utils');
+const { textUtils, timeUtils, validationUtils } = require('../../utils');
 
 class ProxyService {
 
     constructor() {
-        this.proxyData = null;
+        this.proxyDataModel = null;
         this.lastProxyId = 1;
     }
 
@@ -18,12 +18,12 @@ class ProxyService {
         // Get the proxies list.
         let proxies = await this.getProxies();
         if (!validationUtils.isExists(proxies)) {
-            return { exitReason: Status.NO_PROXY_FOUND };
+            return { exitReason: StatusEnum.NO_PROXY_FOUND };
         }
         // Get random X proxies and try to find a valid one.
         proxies = textUtils.getElements({
             list: proxies,
-            count: countLimitService.countLimitData.maximumProxyValidationsRetriesCount,
+            count: countLimitService.countLimitDataModel.maximumProxyValidationsRetriesCount,
             isRandomIfExceeded: true
         });
         for (let i = 0; i < proxies.length; i++) {
@@ -34,120 +34,116 @@ class ProxyService {
         }
     }
 
-    setProxyStatus(proxyData, status) {
-        proxyData.status = status;
-        this.proxyData = proxyData;
-        return proxyData;
+    setProxyStatus(proxyDataModel, status) {
+        proxyDataModel.status = status;
+        this.proxyDataModel = proxyDataModel;
+        return proxyDataModel;
     }
 
     async validateProxy(proxy, indexId) {
-        let proxyData = new ProxyData({
+        let proxyDataModel = new ProxyDataModel({
             id: this.lastProxyId,
-            indexId: indexId
+            indexId: indexId,
+            creationDateTime: timeUtils.getCurrentDate()
         });
         // First, validate proxy fields.
-        proxyData = this.validateProxyFields({
+        proxyDataModel = this.validateProxyFields({
             proxy: proxy,
-            proxyData: proxyData
+            proxyDataModel: proxyDataModel
         });
         // Second, validate proxy connection.
-        return await this.validateProxyConnection(proxyData);
+        return await this.validateProxyConnection(proxyDataModel);
         // Third, validate proxy visibility.
     }
 
     validateProxyFields(data) {
         const { proxy } = data;
-        let { proxyData } = data;
-        proxyData = this.setProxyStatus(proxyData, ProxyStatus.CREATE);
+        let { proxyDataModel } = data;
+        proxyDataModel = this.setProxyStatus(proxyDataModel, ProxyStatusEnum.CREATE);
         if (!proxy) {
-            return this.setProxyStatus(proxyData, ProxyStatus.NO_DATA);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.NO_DATA);
         }
         // Validate IP address.
         if (!proxy.ipAddress) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_IP_ADDRESS);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_IP_ADDRESS);
         }
         if (!validationUtils.isValidIPAddress(proxy.ipAddress)) {
-            return this.setProxyStatus(proxyData, ProxyStatus.INVALID_IP_ADDRESS);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.INVALID_IP_ADDRESS);
         }
-        proxyData.ipAddress = proxy.ipAddress.trim();
+        proxyDataModel.ipAddress = proxy.ipAddress.trim();
         // Validate port.
         if (!proxy.port) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_PORT);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_PORT);
         }
         if (!validationUtils.isValidPort(proxy.port)) {
-            return this.setProxyStatus(proxyData, ProxyStatus.INVALID_PORT);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.INVALID_PORT);
         }
-        proxyData.port = proxy.port;
+        proxyDataModel.port = proxy.port;
         // Validate anonymity level.
         if (!proxy.anonymityLevel) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_ANONYMITY_LEVEL);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_ANONYMITY_LEVEL);
         }
-        proxyData.anonymityLevel = textUtils.toLowerCaseTrim(proxy.anonymityLevel);
+        proxyDataModel.anonymityLevel = textUtils.toLowerCaseTrim(proxy.anonymityLevel);
         if (!validationUtils.isValidEnum({
-            enum: ProxyAnonymityLevel,
-            value: proxyData.anonymityLevel
+            enum: ProxyAnonymityLevelEnum,
+            value: proxyDataModel.anonymityLevel
         })) {
-            return this.setProxyStatus(proxyData, ProxyStatus.INVALID_ANONYMITY_LEVEL);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.INVALID_ANONYMITY_LEVEL);
         }
         // Validate protocols.
         if (!validationUtils.isExists(proxy.protocols)) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_PROTOCOLS);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_PROTOCOLS);
         }
         for (let i = 0; i < proxy.protocols.length; i++) {
             const protocol = textUtils.toLowerCaseTrim(proxy.protocols[i]);
-            if (protocol === ProxyProtocol.SOCKS4) {
-                proxyData.protocol = protocol;
+            if (protocol === ProxyProtocolEnum.SOCKS4) {
+                proxyDataModel.protocol = protocol;
                 break;
             }
         }
-        if (!proxyData.protocol) {
-            return this.setProxyStatus(proxyData, ProxyStatus.INVALID_PROTOCOLS);
+        if (!proxyDataModel.protocol) {
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.INVALID_PROTOCOLS);
         }
         // Validate country.
         if (!proxy.country) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_COUNTRY);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_COUNTRY);
         }
-        proxyData.country = textUtils.toLowerCaseTrim(proxy.country);
-        if (countriesCodesList.indexOf(proxyData.country) === -1) {
-            return this.setProxyStatus(proxyData, ProxyStatus.INVALID_COUNTRY);
+        proxyDataModel.country = textUtils.toLowerCaseTrim(proxy.country);
+        if (countriesCodesList.indexOf(proxyDataModel.country) === -1) {
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.INVALID_COUNTRY);
         }
         // Validate source.
         if (!proxy.source) {
-            return this.setProxyStatus(proxyData, ProxyStatus.MISSING_SOURCE);
+            return this.setProxyStatus(proxyDataModel, ProxyStatusEnum.MISSING_SOURCE);
         }
-        proxyData.source = textUtils.toLowerCaseTrim(proxy.source);
-        return proxyData;
+        proxyDataModel.source = textUtils.toLowerCaseTrim(proxy.source);
+        return proxyDataModel;
     }
 
     async validateProxyConnection(proxyData) {
         const { ipAddress, port } = proxyData;
-        const responseData = await puppeteerService.getResponseData({
+        const responseDataModel = await puppeteerService.getResponseData({
             ipAddress: ipAddress,
             port: port
         });
-        return responseData.publicIPAddress;
+        return responseDataModel.publicIPAddress;
     }
 
-    validateProxyVisibility(proxyData) {
-
-    }
+    validateProxyVisibility() { }
 
     async getProxies() {
         return await new Promise((resolve, reject) => {
             ProxyLists.getProxies({
                 protocols: ['https']
-            })
-                .on('data', (proxies) => {
-                    // Received some proxies.
-                    resolve(proxies);
-                })
-                .on('error', (error) => {
-                    // Some error has occurred.
-                    reject(error);
-                })
-                .once('end', () => {
-                    // Done getting proxies.
-                });
+            }).on('data', (proxies) => {
+                // Received some proxies.
+                resolve(proxies);
+            }).on('error', (error) => {
+                // Some error has occurred.
+                reject(error);
+            }).once('end', () => {
+                // Done getting proxies.
+            });
         }).catch(error => {
             // ToDo: Remove this.
             console.log(error);
@@ -156,55 +152,3 @@ class ProxyService {
 }
 
 module.exports = new ProxyService();
-/*         console.log(proxyData); */
-/*         for (let i = 0; i < proxies.length; i++) {
-            const proxy = this.validateProxy(proxies[i]);
-            const responseData = await puppeteerService.getResponseData();
-        } */
-/*         {
-ipAddress: '1.221.173.148',
-port: 4145,
-anonymityLevel: 'elite',
-protocols: [ 'socks4' ],
-country: 'kr',
-source: 'proxyscrape-com'
-}, */
-
-/*     validateProxy(proxy) {
-        if (!proxy) {
-            return null;
-        }
-    } */
-
-/*     validateProxy(proxy) {
-        if (!proxy) {
-            return null;
-        }
-        // Validate IP address.
-        if (!proxy.ipAddress || !validationUtils.isValidIPAddress(proxy.ipAddress)) {
-            return null;
-        }
-        // Validate port.
-        if (!proxy.port || !validationUtils.isValidPort(proxy.port)) {
-            return null;
-        }
-
-        return new ProxyData(proxy);
-    } */
-/*     initiate(settings) {
-        // ===COUNT & LIMIT=== //
-        const { MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT } = settings;
-        this.maximumProxyValidationsRetriesCount = MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT;
-    } */
-/*         if (!validationUtils.isValidIPAddress(this.localData.localIPAddress)) {
-            throw new Error('Local localIPAddress data field contains invalid IP address (1000034)');
-        }
-        if (!validationUtils.isValidIPAddress(this.localData.subnetIPAddress)) {
-            throw new Error('Local subnetIPAddress data field contains invalid IP address (1000034)');
-        } */
-/* this.localIPAddress = ipv4Address;
-this.subnetIPAddress = subnetMask;
-this.publicIPAddress = null; */
-
-/* const { LocalData } = require('./LocalData'); */
-/* 		this.localData = new LocalData(); */

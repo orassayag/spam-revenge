@@ -1,4 +1,3 @@
-const kill = require('tree-kill');
 const logUtils = require('./log.utils');
 
 class SystemUtils {
@@ -15,24 +14,3 @@ class SystemUtils {
 }
 
 module.exports = new SystemUtils();
-
-/*
-    getErrorDetails(error) {
-        let errorText = '';
-        if (!error) {
-            return errorText;
-        }
-        if (error.message) {
-            errorText += error.message;
-        }
-        if (error.stack) {
-            errorText += error.stack;
-        }
-        return errorText;
-    }
-
-    killProcess(pid) {
-        if (pid) {
-            kill(pid);
-        }
-    } */

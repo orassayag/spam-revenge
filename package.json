@@ -1,9 +1,22 @@
 {
   "name": "spam-revenge",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "A Node.js + Puppeteer.js application to connect to a random proxy server and to subscribe email addresses to spam newsletters.",
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/spam-revenge.git"
+  },
+  "keywords": [
+    "spam",
+    "newsletter",
+    "newsletters",
+    "email",
+    "email address",
+    "email addresses",
+    "subscribe",
+    "proxy"
+  ],
   "license": "UNLICENSED",
   "author": "Or Assayag <orassayag@gmail.com>",
   "contributors": [
@@ -30,6 +43,7 @@
     "backup": "node src/scripts/backup.script.js",
     "start": "node src/scripts/subscribe.script.js",
     "sand": "node src/tests/sandBox.test.js",
+    "postinstall": "node src/scripts/initiate.script.js",
     "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [
@@ -39,21 +53,18 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "ansi-escapes": "^4.3.2",
     "babel-eslint": "^10.1.0",
-    "cli-cursor": "^3.1.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "fs-extra": "^9.1.0",
     "ip-regex": "^4.3.0",
     "is-reachable": "^5.0.0",
+    "log-update": "^4.0.0",
     "lorem-ipsum": "^2.0.3",
     "proxy-lists": "^1.23.1",
-    "puppeteer": "^8.0.0",
+    "puppeteer": "^9.0.0",
     "puppeteer-extra": "^3.1.17",
-    "puppeteer-extra-plugin-stealth": "^2.7.5",
+    "puppeteer-extra-plugin-stealth": "^2.7.8",
     "random-useragent": "^0.5.0",
-    "slice-ansi": "^4.0.0",
-    "tree-kill": "^1.2.2",
-    "wrap-ansi": "^7.0.0"
+    "tree-kill": "^1.2.2"
   }
 }

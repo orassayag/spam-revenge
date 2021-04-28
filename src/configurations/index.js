@@ -1,7 +1,5 @@
-const countriesCodesList = require('./files/countriesCodesList');
-const ignoreSubscribeURLsList = require('./files/ignoreSubscribeURLsList');
-const ignoreEmailAddressesList = require('./files/ignoreEmailAddressesList');
+const countriesCodesList = require('./files/countriesCodesList.configuration');
+const ignoreSubscribeURLsList = require('./files/ignoreSubscribeURLsList.configuration');
+const ignoreEmailAddressesList = require('./files/ignoreEmailAddressesList.configuration');
 
-module.exports = {
-    countriesCodesList, ignoreSubscribeURLsList, ignoreEmailAddressesList
-};
+module.exports = { countriesCodesList, ignoreSubscribeURLsList, ignoreEmailAddressesList };

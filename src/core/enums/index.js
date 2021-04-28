@@ -1,20 +1,10 @@
-const { Placeholder } = require('./files/placeholder.enum');
-const { ProxyAnonymityLevel, ProxyProtocol, ProxyStatus } = require('./files/proxy.enum');
-const { SubscribeStatus, SubscribeStatusLog } = require('./files/subscribe.enum');
-const { Environment, Method, Mode, ScriptType, Status } = require('./files/system.enum');
-const { StatusIcon, Color, ColorCode } = require('./files/text.enum');
+const { PlaceholderEnum } = require('./files/placeholder.enum');
+const { ProxyAnonymityLevelEnum, ProxyProtocolEnum, ProxyStatusEnum } = require('./files/proxy.enum');
+const { SubscribeStatusEnum, SubscribeStatusLogEnum } = require('./files/subscribe.enum');
+const { EnvironmentEnum, MethodEnum, ModeEnum, ScriptTypeEnum, StatusEnum } = require('./files/system.enum');
+const { StatusIconEnum, ColorEnum, ColorCodeEnum } = require('./files/text.enum');
 
 module.exports = {
-    Color, ColorCode, Environment, Method, Mode, ProxyAnonymityLevel, ProxyProtocol, ProxyStatus,
-    Placeholder, ScriptType, Status, StatusIcon, SubscribeStatus, SubscribeStatusLog
+    ColorEnum, ColorCodeEnum, EnvironmentEnum, MethodEnum, ModeEnum, ProxyAnonymityLevelEnum, ProxyProtocolEnum, ProxyStatusEnum,
+    PlaceholderEnum, ScriptTypeEnum, StatusEnum, StatusIconEnum, SubscribeStatusEnum, SubscribeStatusLogEnum
 };
-
-/* const { CourseStatus, CourseStatusLog, CourseType } = require('./files/course.enum');
-const { Placeholder } = require('./files/placeholder.enum');
-const { CoursesDatesType, Environment, Method, Mode, ScriptType, Status } = require('./files/system.enum');
-const { StatusIcon, Color, ColorCode } = require('./files/text.enum');
-
-module.exports = {
-    Color, ColorCode, CourseStatus, CourseStatusLog, CourseType, CoursesDatesType,
-    Environment, Method, Mode, Placeholder, ScriptType, Status, StatusIcon
-}; */

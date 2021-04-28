@@ -1,14 +1,15 @@
 # Spam Revenge
 
 Built in Match 2021. A Node.js + Puppeteer.js application to connect to a random proxy server and to subscribe email addresses to spam newsletters.
+Please note: The project is not finished yet and has been prospered until further notification.
 
 ## Getting Started
 
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. Terminal: npm i
-3. In terminal: npm start
+2. In the terminal: npm i
+3. In the terminal: npm start
 
 READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
@@ -17,7 +18,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 2. Read the full instructions guide in INSTRUCTIONS.md file.
 3. Run the script by 'npm start' and let the magic begin. :)
 
-In terminal: npm start
+In the terminal: npm start
 
 Happy testing! :)
 

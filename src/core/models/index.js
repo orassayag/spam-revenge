@@ -1,34 +1,18 @@
-const ApplicationData = require('./files/ApplicationData');
-const BackupData = require('./files/BackupData');
-const BackupDirectory = require('./files/BackupDirectory');
-const CountLimitData = require('./files/CountLimitData');
-const EmailAddressesData = require('./files/EmailAddressesData');
-const LocalData = require('./files/LocalData');
-const LogData = require('./files/LogData');
-const PathData = require('./files/PathData');
-const ProxyData = require('./files/ProxyData');
-const ResponseData = require('./files/ResponseData');
-const SubscribeData = require('./files/SubscribeData');
-const SubscribesData = require('./files/SubscribesData');
+const ApplicationDataModel = require('./files/ApplicationData.model');
+const BackupDataModel = require('./files/BackupData.model');
+const BackupDirectoryModel = require('./files/BackupDirectory.model');
+const CountLimitDataModel = require('./files/CountLimitData.model');
+const EmailAddressesDataModel = require('./files/EmailAddressesData.model');
+const LocalDataModel = require('./files/LocalData.model');
+const LogDataModel = require('./files/LogData.model');
+const PathDataModel = require('./files/PathData.model');
+const ProxyDataModel = require('./files/ProxyData.model');
+const ResponseDataModel = require('./files/ResponseData.model');
+const SubscribeDataModel = require('./files/SubscribeData.model');
+const SubscribesDataModel = require('./files/SubscribesData.model');
 
 module.exports = {
-    ApplicationData, BackupData, BackupDirectory, CountLimitData, EmailAddressesData,
-    LogData, LocalData, PathData, ProxyData, ResponseData, SubscribeData,
-    SubscribesData
+    ApplicationDataModel, BackupDataModel, BackupDirectoryModel, CountLimitDataModel, EmailAddressesDataModel,
+    LogDataModel, LocalDataModel, PathDataModel, ProxyDataModel, ResponseDataModel, SubscribeDataModel,
+    SubscribesDataModel
 };
-
-/* const AccountData = require('./files/AccountData');
-const ApplicationData = require('./files/ApplicationData');
-const BackupData = require('./files/BackupData');
-const BackupDirectory = require('./files/BackupDirectory');
-const CountLimitData = require('./files/CountLimitData');
-const CourseData = require('./files/CourseData');
-const CoursesData = require('./files/CoursesData');
-const CoursesDatesResult = require('./files/CoursesDatesResult');
-const LogData = require('./files/LogData');
-const PathData = require('./files/PathData');
-
-module.exports = {
-    AccountData, ApplicationData, BackupData, BackupDirectory, CountLimitData, CourseData,
-    CoursesData, CoursesDatesResult, LogData, PathData
-}; */

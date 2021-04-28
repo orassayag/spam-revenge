@@ -1,11 +1,11 @@
-const { Environment } = require('../../core/enums');
+const { EnvironmentEnum } = require('../../core/enums');
 
 class ApplicationUtils {
 
     constructor() { }
 
     getApplicationEnvironment(isProductionEnvironment) {
-        return isProductionEnvironment ? Environment.PRODUCTION : Environment.DEVELOPMENT;
+        return isProductionEnvironment ? EnvironmentEnum.PRODUCTION : EnvironmentEnum.DEVELOPMENT;
     }
 }
 

@@ -1,13 +1,13 @@
-const { PathData } = require('../../core/models');
+const { PathDataModel } = require('../../core/models');
 
 class PathService {
 
     constructor() {
-        this.pathData = null;
+        this.pathDataModel = null;
     }
 
     initiate(settings) {
-        this.pathData = new PathData(settings);
+        this.pathDataModel = new PathDataModel(settings);
     }
 }
 

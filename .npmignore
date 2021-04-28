@@ -20,17 +20,17 @@ dist/
 /dist
 dist
 
-# Misc.
-**/misc/backup/
-/misc/backup
-misc/backup/
-/misc/backup/
-misc/backup
-
 # Sources.
 sources/
 /sources
 sources
+
+# Misc.
+**/misc/backups/
+/misc/backups
+misc/backups/
+/misc/backups/
+misc/backups
 
 # Logs.
 /logs

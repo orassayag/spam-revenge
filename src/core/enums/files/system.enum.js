@@ -1,27 +1,28 @@
 const enumUtils = require('../enum.utils');
 
-const Environment = enumUtils.createEnum([
+const EnvironmentEnum = enumUtils.createEnum([
     ['PRODUCTION', 'PRODUCTION'],
     ['DEVELOPMENT', 'DEVELOPMENT']
 ]);
 
-const Method = enumUtils.createEnum([
+const MethodEnum = enumUtils.createEnum([
     ['STANDARD', 'STANDARD'],
     ['RANDOM', 'RANDOM']
 ]);
 
-const Mode = enumUtils.createEnum([
+const ModeEnum = enumUtils.createEnum([
     ['STANDARD', 'STANDARD'],
     ['SILENT', 'SILENT']
 ]);
 
-const ScriptType = enumUtils.createEnum([
+const ScriptTypeEnum = enumUtils.createEnum([
+    ['INITIATE', 'initiate'],
     ['BACKUP', 'backup'],
     ['SUBSCRIBE', 'subscribe'],
     ['TEST', 'test']
 ]);
 
-const Status = enumUtils.createEnum([
+const StatusEnum = enumUtils.createEnum([
     ['ABORT_BY_THE_USER', 'ABORT BY THE USER'],
     ['INITIATE', 'INITIATE'],
     ['VALIDATE', 'VALIDATE'],
@@ -36,4 +37,4 @@ const Status = enumUtils.createEnum([
     ['FINISH', 'FINISH']
 ]);
 
-module.exports = { Environment, Method, Mode, ScriptType, Status };
+module.exports = { EnvironmentEnum, MethodEnum, ModeEnum, ScriptTypeEnum, StatusEnum };

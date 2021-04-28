@@ -1,4 +1,4 @@
 -Spam-Re
 -Make a verification that it's not a local ip.
 -Show ip: https://api.ipify.org/
-White@yv7p.com
+-Spammer address: White@yv7p.com

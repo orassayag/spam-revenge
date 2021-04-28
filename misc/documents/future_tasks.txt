@@ -1,0 +1,81 @@
+Future tasks:
+=============
+-Remove all unneeded proxy logics, settings, and packages + local ip data and all of that.
+-Add option to use a proxy IP address and port (socks4). If flag proxy enabled, validate the settings and add the proxy to the connection.
+-Third logic - Register new email address + Make a sample of subscription to spam. Await for textbox and button to load.
+-If the text box or the button doesn't exist, or the URL failed to be loaded, add to fail and continue to the next one.
+-Once button was clicked, wait at least 5 seconds before moving to the next spam URL (from settings.js).
+-Make a delay between each subscription.
+-Each subscribe / failed log the URL address to the relevant log file.
+-The console status logic should look like this:
+===[SETTINGS] Mode: PRODUCTION | Method: STANDARD/RANDOM | Maximum Limit: ## | Emails: 1===
+===[GENERAL] Time: 00.00:00:08 [-] | scam@wzdr.com (1/2) | Progress: 364/700 (64.24%) | Status: VALIDATION/SUBSCRIBE/PAUSE/EXIT/LIMIT_EXIDED===
+===[PROXY] IP: 192.249.53.67 | Port: 64312===
+(The following data list in not updated, check again the list of statuses):
+===[PROCESS1] Subscribe: ✅  364 | Fail: ❌  0 | Create: 700 | Missing URL: 1 | Empty URL: 3 | Invalid URL: 3===
+===[PROCESS2] Missing TextBox Field: 0 | Empty TextBox Field: 0 | Missing TextBox Value: 0 | Empty TextBox Value: 0===
+===[PROCESS3] Missing Button Field: 0 | Empty Button Field: 0 | Missing Button Value: 0 | Empty Button Value: 0===
+===[PROCESS4] URL Not Found: 2 | TextBox Not Found: 1 | Button Not Found: 2===
+===[USER AGENT] Mozilla/5.0 (Linux; U; Android 1.5; en-us; T-Mobile G1 Build/CRB43) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Sa=== (cut maximum characters)
+===[URL] https://www.netted.net/=== (cut maximum characters)
+===[RESULT] Successfully subscribed===
+-Add error in a row logic + retries logic.
+-Each log file will be with the email address of the subscription, for example: test1@gmail.com-subscribe_valid_03042021.txt
+-Each log structure will be as the following:
+==========
+Time: 23:17:22 | Id: 1 | Index Id: 0 | Creation Date Time: 27/02/2021 22:43:23
+URL Address: http://www.test.com
+Status: SUBSCRIBE
+Result Details: Subscribed successfully.
+==========
+-In all places change to use isExists instead of .length > 0 or .length <= 0.
+-After clicking on the submit button in each subscription, wait for 5 seconds (from settings.js).
+-Create example in the examples directory to the JSON file.
+-Write on READEME.md file that the sources of subscribe-list.json are not attached in order no to spam attack myself.
+-Edit the 'INSTRUCTIONS.md' and the 'README.md' files.
+-On the README.md file write a note that the local data tested only on Windows 10 platform.
+-Edit the package.json file and re-create the package-lock.json.
+-Sort imports and delete duplicates.
+-Do all the ToDo points.
+-Clear the email addresses in settings.js
+-Make sure spaces in all files between bottom, need to fix cases like this:
+}
+module.exports
+}
+export default
+-Replace all 'let' to 'const' and where no bugs - change it.
+-Check spellings in files with 'files-spell-checking' project (both files and content).
+-Re-format all error numbers + last_index.txt file.
+-Clear all comments.
+-Remove all 'debugger' keywords.
+-Fix all misspells in all TXT files.
+-Format all documents.
+-Move all complete tasks to complete_tasks.txt.
+-Verify all works well.
+-Update packages + verify all works as expected.
+-Try to find as many spam URLs as you can.
+-Clear all configurations, and keep only my email address in ignoreEmailAddress.js file.
+-Make a final test - Register a new email + Subscribe to all spam at once.
+-Upload to GitHub.
+-In the end, delete the .git directory.
+-Backup iOmega.
+-In all the maintenance projects:
+01. Update the 'REMEMBER' section of this document.
+02. ' all the outcome of the crawling will be created' comment should be updated.
+03. Add to package.json file the 'INSTRUCTIONS.md' key in the files section (if it exists in the project).
+04. In the 'initate.service - const { Mode, ScriptType } = require('../../core/enums/files/system.enum');' - Need to change to ../../core/enums.
+05. Check if async copyDirectory( is not with line break.
+06. Fix createDirectory - No need for await in createSessionDirectory method.
+07. 'Validate internet connection works.' => 'Validate that the internet connection works.'
+08. 'Sending emails processes.' in udemy-courses project.
+09. Rename the function 'getFileData' to 'getJsonFileData'.
+10. Copy the logic of 'this.updateStatus' to all change statuses in the main script file.
+11. On udemy-courses project, change the 'validate' and 'compare' functions to 'validateFields' and 'compareCourses'.
+12. On udemy-courses project, change 'isExpectedFilled' to 'isFilledExpected'.
+13. Change all functions names that return true/false to 'isValidXXX' in validationUtils.
+14. -In all places change to use isExists instead of .length > 0 or .length <= 0.
+15. Copy the logic of retry on check internet connection in all relevant projects.
+16. Accounts re-organization:
+a. Place the 'Accounts' directory inside 'C:\Users\Or\Dropbox'.
+b. Refer all the projects to this location.
+c. Make sure that after each path change the project still works.

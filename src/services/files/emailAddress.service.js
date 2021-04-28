@@ -1,4 +1,4 @@
-const { EmailAddressesData } = require('../../core/models');
+const { EmailAddressesDataModel } = require('../../core/models');
 const { ignoreEmailAddressesList } = require('../../configurations');
 const countLimitService = require('./countLimit.service');
 const { textUtils, validationUtils } = require('../../utils');
@@ -7,7 +7,7 @@ class EmailAddressService {
 
     constructor() {
         this.emailAddressesArray = null;
-        this.emailAddressesData = null;
+        this.emailAddressesDataModel = null;
     }
 
     initiate(settings) {
@@ -15,30 +15,30 @@ class EmailAddressService {
         const { EMAIL_ADDRESSES } = settings;
         this.emailAddressesArray = EMAIL_ADDRESSES;
         if (!validationUtils.isExists(this.emailAddressesArray)) {
-            throw new Error('No valid email addresses to subscribe were found (1000045)');
+            throw new Error('No valid email addresses to subscribe were found (1000003)');
         }
     }
 
     setEmailAddressesList() {
-        this.emailAddressesData = new EmailAddressesData();
+        this.emailAddressesDataModel = new EmailAddressesDataModel();
         // Validate all the email addresses from settings.
         for (let i = 0; i < this.emailAddressesArray.length; i++) {
             const emailAddress = this.emailAddressesArray[i];
             if (this.validateEmailAddress(emailAddress)) {
-                this.emailAddressesData.emailAddressesList.push(emailAddress);
+                this.emailAddressesDataModel.emailAddressesList.push(emailAddress);
             }
         }
         // Clear duplicates.
-        this.emailAddressesData.emailAddressesList = textUtils.removeDuplicates(this.emailAddressesData.emailAddressesList);
+        this.emailAddressesDataModel.emailAddressesList = textUtils.removeDuplicates(this.emailAddressesDataModel.emailAddressesList);
         // Check if exceeded, take first X elements.
-        this.emailAddressesData.emailAddressesList = textUtils.getElements({
-            list: this.emailAddressesData.emailAddressesList,
-            count: countLimitService.countLimitData.maximumEmailAddressesCount,
+        this.emailAddressesDataModel.emailAddressesList = textUtils.getElements({
+            list: this.emailAddressesDataModel.emailAddressesList,
+            count: countLimitService.countLimitDataModel.maximumEmailAddressesCount,
             isRandomIfExceeded: false
         });
         // Validate the existence of at least one valid email address.
-        if (!validationUtils.isExists(this.emailAddressesData.emailAddressesList)) {
-            throw new Error('No valid email addresses to subscribe were found (1000045)');
+        if (!validationUtils.isExists(this.emailAddressesDataModel.emailAddressesList)) {
+            throw new Error('No valid email addresses to subscribe were found (1000004)');
         }
     }
 
@@ -57,24 +57,3 @@ class EmailAddressService {
 }
 
 module.exports = new EmailAddressService();
-        /*         this.emailAddressesData.emailAddressesList = textUtils.getElements(this.emailAddressesData.emailAddressesList,
-                    countLimitService.countLimitData.maximumEmailAddressesCount, false); */
-/*         console.log(this.emailAddressesData.emailAddressesList); */
-        //this.emailAddressesData.emailAddressesList.slice(0, countLimitService.countLimitData.maximumEmailAddressesCount);
-/*         console.log(this.emailAddressesData.emailAddressesList); */
-/*     setEmailAddressesList(settings) {
-        // ===GENERAL=== //
-        const { TARGET_EMAIL_ADDRESSES } = settings;
-        this.emailAddressesData = new EmailAddressesData();
-        // Validate all the email addresses from settings.
-        for (let i = 0; i < TARGET_EMAIL_ADDRESSES.length; i++) {
-            const emailAddress = TARGET_EMAIL_ADDRESSES[i];
-            if (this.validateEmailAddress(emailAddress)) {
-                this.emailAddressesData.emailAddressesList.push(emailAddress);
-            }
-        }
-        // Validate the existence of at least 1 email address.
-        if (!validationUtils.isExists(this.emailAddressesData.emailAddressesList)) {
-            throw new Error('No valid email addresses to subscribe were found (1000045)');
-        }
-    } */

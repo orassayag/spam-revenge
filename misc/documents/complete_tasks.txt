@@ -1,5 +1,75 @@
 Completed + canceled tasks:
 ===========================
+-Remove code comments to a backup TXT file. *
+-Due to the break changes of log-update packages, there is a need to use the 'postinstall' script to fix the direct file: *
+1. Remove the 'wrap-ansi', 'slice-ansi', 'cli-cursor', 'ansi-escapes' packages from the 'package.json' file. *
+2. Delete the 'log-update' directory. *
+3. Install the original 'log-update' package. *
+4. Change in the 'log.utils' file to use the 'require('log-update');' syntax. *
+5. Add the postinstall script, add the 'script/initiate.js' file. *
+6. Add the 'INITIATE' key/value to the ScriptType enum. *
+7. Add the 'postinstall' script to the 'package.json file'. *
+8. Run in the terminal 'npm i' + Recreate the 'package-lock.json' file. *
+9. Format the 2 files. *
+10. Make sure all work as expected. *
+-Update packages + Recreate package-lock.json. *
+-Remove code comments to a backup TXT file. *
+-Convert " to ' in the relevant places. *
+-Remove all 'debugger' keywords. *
+-Recheck error numbers in error_index.txt. *
+-Check 'let' needs to be converted to 'const'. *
+-Check places to change from simple parameters with dynamic objects to classes. *
+-Make sure all comments '//' have: 1. space 2. ends with a dot. *
+-Make sure 'id' => 'Id', 'url' => 'URL', 'api' => 'API'. *
+-Make sure spaces in all files between bottom, need to fix cases like this: *
+} *
+module.exports *
+} *
+export default *
+-Change all '.length > 0' to 'isExists'. *
+-Change all (where it's possible) from 'console.log' to 'logUtils.log'. *
+-Remove duplicate import/require (convert to index.js if possible). *
+-Sort alphabetically all the imports/requires by https://alphabetizer.flap.tv/. *
+-Sort alphabetically all the imports/requires: external packages, settings, (containers, components, store, assert) *
+data, models, enums, services, utils. *
+-File extensions should be upper case: JSON, TXT, etc. *
+-Remove the space lines inside methods and functions. *
+-Remove the duplicate empty lines: \n\s*\n\s*\n *
+-Remove the first empty line: ^(?<![\s])\n *
+-Remove the last empty line: \n\s*$(?!\n) *
+-Detect all comments without a dot at the end: ^// .*(?<!\.)$ *
+-Make sure all switch-case have curly braces. *
+-Clear unused enums and make sure all in used really exists - Canceled. *
+-Search for 'async ' and create a list of functions/methods, and make sure that all calls have await. *
+-Scan all files for spell mistakes with the 'files-spell-checker' project. *
+-Do all the 'ToDo' tasks - Canceled. *
+-Format all documents. *
+-Verify all works well. *
+-Change 'misc/backups' to 'misc/backup'. *
+-Make sure all switch-case have curly braces. *
+-Scan all files for spell mistakes with the 'files-spell-checker' project. *
+-In the 'package.json' file change to 'private: false'. *
+-Convert in all places from all versions of canceled keyword to 'Canceled' keyword. *
+-Add in all places 'name.model' to all models. *
+-Check that in all places the name of the file includes the name of tha parent directory. For example: name.model inside 'models' directory. *
+-Don't forget to do the same rename logic for all the enums in the project. *
+-Replace the 'getCurrentDate' method with the updated one from the 'udemy-courses' project. *
+-Change in all places the config from 'misc/backup' to 'misc/backups' directory. *
+-Remove code comments to a backup TXT file. *
+-Take the latest settings from '.vscode/settings.json' and implement them. *
+-Change in all places that globalUtils will be on top. *
+-Copy the '.eslintignore' file from the 'udemy-courses' project. *
+-Add to the 'package.json' file (below the 'description' field) the 'repository' field: *
+"repository": { *
+  "type": "git", *
+  "url": "git://github.com/username/repository.git" *
+} *
+-Add comment in INSTRUCTIONS.md and in the 'README.md' files that the project is not complete yet. *
+-Move all tasks here to new file - 'future_tasks.txt'. *
+-Fix TXT files spell mistakes via Gmail (Also, convert '_' to ' ' in all places when checking). *
+-Move all complete tasks from here to complete_tasks.txt. *
+-Upload to GitHub. *
+-Backup to iOmega. *
 -Fix all spell mistakes via Gmail. *
 -Upload to GitHub. *
 -Update iOmega. *
@@ -9,7 +79,7 @@ Completed + canceled tasks:
 -Add flag to use proxy or not. If not, don't need local data, and proxy random, just subscribe logic. *
 -Add validation that if PRODUCTION and this flag is false, exit. *
 -Second logic - Find a working proxy and test it. Validate all IP addresses and ports + Make sure not any of *
- local or public IP addresses are included in any header of the proxy. *
+ local or public IP addresses are included in any header of the proxy. *
 -If the proxy is not working - Random another one and repeat the process of validation. Random the proxies from different sources. *
 -If it works - Start the third part. *
 -Check for duplicates: *

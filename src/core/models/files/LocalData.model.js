@@ -1,6 +1,6 @@
-class LocalData {
+class LocalDataModel {
 
-	constructor(data) {
+    constructor(data) {
         const { ipv4Address, subnetMask } = data;
         this.localIPAddress = ipv4Address;
         this.subnetIPAddress = subnetMask;
@@ -8,6 +8,4 @@ class LocalData {
     }
 }
 
-module.exports = LocalData;
-/* ipv4Address: address,
-subnetMask: netmask */
+module.exports = LocalDataModel;

@@ -1,7 +1,7 @@
 const settings = require('../../settings/settings');
-const { Mode, ScriptType } = require('../../core/enums');
-const { fileUtils, pathUtils, validationUtils } = require('../../utils');
+const { ModeEnum, ScriptTypeEnum } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
+const { fileUtils, pathUtils, validationUtils } = require('../../utils');
 
 class InitiateService {
 
@@ -45,17 +45,17 @@ class InitiateService {
 
 	validateScriptType() {
 		if (!this.scriptType || !validationUtils.isValidEnum({
-			enum: ScriptType,
+			enum: ScriptTypeEnum,
 			value: this.scriptType
 		})) {
-			throw new Error('Invalid or no ScriptType parameter was found (1000014)');
+			throw new Error('Invalid or no ScriptTypeEnum parameter was found (1000005)');
 		}
 	}
 
 	validateSettings() {
 		// Validate the settings object existence.
 		if (!settings) {
-			throw new Error('Invalid or no settings object was found (1000015)');
+			throw new Error('Invalid or no settings object was found (1000006)');
 		}
 		this.validatePositiveNumbers();
 		this.validateStrings();
@@ -70,7 +70,7 @@ class InitiateService {
 			DIST_PATH, NODE_MODULES_PATH, PACKAGE_JSON_PATH, PACKAGE_LOCK_JSON_PATH } = settings;
 		// ===DYNAMIC PATH=== //
 		settings.APPLICATION_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: APPLICATION_PATH });
-		if (this.scriptType === ScriptType.BACKUP) {
+		if (this.scriptType === ScriptTypeEnum.BACKUP) {
 			settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });
 		}
 		settings.DIST_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: DIST_PATH });
@@ -82,20 +82,20 @@ class InitiateService {
 	validatePositiveNumbers() {
 		[
 			// ===COUNT & LIMIT=== //
-			'MAXIMUM_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_SUBSRIBES_COUNT', 'MILLISECONDS_TIMEOUT_EXIT_APPLICATION',
+			'MAXIMUM_EMAIL_ADDRESSES_COUNT', 'MAXIMUM_SUBSCRIBES_COUNT', 'MILLISECONDS_TIMEOUT_EXIT_APPLICATION',
 			'MAXIMUM_VALIDATE_INTERNET_CONNECTION_RETRIES_COUNT', 'MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT',
 			// ===BACKUP=== //
 			'MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT', 'BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT'
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isPositiveNumber(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000016)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a number but received: ${value} (1000007)`);
 			}
 		});
 	}
 
 	validateStrings() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH'] : [];
 		[
 			...keys,
 			// ===GENERAL=== //
@@ -106,7 +106,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isExists(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a string but received: ${value} (1000017)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a string but received: ${value} (1000008)`);
 			}
 		});
 	}
@@ -120,7 +120,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidBoolean(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a boolean but received: ${value} (1000018)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a boolean but received: ${value} (1000009)`);
 			}
 		});
 	}
@@ -134,7 +134,7 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidArray(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a array but received: ${value} (1000019)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a array but received: ${value} (1000010)`);
 			}
 		});
 	}
@@ -143,10 +143,10 @@ class InitiateService {
 		const { MODE } = settings;
 		// ===GENERAL=== //
 		if (!validationUtils.isValidEnum({
-			enum: Mode,
+			enum: ModeEnum,
 			value: MODE
 		})) {
-			throw new Error('Invalid or no MODE parameter was found (1000020)');
+			throw new Error('Invalid or no MODE parameter was found (1000011)');
 		}
 	}
 
@@ -159,13 +159,13 @@ class InitiateService {
 		].map(key => {
 			const value = settings[key];
 			if (!validationUtils.isValidURL(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a URL but received: ${value} (1000019)`);
+				throw new Error(`Invalid or no ${key} parameter was found: Expected a URL but received: ${value} (1000012)`);
 			}
 		});
 	}
 
 	validateDirectories() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH'] : [];
 		[
 			...keys,
 			// ===ROOT PATH=== //
@@ -187,7 +187,7 @@ class InitiateService {
 			const value = settings[key];
 			// Verify that the paths are of directory and not a file.
 			if (!fileUtils.isDirectoryPath(value)) {
-				throw new Error(`The parameter path ${key} marked as directory but it's a path of a file: ${value} (1000023)`);
+				throw new Error(`The parameter path ${key} marked as directory but it's a path of a file: ${value} (1000013)`);
 			}
 		});
 	}
@@ -205,42 +205,3 @@ class InitiateService {
 }
 
 module.exports = new InitiateService();
-/* 		const { PUBLIC_IP_URL, ALIDATION_CONNECTION_LINK } = settings;
-		// ===VALIDATION=== //
-		if (!validationUtils.isValidURL(VALIDATION_CONNECTION_LINK)) {
-			throw new Error('Invalid or no VALIDATION_CONNECTION_LINK parameter was found (1000030)');
-		} */
-/* 		[
-			// ===GENERAL=== //
-		].map(key => {
-			const value = settings[key];
-			if (!validationUtils.isValidURL(value)) {
-				throw new Error(`Invalid or no ${key} parameter was found: Expected a URL but received: ${value} (1000021)`);
-			}
-		}); */
-/**/
-/* 	    // ===GENERAL=== //
-// Determine the mode of the application. STANDARD/SILENT.
-MODE: Mode.STANDARD,
-// Determine the target email address(es) to subscribe to spam services.
-TARGET_EMAIL_ADDRESSES: [],
-
-// ===FLAG=== //
-// Determine if to simulate subscriptions and proxy connection (=DEVELOPMENT)
-// or to subscribe to the target email addresses for REAL (PRODUCTION).
-IS_PRODUCTION_ENVIRONMENT: true,
-// Determine if to puppeeter should connect via local connection (=false) or random proxy connection (=true).
-IS_PROXY_CONNECTION_ACTIVE: true,
-
-// ===LOG=== //
-// Determine if to log the valid subscriptions.
-IS_LOG_SUBSCRIBE_VALID: true,
-// Determine if to log the invalid subscriptions.
-IS_LOG_SUBSCRIBE_INVALID: true, */
-
-/*
-
-/* 'DIST_PATH',  */
-/* 'DIST_PATH',  */
-/* DIST_PATH,  */
-/* 		settings.DIST_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: DIST_PATH }); */

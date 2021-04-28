@@ -3,12 +3,12 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 Try the new cross-platform PowerShell https://aka.ms/pscore6
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm i
+PS C:\Web\spam-revenge\spam-revenge> npm i
 
-> puppeteer@8.0.0 install C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer
+> puppeteer@8.0.0 install C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer
 
 Downloading Chromium r856583 - 164.6 Mb [====================] 100% 0.0s
-Chromium (856583) downloaded to C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\.local-chromium\win64-856583
+Chromium (856583) downloaded to C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\.local-chromium\win64-856583
 added 340 packages from 284 contributors and audited 341 packages in 38.397s
 
 33 packages are looking for funding
@@ -16,7 +16,7 @@ added 340 packages from 284 contributors and audited 341 packages in 38.397s
 
 found 0 vulnerabilities
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm i proxy-verifier
+PS C:\Web\spam-revenge\spam-revenge> npm i proxy-verifier
 npm WARN deprecated request@2.88.0: request has been deprecated, see https://github.com/request/request/issues/3142
 + proxy-verifier@0.4.1
 added 68 packages from 45 contributors and audited 409 packages in 14.75s
@@ -26,7 +26,7 @@ added 68 packages from 45 contributors and audited 409 packages in 14.75s
 
 found 1 low severity vulnerability
   run `npm audit fix` to fix them, or `npm audit` for details
-PS C:\Or\Web\spam-revenge\spam-revenge> npm audit
+PS C:\Web\spam-revenge\spam-revenge> npm audit
 
                        === npm audit security report ===
 
@@ -34,7 +34,6 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm audit
              Some vulnerabilities require your attention to resolve
 
           Visit https://go.npm.me/audit-guide for additional guidance
-
 
   Low             Prototype Pollution
 
@@ -49,88 +48,88 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm audit
 
 found 1 low severity vulnerability in 409 scanned packages
   1 vulnerability requires manual review. See the full report for details.
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-Error: targetPath not exists: C:\Or\Web\spam-revenge\udemy-courses (1000029)
-    at C:\Or\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:189:16
+Error: targetPath not exists: C:\Web\spam-revenge\udemy-courses (1000029)
+    at C:\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:189:16
     at Array.map (<anonymous>)
-    at InitiateService.validateDirectories (C:\Or\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:186:5)
-    at InitiateService.initiate (C:\Or\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:23:8)
+    at InitiateService.validateDirectories (C:\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:186:5)
+    at InitiateService.initiate (C:\Web\spam-revenge\spam-revenge\src\services\files\initiate.service.js:23:8)
     at Module._compile (internal/modules/cjs/loader.js:1063:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
     at Module.load (internal/modules/cjs/loader.js:928:32)
     at Function.Module._load (internal/modules/cjs/loader.js:769:14)
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 transparent
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
-> node src/tests/sandBox.test.js
-
-transparent
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 transparent
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
-
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:153:16
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
-    at check (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
-    at Timeout.next [as _onTimeout] (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
+transparent
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
+
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
+> node src/tests/sandBox.test.js
+
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:153:16
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
+    at check (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
+    at Timeout.next [as _onTimeout] (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
     at listOnTimeout (internal/timers.js:554:17)
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks4: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { SOCKS4: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks4: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -138,41 +137,41 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   anonymityLevel: null,
   tunnel: { ok: false }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
   protocols: { https: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:153:16
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
-    at check (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
-    at Timeout.next [as _onTimeout] (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:153:16
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
+    at check (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
+    at Timeout.next [as _onTimeout] (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
     at listOnTimeout (internal/timers.js:554:17)
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks4: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -180,22 +179,22 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   tunnel: { ok: true },
   protocols: { socks4: { ok: true } }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 {
   anonymityLevel: 'transparent',
   tunnel: { ok: true },
   protocols: { socks4: { ok: true } }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm i proxy-lists
+PS C:\Web\spam-revenge\spam-revenge> npm i proxy-lists
 
-> puppeteer@5.2.0 install C:\Or\Web\spam-revenge\spam-revenge\node_modules\data-sourcer\node_modules\puppeteer
+> puppeteer@5.2.0 install C:\Web\spam-revenge\spam-revenge\node_modules\data-sourcer\node_modules\puppeteer
 > node install.js
 
 Downloading Chromium r768783 - 146.4 Mb [====================] 100% 0.0s
-Chromium (768783) downloaded to C:\Or\Web\spam-revenge\spam-revenge\node_modules\data-sourcer\node_modules\puppeteer\.local-chromium\win64-768783
+Chromium (768783) downloaded to C:\Web\spam-revenge\spam-revenge\node_modules\data-sourcer\node_modules\puppeteer\.local-chromium\win64-768783
 + proxy-lists@1.23.1
 added 26 packages from 70 contributors and audited 435 packages in 41.591s
 
@@ -204,9 +203,9 @@ added 26 packages from 70 contributors and audited 435 packages in 41.591s
 
 found 1 low severity vulnerability
   run `npm audit fix` to fix them, or `npm audit` for details
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 got some proxies
@@ -2507,18 +2506,18 @@ got some proxies
 ]
 
 ^C
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
   anonymityLevel: 'transparent',
   tunnel: { ok: true },
   protocols: { socks4: { ok: true } }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -2531,105 +2530,105 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   },
   protocols: { socks4: { ok: true } }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 Error: Socket closed
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
-    at check (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
-    at C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
-    at Timeout.next [as _onTimeout] (C:\Or\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:336:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:325:20
+    at check (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4463:32)
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:55
+    at C:\Web\spam-revenge\spam-revenge\node_modules\proxy-verifier\index.js:286:4
+    at C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4510:33
+    at Timeout.next [as _onTimeout] (C:\Web\spam-revenge\spam-revenge\node_modules\async\dist\async.js:4457:13)
     at listOnTimeout (internal/timers.js:554:17)
     at processTimers (internal/timers.js:497:7)
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks4: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   anonymityLevel: 'transparent',
   tunnel: { ok: true },
   protocols: { socks4: { ok: true } }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks5: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks5: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { socks5: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { https: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { https: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { https: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
   protocols: { https: { ok: false, error: [Object] } },
   anonymityLevel: null,
   tunnel: { ok: false }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -2637,9 +2636,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   anonymityLevel: null,
   tunnel: { ok: false }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -2647,12 +2646,12 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   anonymityLevel: null,
   tunnel: { ok: false }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:81
+C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:81
 ^
 
 SyntaxError: Unexpected token '}'
@@ -2672,80 +2671,80 @@ npm ERR! This is probably not a problem with npm. There is likely additional log
 
 npm ERR! A complete log of this run can be found in:
 npm ERR!     C:\Users\Or\AppData\Roaming\npm-cache\_logs\2021-02-28T12_27_51_431Z-debug.log
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
 > node src/tests/sandBox.test.js
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:1632) UnhandledPromiseRejectionWarning: Error: net::ERR_PROXY_CONNECTION_FAILED at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:1632) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection i(node:1632) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:12860) UnhandledPromiseRejectionWarning: Error: net::ERR_CERT_AUTHORITY_INVALID at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:12860) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection
 (node:12860) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:15232) UnhandledPromiseRejectionWarning: Error: net::ERR_SOCKS_CONNECTION_FAILED at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:15232) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection
 (node:15232) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
 > node src/tests/sandBox.test.js
 
 (node:14976) UnhandledPromiseRejectionWarning: Error: net::ERR_SOCKS_CONNECTION_FAILED at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:5
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:14976) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection
 id: 1)
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -2756,57 +2755,57 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   date: 'Sun, 28 Feb 2021 12:32:06 GMT',
   via: '1.1 vegur'
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:11284) UnhandledPromiseRejectionWarning: Error: net::ERR_CONNECTION_CLOSED at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:11284) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection
 (node:11284) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:14360) UnhandledPromiseRejectionWarning: Error: net::ERR_CONNECTION_RESET at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:14360) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection
 (node:14360) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 (node:3308) UnhandledPromiseRejectionWarning: Error: net::ERR_CONNECTION_RESET at https://api.ipify.org
-    at navigate (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
+    at navigate (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:115:23)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async FrameManager.navigateFrame (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
-    at async Frame.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
-    at async Page.goto (C:\Or\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
-    at async C:\Or\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
+    at async FrameManager.navigateFrame (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:90:21)
+    at async Frame.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\FrameManager.js:416:16)
+    at async Page.goto (C:\Web\spam-revenge\spam-revenge\node_modules\puppeteer\lib\cjs\puppeteer\common\Page.js:789:16)
+    at async C:\Web\spam-revenge\spam-revenge\src\tests\sandBox.test.js:11:22
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:3308) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
 (node:3308) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> HTTPResponse {
@@ -2931,9 +2930,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     _sanList: [ '*.ipify.org', 'ipify.org' ]
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> HTTPResponse {
@@ -3058,9 +3057,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     _sanList: [ '*.ipify.org', 'ipify.org' ]
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> HTTPResponse {
@@ -3184,9 +3183,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     _sanList: [ '*.ipify.org', 'ipify.org' ]
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -3198,9 +3197,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
   'content-length': '14',
   via: '1.1 vegur'
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> HTTPResponse {
@@ -3325,9 +3324,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     _sanList: [ '*.ipify.org', 'ipify.org' ]
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> HTTPResponse {
@@ -3449,9 +3448,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     _sanList: [ '*.whatismybrowser.com', 'whatismybrowser.com' ]
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -6962,9 +6961,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     }
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7010,9 +7009,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     }
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7165,9 +7164,9 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     }
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7319,23 +7318,23 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
       "frameId": "79AF2D4BFA14CCD02E116129EF18E9A7"
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 
 [Object: null prototype] {
   Ethernet: [ '10.0.0.2' ],
   'vEthernet (Default Switch)': [ '172.24.192.1' ]
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 addr: 10.0.0.2
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7424,17 +7423,17 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
     }
   ]
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 MyIP=10.0.0.2
 MyPORT=60404
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 <ref *1> Socket {
@@ -7532,16 +7531,16 @@ PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
 MyIP=10.0.0.2
 MyPORT=60407
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 status: 200
 BODY: 84.228.239.72
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7688,8 +7687,8 @@ like Gecko) HeadlessChrome/90.0.4427.0 Safari/537.36\r\nAccept: text/html,applic
     }
   }
 }
-PS C:\Or\Web\spam-revenge\spam-revenge> ^C
-PS C:\Or\Web\spam-revenge\spam-revenge> y
+PS C:\Web\spam-revenge\spam-revenge> ^C
+PS C:\Web\spam-revenge\spam-revenge> y
 y : The term 'y' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 At line:1 char:1
 + y
@@ -7697,9 +7696,9 @@ At line:1 char:1
     + CategoryInfo          : ObjectNotFound: (y:String) [], CommandNotFoundException
     + FullyQualifiedErrorId : CommandNotFoundException
 
-PS C:\Or\Web\spam-revenge\spam-revenge> npm run sand
+PS C:\Web\spam-revenge\spam-revenge> npm run sand
 
-> udemy-courses@1.0.0 sand C:\Or\Web\spam-revenge\spam-revenge
+> udemy-courses@1.0.0 sand C:\Web\spam-revenge\spam-revenge
 > node src/tests/sandBox.test.js
 
 {
@@ -7849,4 +7848,4 @@ like Gecko) HeadlessChrome/90.0.4427.0 Safari/537.36\r\nAccept: text/html,applic
   }
 }
 Terminate batch job (Y/N)? y
-PS C:\Or\Web\spam-revenge\spam-revenge>
+PS C:\Web\spam-revenge\spam-revenge>
