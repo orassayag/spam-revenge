@@ -1,5 +1,6 @@
 Completed + canceled tasks:
 ===========================
+-Update packages + Recreate package-lock.json. *
 -Remove code comments to a backup TXT file. *
 -Due to the break changes of log-update packages, there is a need to use the 'postinstall' script to fix the direct file: *
 1. Remove the 'wrap-ansi', 'slice-ansi', 'cli-cursor', 'ansi-escapes' packages from the 'package.json' file. *
