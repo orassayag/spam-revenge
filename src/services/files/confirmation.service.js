@@ -6,20 +6,28 @@ class ConfirmationService {
 
     constructor() { }
 
+    setRawMode(value) {
+        if (process.stdin.isTTY) {
+            process.stdin.setRawMode(value);
+        }
+    }
+
     confirm(settings) {
-        const readLine = readline.createInterface(process.stdin, process.stdout);
         logUtils.log(logService.createConfirmSettingsTemplate(settings));
+        readline.emitKeypressEvents(process.stdin);
+        this.setRawMode(true);
         return new Promise((resolve, reject) => {
             try {
-                readLine.on('line', (line) => {
-                    switch (line) {
-                        case 'y': { resolve(true); break; }
-                        default: { resolve(false); break; }
-                    }
-                    readLine.close();
-                }).on('close', () => { resolve(false); });
+                process.stdin.on('keypress', (chunk, key) => {
+                    if (chunk) { }
+                    resolve(key && key.name === 'y');
+                    this.setRawMode(false);
+                });
             }
-            catch (error) { reject(false); }
+            catch (error) {
+                this.setRawMode(false);
+                reject(false);
+            }
         }).catch();
     }
 }
