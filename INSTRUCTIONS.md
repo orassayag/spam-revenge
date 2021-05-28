@@ -2,10 +2,6 @@
 
 Please note: The project is not finished yet and has been prospered until further notification.
 
-===================
-FAST & BASIC START.
-===================
-
 ## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
