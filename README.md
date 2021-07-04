@@ -20,7 +20,7 @@ READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
 In the terminal run: 'npm start'.
 
-Happy testing! :)
+Happy testing! :).
 
 ### Prerequisites
 
@@ -28,8 +28,8 @@ You'll need to install VSCode, Node, and clone the application, and in the termi
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en/) - The web framework used - Server side.
-* [Git](https://git-scm.com/) - Source management.
+* [Node.js](https://nodejs.org/en) - The web framework used - Server side.
+* [Git](https://git-scm.com) - Source management.
 
 ## Contributing
 
@@ -37,7 +37,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Author
 
