@@ -66,8 +66,8 @@
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.15.7",
+    "@babel/eslint-parser": "^7.15.8",
     "eslint": "^7.32.0",
-    "@types/node": "^16.10.2"
+    "@types/node": "^16.10.3"
   }
 }
