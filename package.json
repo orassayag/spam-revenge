@@ -56,7 +56,7 @@
     "fs-extra": "^10.0.0",
     "ip-regex": "^4.3.0",
     "is-reachable": "^5.1.0",
-    "log-update": "^4.0.0",
+    "log-update": "^5.0.0",
     "lorem-ipsum": "^2.0.4",
     "proxy-lists": "^1.23.3",
     "puppeteer": "^10.4.0",
