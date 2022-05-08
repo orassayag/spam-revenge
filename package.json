@@ -55,7 +55,7 @@
   "dependencies": {
     "fs-extra": "^10.1.0",
     "ip-regex": "^5.0.0",
-    "is-reachable": "^5.1.1",
+    "is-reachable": "^5.2.0",
     "log-update": "^5.0.1",
     "lorem-ipsum": "^2.0.4",
     "proxy-lists": "^1.23.3",
@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "@types/node": "^17.0.31"
   }
 }
