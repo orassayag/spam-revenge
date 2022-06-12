@@ -57,7 +57,7 @@
     "ip-regex": "^5.0.0",
     "is-reachable": "^5.2.0",
     "log-update": "^5.0.1",
-    "lorem-ipsum": "^2.0.4",
+    "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
     "puppeteer": "^14.3.0",
     "puppeteer-extra": "^3.2.3",
@@ -68,6 +68,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
     "eslint": "^8.17.0",
-    "@types/node": "^17.0.41"
+    "@types/node": "^17.0.42"
   }
 }
