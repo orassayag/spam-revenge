@@ -60,14 +60,14 @@
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
     "puppeteer": "^19.7.2",
-    "puppeteer-extra": "^3.3.4",
-    "puppeteer-extra-plugin-stealth": "^2.11.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-useragent": "^0.5.0",
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "eslint": "^8.35.0",
-    "@types/node": "^18.14.2"
+    "@types/node": "^18.14.4"
   }
 }
