@@ -59,7 +59,7 @@
     "log-update": "^5.0.1",
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
-    "puppeteer": "^20.2.1",
+    "puppeteer": "^20.3.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-useragent": "^0.5.0",
@@ -68,6 +68,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.8",
     "eslint": "^8.41.0",
-    "@types/node": "^20.2.1"
+    "@types/node": "^20.2.3"
   }
 }
