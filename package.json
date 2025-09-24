@@ -59,7 +59,7 @@
     "log-update": "^7.0.1",
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
-    "puppeteer": "^24.22.2",
+    "puppeteer": "^24.22.3",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-useragent": "^0.5.0",
