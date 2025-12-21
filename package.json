@@ -53,13 +53,13 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.3",
     "ip-regex": "^5.0.0",
     "is-reachable": "^6.0.0",
     "log-update": "^7.0.2",
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
-    "puppeteer": "^24.33.0",
+    "puppeteer": "^24.34.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-useragent": "^0.5.0",
