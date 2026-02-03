@@ -55,7 +55,7 @@
   "dependencies": {
     "fs-extra": "^11.3.3",
     "ip-regex": "^5.0.0",
-    "is-reachable": "^6.0.0",
+    "is-reachable": "^6.1.0",
     "log-update": "^7.0.2",
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
