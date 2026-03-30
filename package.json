@@ -2,22 +2,33 @@
   "name": "spam-revenge",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js + Puppeteer.js application to connect to a random proxy server and to subscribe email addresses to spam newsletters.",
+  "description": "A Node.js application that uses Puppeteer to automate subscribing email addresses to spam newsletters through random proxy servers for spam revenge purposes.",
   "repository": {
     "type": "git",
     "url": "git://github.com/orassayag/spam-revenge.git"
   },
   "keywords": [
     "spam",
+    "spam-revenge",
     "newsletter",
     "newsletters",
     "email",
-    "email address",
-    "email addresses",
+    "email-address",
+    "email-addresses",
     "subscribe",
-    "proxy"
+    "subscription",
+    "proxy",
+    "puppeteer",
+    "automation",
+    "web-scraping",
+    "form-automation",
+    "headless-browser",
+    "nodejs",
+    "proxy-server",
+    "stealth",
+    "batch-processing"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Or Assayag <orassayag@gmail.com>",
   "contributors": [
     {
@@ -34,7 +45,9 @@
     ".gitignore",
     ".jsbeautifyrc",
     ".npmignore",
+    "CONTRIBUTING.md",
     "INSTRUCTIONS.md",
+    "LICENSE",
     "package-lock.json",
     "package.json",
     "README.md"
@@ -59,13 +72,13 @@
     "log-update": "^7.2.0",
     "lorem-ipsum": "^2.0.8",
     "proxy-lists": "^1.23.3",
-    "puppeteer": "^24.40.0",
+    "puppeteer": "^24.37.5",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "random-useragent": "^0.5.0",
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
-    "eslint": "^10.1.0"
+    "eslint": "^10.0.2"
   }
 }
