@@ -2,11 +2,7 @@
   "name": "spam-revenge",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js application that uses Puppeteer to automate subscribing email addresses to spam newsletters through random proxy servers for spam revenge purposes.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/orassayag/spam-revenge.git"
-  },
+  "description": "A robust Node.js automation utility that subscribes target emails to newsletter services using Puppeteer. This tool leverages automated form interaction to process bulk batches. It routes traffic through random proxies and utilizes stealth plugins to bypass advanced bot detection mechanisms",
   "keywords": [
     "spam",
     "spam-revenge",
@@ -28,8 +24,24 @@
     "stealth",
     "batch-processing"
   ],
+  "homepage": "https://github.com/orassayag/spam-revenge#readme",
+  "bugs": {
+    "url": "https://github.com/orassayag/spam-revenge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/spam-revenge.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/orassayag"
+  },
   "license": "MIT",
-  "author": "Or Assayag <orassayag@gmail.com>",
+  "author": {
+    "name": "Or Assayag",
+    "email": "orassayag@gmail.com",
+    "url": "https://github.com/orassayag"
+  },
   "contributors": [
     {
       "name": "Or Assayag",
@@ -37,26 +49,37 @@
       "url": "https://github.com/orassayag"
     }
   ],
+  "type": "commonjs",
   "main": "src/scripts/subscribe.script.js",
   "files": [
+    ".github",
+    ".vscode",
+    "dist",
+    "misc",
+    "sources",
     "src",
     ".eslintignore",
     ".eslintrc",
     ".gitignore",
     ".jsbeautifyrc",
     ".npmignore",
+    ".prettierrc",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "INSTRUCTIONS.md",
+    "knip.json",
     "LICENSE",
     "package-lock.json",
     "package.json",
-    "README.md"
+    "README.md",
+    "SECURITY.md"
   ],
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
-    "start": "node src/scripts/subscribe.script.js",
-    "sand": "node src/tests/sandBox.test.js",
     "postinstall": "node src/scripts/initiate.script.js",
+    "sand": "node src/tests/sandBox.test.js",
+    "start": "node src/scripts/subscribe.script.js",
     "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [

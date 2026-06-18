@@ -1,4 +1,60 @@
-# Instructions
+# Setup and Usage Instructions
+
+## Version
+
+1.0.0
+
+## Last Updated
+
+June 18, 2026
+
+## Table of Contents
+
+1. [System Requirements](#system-requirements)
+2. [Initial Setup](#initial-setup)
+3. [Install Dependencies](#install-dependencies)
+4. [Configuration](#configuration)
+5. [Available Commands](#available-commands)
+6. [Development Commands](#development-commands)
+7. [Running Scripts](#running-scripts)
+8. [Development vs Production](#development-vs-production)
+9. [Proxy Configuration](#proxy-configuration)
+10. [Error Codes](#error-codes)
+11. [File Structure](#file-structure)
+12. [Configuration Files](#configuration-files)
+13. [Status Tracking](#status-tracking)
+14. [Best Practices](#best-practices)
+15. [Troubleshooting](#troubleshooting)
+16. [Extending the Application](#extending-the-application)
+17. [Documentation](#documentation)
+18. [External Resources](#external-resources)
+19. [Notes](#notes)
+
+## System Requirements
+
+- **Node.js**: Version 14 or higher
+- **Package Manager**: npm
+- **Operating System**: Windows, macOS, or Linux
+- **Memory**: 1GB RAM minimum
+- **Disk Space**: 500MB for application and dependencies
+- **Internet Connection**: Required for proxy and subscription operations
+
+## Initial Setup
+
+1. Open the project in your IDE (VSCode recommended)
+2. Clone or download the project repository
+3. Navigate to the project directory in your terminal
+4. Follow the Install Dependencies section below
+
+## Install Dependencies
+
+To install all required dependencies:
+
+```bash
+npm install
+```
+
+The postinstall script will run automatically to initialize the application after installation.
 
 ## Setup Instructions
 
@@ -16,12 +72,14 @@
 Open `src/settings/settings.js` and configure according to your needs:
 
 #### General Settings
+
 - `MODE`: Application mode - `STANDARD` or `SILENT`
 - `EMAIL_ADDRESSES`: Array of email addresses to subscribe to spam services
 - `PUBLIC_IP_ADDRESS_URL`: URL to check your public IP address (default: `https://api.ipify.org`)
 
 #### Feature Flags
-- `IS_PRODUCTION_ENVIRONMENT`: 
+
+- `IS_PRODUCTION_ENVIRONMENT`:
   - `true`: Real subscriptions to spam services
   - `false`: Development mode with simulated subscriptions
 - `IS_PROXY_CONNECTION_ACTIVE`:
@@ -32,10 +90,12 @@ Open `src/settings/settings.js` and configure according to your needs:
   - `false`: Take subscribes in original order
 
 #### Logging Configuration
+
 - `IS_LOG_SUBSCRIBE_VALID`: Log successful subscriptions
 - `IS_LOG_SUBSCRIBE_INVALID`: Log failed subscriptions
 
 #### Limits and Counts
+
 - `MAXIMUM_EMAIL_ADDRESSES_COUNT`: Maximum number of email addresses to process (default: 10)
 - `MAXIMUM_SUBSCRIBES_COUNT`: Maximum subscribes per email address (default: 2000)
 - `MILLISECONDS_TIMEOUT_EXIT_APPLICATION`: Delay before exiting (default: 1000ms)
@@ -46,6 +106,7 @@ Open `src/settings/settings.js` and configure according to your needs:
 
 1. Create or modify the subscribe list JSON file at: `sources/subscribe-list.json`
 2. Format each subscription entry as:
+
 ```json
 {
   "urlAddress": "https://example.com/newsletter",
@@ -57,6 +118,7 @@ Open `src/settings/settings.js` and configure according to your needs:
 ```
 
 **Field descriptions:**
+
 - `urlAddress`: URL of the newsletter subscription page
 - `textBoxFieldName`: HTML name/id attribute of the email input field
 - `textBoxFieldValue`: Value type to enter (usually "email")
@@ -66,25 +128,57 @@ Open `src/settings/settings.js` and configure according to your needs:
 ### Path Configuration
 
 The application uses several path settings (auto-calculated at runtime):
+
 - `APPLICATION_NAME`: Application identifier
 - `OUTER_APPLICATION_PATH`: Root directory containing backups and sources
 - `INNER_APPLICATION_PATH`: Main application source directory
 - `SUBSCRIBE_LIST_FILE_PATH`: Path to the subscribe list JSON file
 
+## Available Commands
+
+### Main Application Commands
+
+```bash
+# Start the subscription process
+npm start
+
+# Create a backup of the application
+npm run backup
+
+# Run sandbox tests
+npm run sand
+
+# Stop all Node.js processes (Windows only)
+npm run stop
+```
+
+## Development Commands
+
+### Linting
+
+```bash
+# Run ESLint to check code quality
+npx eslint .
+```
+
 ## Running Scripts
 
 ### Main Subscribe Script
+
 Runs the subscription process:
+
 ```bash
 npm start
 ```
 
 **Prerequisites:**
+
 - Internet connection
 - Valid subscribe list JSON file
 - Configured email addresses in settings
 
 **Process flow:**
+
 1. Validates settings and internet connection
 2. Loads email addresses and subscribe list
 3. Connects to proxy (if enabled)
@@ -92,24 +186,31 @@ npm start
 5. Logs results
 
 ### Backup Script
+
 Creates a backup of the application:
+
 ```bash
 npm run backup
 ```
 
 **What it backs up:**
+
 - All source files
 - Configuration files
 - Excludes: `.git`, `dist`, `node_modules`, `sources`
 
 ### Sandbox Testing
+
 Runs the sandbox test file:
+
 ```bash
 npm run sand
 ```
 
 ### Stop All Processes
+
 Stops all Node.js processes (Windows only):
+
 ```bash
 npm run stop
 ```
@@ -117,12 +218,14 @@ npm run stop
 ## Development vs Production
 
 ### Development Mode (`IS_PRODUCTION_ENVIRONMENT: false`)
+
 - Simulates subscriptions with delays
 - No actual HTTP requests to subscription services
 - Logs all actions
 - Safe for testing configurations
 
 ### Production Mode (`IS_PRODUCTION_ENVIRONMENT: true`)
+
 - Real subscriptions to spam services
 - Actual HTTP requests via Puppeteer
 - Uses proxy connections (if enabled)
@@ -131,6 +234,7 @@ npm run stop
 ## Proxy Configuration
 
 When `IS_PROXY_CONNECTION_ACTIVE` is `true`:
+
 - Fetches random proxy servers from multiple sources
 - Validates proxy connection and anonymity
 - Supports SOCKS4 protocol
@@ -138,6 +242,7 @@ When `IS_PROXY_CONNECTION_ACTIVE` is `true`:
 - Retries up to `MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT` times
 
 **Proxy validation checks:**
+
 - IP address format
 - Port validity
 - Anonymity level
@@ -148,6 +253,7 @@ When `IS_PROXY_CONNECTION_ACTIVE` is `true`:
 ## Error Codes
 
 All errors include unique codes for troubleshooting:
+
 - `1000016`: No valid subscribes found to subscribe
 - `1000017`: No subscribes exist after validation
 - `1000018`: No CREATE status subscribes available
@@ -159,17 +265,21 @@ All errors include unique codes for troubleshooting:
 ## File Structure
 
 ### Source Files (`sources/`)
+
 - `subscribe-list.json` - Newsletter subscription URLs and field configurations
 
 ### Distribution Files (`dist/`)
+
 Generated log files and results are placed in the dist directory.
 
 ### Backups (`backups/`)
+
 Application backups are stored outside the main application directory.
 
 ## Configuration Files
 
 ### Ignore Lists
+
 - `ignoreEmailAddressesList.configuration.js`: Email addresses to skip
 - `ignoreSubscribeURLsList.configuration.js`: URLs to skip
 - `countriesCodesList.configuration.js`: Valid country codes for proxies
@@ -179,6 +289,7 @@ Application backups are stored outside the main application directory.
 The application tracks various statuses:
 
 **Subscribe Statuses:**
+
 - `CREATE`: Ready to subscribe
 - `SUBSCRIBE`: Successfully subscribed
 - `FAIL`: Subscription failed
@@ -189,6 +300,7 @@ The application tracks various statuses:
 - `IGNORE`: In ignore list
 
 **Proxy Statuses:**
+
 - `CREATE`: Proxy created
 - `MISSING_IP_ADDRESS`: No IP provided
 - `INVALID_IP_ADDRESS`: Invalid IP format
@@ -211,16 +323,19 @@ The application tracks various statuses:
 ### Common Issues
 
 **No proxies found:**
+
 - Check internet connection
 - Increase `MAXIMUM_PROXY_VALIDATIONS_RETRIES_COUNT`
 - Try different time of day (proxy availability varies)
 
 **Subscriptions failing:**
+
 - Verify URL selectors in subscribe list
 - Check if websites changed their form structure
 - Enable logging to debug specific failures
 
 **Path errors:**
+
 - Verify `SUBSCRIBE_LIST_FILE_PATH` points to valid JSON file
 - Check file permissions
 - Ensure directory structure is correct
@@ -233,10 +348,48 @@ The application tracks various statuses:
 - Puppeteer runs in headless mode by default
 - All calendar files use UTF-8 encoding
 
+## Extending the Application
+
+### Adding New Subscribe URLs
+
+1. Inspect the target website's newsletter form
+2. Identify the email input field (name/id)
+3. Identify the submit button (name/id/value)
+4. Add entry to `sources/subscribe-list.json`
+5. Test in development mode first
+
+### Adding New Services
+
+1. Create a new service file in `src/services/files/`
+2. Export the service function/class
+3. Import and register in `src/services/index.js`
+4. Use the service in your scripts
+
+### Adding New Utilities
+
+1. Create a new utility file in `src/utils/files/`
+2. Export the utility functions
+3. Import and register in `src/utils/index.js`
+
+## Documentation
+
+- [README.md](README.md) - Project overview and features
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Development guidelines
+- [CHANGELOG.md](CHANGELOG.md) - Version history
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Code of conduct
+- [SECURITY.md](SECURITY.md) - Security policy
+
+## External Resources
+
+- [Puppeteer Documentation](https://pptr.dev/)
+- [Node.js Documentation](https://nodejs.org/docs/)
+- [puppeteer-extra Plugin Stealth](https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth)
+- [proxy-lists Package](https://www.npmjs.com/package/proxy-lists)
+
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag

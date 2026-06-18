@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/**/*.js"],
+  "project": ["src/**/*.js"],
+  "ignore": [],
+  "ignoreDependencies": [
+    "ip-regex",
+    "log-update",
+    "lorem-ipsum",
+    "puppeteer",
+    "random-useragent",
+    "tree-kill",
+    "@babel/eslint-parser"
+  ],
+  "ignoreBinaries": ["taskkill"]
+}

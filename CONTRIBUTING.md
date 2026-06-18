@@ -9,6 +9,7 @@ Everyone is welcome to contribute to this project. Contributing doesn't just mea
 ### Reporting Issues
 
 If you find a bug or have a feature request:
+
 1. Check if the issue already exists in the [GitHub Issues](https://github.com/orassayag/spam-revenge/issues)
 2. If not, create a new issue with:
    - Clear title and description
@@ -32,69 +33,55 @@ If you find a bug or have a feature request:
 ### Code Style Guidelines
 
 This project uses:
-- **JavaScript (Node.js)** with ES6+ features
+
+- **TypeScript** with strict type checking
 - **ESLint** for code quality
-- Consistent naming conventions and file organization
+- **Prettier** for code formatting
+- **InversifyJS** for dependency injection
 
 Before submitting:
-```bash
-# Install dependencies
-npm install
 
-# Test the script
-npm start
+```bash
+pnpm format
+pnpm lint
+pnpm build
+pnpm test
 ```
 
 ### Coding Standards
 
-1. **Service-based architecture**: Follow the existing pattern with services in `src/services/`
-2. **Error handling**: All errors must include unique error codes (format: `(1000XXX)`)
-3. **Validation**: Use validation utilities for inputs
-4. **Naming**: Use clear, descriptive names for variables, functions, and classes
-5. **Enums**: Use enums for status values and constants
-6. **Models**: Define data models in `src/core/models/`
+1. **Dependency Injection**: Use @injectable decorators for services
+2. **Error handling**: All errors must include unique error codes (see `misc/error_index.txt`)
+3. **Logging**: Use structured Logger instead of console.log
+4. **Type safety**: Avoid using `any` - define proper types
+5. **Domain organization**: Place code in appropriate domain folders (not utils/)
+6. **Naming**: Use clear, descriptive names for variables and functions
 
 ### Adding New Features
 
 When adding new features:
-1. Create appropriate models in `src/core/models/`
-2. Add service logic in `src/services/`
-3. Update enums in `src/core/enums/` if needed
-4. Update configurations in `src/configurations/` if needed
-5. Add error codes following the existing pattern
-6. Test thoroughly in both development and production modes
 
-### Project Structure
+1. Create appropriate types in `src/types/`
+2. Add service logic in `src/services/` with DI
+3. Update scripts in `src/scripts/` if needed
+4. Add error codes and update `misc/error_index.txt`
+5. Test thoroughly with vitest
 
-```
-src/
-├── configurations/    # Configuration files (ignore lists, etc.)
-├── core/
-│   ├── enums/        # Status enums and constants
-│   └── models/       # Data models
-├── logics/           # Business logic
-├── scripts/          # Entry point scripts
-├── services/         # Service layer
-├── settings/         # Application settings
-├── tests/            # Test files
-└── utils/            # Utility functions
-```
+### Error Code Management
 
-### Configuration Guidelines
+When adding new errors:
 
-When modifying settings:
-1. All settings should be in `src/settings/settings.js`
-2. Use descriptive names with proper categories (GENERAL, FLAG, LOG, etc.)
-3. Add comments explaining the purpose of each setting
-4. Maintain backward compatibility when possible
+1. Use the next available error code from `misc/error_index.txt`
+2. Format: `[ERROR-XXXXXXX]` at the start of the error message
+3. Document the error in `misc/error_index.txt`
 
 ## Questions or Need Help?
 
 Please feel free to contact me with any question, comment, pull-request, issue, or any other thing you have in mind.
 
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 Thank you for contributing! 🙏
